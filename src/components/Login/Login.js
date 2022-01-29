@@ -9,7 +9,6 @@ function Login() {
   const user = "angular_client"; 
   const pass = 123456;
   const encodeData = btoa(user + ":" + pass);
-  console.log(encodeData);
   const httpOptions = {
     headers: ({
       "Authorization": "Basic " + encodeData,
@@ -34,7 +33,7 @@ urlencoded.append("grant_type", "password");
     }
     fetch(url, requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
+    .then(result => console.log("Okey"))
     .catch(error => console.log('error', error));
   }, []); 
 

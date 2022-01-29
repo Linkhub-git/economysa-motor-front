@@ -32,10 +32,9 @@ function LoginLightMode() {
     console.log(email, password);
     let result = await fetch(url,configAPI);
     result = await result.json();
-    localStorage.setItem("user-info",JSON.stringify(result))
-    console.log(result);
-    console.log(result.access_token);
-    localStorage.setItem("tokenKey",JSON.stringify(result.access_token));
+    let token = await result.access_token
+    localStorage.setItem("user-info", JSON.stringify(result));
+    localStorage.setItem("tokenKey", JSON.stringify(token));
 
 
   }

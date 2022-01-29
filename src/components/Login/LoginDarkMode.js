@@ -31,7 +31,9 @@ function LoginDarkMode() {
     async function login (e){ 
         let result = await fetch(url,configAPI);
           result = await result.json();
-          localStorage.setItem("user-info",JSON.stringify(result))
+          let token = await result.access_token
+        localStorage.setItem("user-info", JSON.stringify(result));
+        localStorage.setItem("tokenKey", JSON.stringify(token));
           console.log(result);
       }
     const formulario = e => {

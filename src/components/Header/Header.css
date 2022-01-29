@@ -1,0 +1,156 @@
+
+.header{
+    width: 85vw;
+    height: 75px;
+    background-color: #eceff4;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.headerContent{
+    display: none;
+    cursor: pointer;
+}
+.headerMobile{
+    display: initial;
+}
+.headerContentMobile{
+    display: flex;
+    justify-content: space-between;
+}
+.logoTitleContainerHeader{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+}
+.logoTitleContainerHeader img{
+    width: 45px;
+    height: 45px;
+    margin-left: 16px;
+    margin-top: 12px;
+}
+.logoTitleContainerHeader p{
+    font-size: 22.5px;
+    color: #4c566a;
+    margin-left: 10px;
+    position: relative;
+    top: 16px;
+}
+@media only screen and (min-width: 992px){
+    .headerMobile{
+        display: none;
+    }
+    .header{
+        width: 75vw;
+    }
+    .headerContent{
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding-right: 40px;
+    }
+    .headerContent img{
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+    }
+    .headerTextContainer{
+        padding-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .headerTextContainer p{
+        font-size: 16px;
+        font-weight: 500;
+        color: #4c566a;
+        padding-left: 12px;
+        position: relative;
+        top: 5px;
+    }
+    .headerTextContainer span{
+        font-size: 13px;
+        font-weight: 500;
+        color: #9199a9;
+        padding-right: 10px;
+        position: relative;
+        bottom: 10px;
+    }
+    .containerAllSpanHeaderHide{
+        position: absolute;  
+        right: 38px;
+        top: 75px;
+        box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+    }
+    .containerAllSpanHeaderHide::before{
+        position: absolute;
+        right: 0px;
+        bottom: 143px;
+        width: 50px;
+        height: 6px;
+        background-color: #5e81ac;
+        content: " ";
+    }
+    .userInformationBackground{
+        display: flex;
+        justify-content: space-between;
+        width: 250px;
+        height: 100px;
+        padding: 12px 18px 0 12px;
+        background-image: url("../../images/bg-profilemenu.jpg");
+    }
+    .userInformation{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    .userInformation img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    .nameHeaderHide{
+        color: #eceff4;
+        margin: 0;
+        font-size: 16px;
+        font-weight: normal;
+    }
+    .puestOHeaderHide{
+        color: #c3ccdd;
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    .containerLogOut{
+        width: 250px;
+        padding: 10px;
+        background-color: #fff;
+    }
+    .linkLogOut button{
+        font-size: 14px;
+        border: none;
+        color: #434c5e;
+        border-radius: 4px;
+        background-color: #d8dee9;
+        cursor: pointer;
+    }
+    
+}
+.headerBtnContainerMobile{
+    padding-top: 24px;
+}
+.headerBtnContainerMobile i{
+    font-size: 20px;
+    padding: 0 20px;
+    cursor: pointer;
+}
+@media only screen and (min-width: 1200px){
+    .header{
+        width: 83.5vw;
+    }
+}
+@media only screen and (min-width: 1600px){
+    .header{
+        width: 87vw;
+    }
+}

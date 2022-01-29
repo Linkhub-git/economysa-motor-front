@@ -1,0 +1,174 @@
+.sidebarContainer{
+    background-color: #fff;
+    width: 15vw;
+    height: 100vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 1;
+}
+.iconTitleSideBar{
+    display: none;
+}
+.linkHeaderSidebar{
+    text-decoration: none;
+    color: #2e3440;
+    vertical-align: middle;
+    font-size: 22.5px;
+    margin-left: 4px;
+}
+.linkHeaderSidebar img{
+    height: 45px;
+    width: 45px;
+}
+.linkHeaderSidebar span{
+    position: relative;
+    top: 2px;
+    left: 4px;
+}
+.linkHeaderSidebar:hover{
+    color: #2e3440;
+}
+.iconTitleSideBar button{
+    position: relative;
+    background-color: #2e3440;
+    color: #fff;
+    border-radius: 50%;
+    border: none;
+    height: 30px;
+    width: 30px;
+}
+.fa-lock{
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+}
+.linksContainer{
+    padding: 0px 10px;
+}
+.linkSidebar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2e3440;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 0px 10px;
+    margin: 8px 0;
+    height: 39px;
+    transition: 300ms;
+}
+.linkSidebar:hover{
+    background-color: rgb(180, 180, 180);
+    color: #2e3440;
+    border-radius: 6px;
+    transition: 300ms;
+}
+.lockLink{
+    position: absolute;
+    font-size: 1rem;
+    top: 16px;
+    right: 12px;
+}
+.linkSidebar i{
+    font-size: 16px;
+    color: #4c566a;
+}
+.fa-chevron-down{
+    padding-right: 10px;
+}
+.fa-globe-americas{
+    position: absolute;
+    font-size: 1rem;
+    top: 16px;
+    right: 12px;
+}
+.contentContainerLink{
+    border: none;
+    position: relative;
+    text-decoration: none;
+}
+.contentInsideLink{
+    background-color: #e4e4e4;
+    border: none;
+    padding: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.linkBar{
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #2e3440;
+    font-size: 14px;
+}
+.linkBar:hover{
+    color: #2e3440;
+}
+.individualLinkContainer{
+    position: relative;
+    padding: 1rem 1.25rem;
+    transition: 500ms;
+}
+.individualLinkContainer:hover{
+    background-color: rgb(245, 245, 245);
+    transition: 500ms;
+}
+.fa-users{
+    font-size: 18px;
+    position: absolute;
+    right: 8px;
+    top: 18px;
+}
+.fa-chevron-down{
+    position: absolute;
+    right: 0;    
+}
+.fa-bookmark{
+    position: absolute;
+    right: 12px;
+}
+.fa-list-ul{
+    position: absolute;
+    right: 12px;
+}
+.fa-folder{
+    position: absolute;
+    right: 12px;
+}
+.titleLink{
+    position: relative;
+}
+.accordion-button::after{
+    margin-right: 20px;
+}
+.accordion-button:not(.collapsed){
+    background-color: #5e81ac;
+    color: #fff;
+}
+.accordion-button:not(.collapsed)::after{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+.accordion-button{
+    padding-left: 10px;
+}
+@media only screen and (min-width: 992px){
+    .sidebarContainer{
+        width: 25vw;
+    }
+    .iconTitleSideBar{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 16px 0px 24px;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .sidebarContainer{
+        width: 20vw;
+    }
+}
+@media only screen and (min-width: 1600px){
+    .sidebarContainer{
+        width: 15vw;
+    }
+}

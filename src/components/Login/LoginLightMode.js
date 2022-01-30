@@ -7,6 +7,7 @@ function LoginLightMode() {
   const [darkMode, setDarkMode] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  console.log(process.env.REACT_APP_URL_TOKEN);
 
   /* Configuración de API */
   const url = "https://viringo-dev.herokuapp.com/oauth/token";

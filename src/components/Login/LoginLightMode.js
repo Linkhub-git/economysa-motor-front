@@ -23,7 +23,6 @@ function LoginLightMode() {
       body: urlencoded,
       redirect: 'follow'
   }
-
   /* Llamado a la API */
   async function login (e){ 
     console.log(email, password);

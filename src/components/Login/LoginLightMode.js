@@ -33,7 +33,7 @@ function LoginLightMode() {
   /* Llamado a la API */
   async function login (e){ 
     console.log(email, password);
-    let result = await fetch(url,configAPI);
+    let result = await fetch(process.env.REACT_APP_URL_TOKEN,configAPI);
     result = await result.json();
     let token = await result.access_token
     localStorage.setItem("user-info", JSON.stringify(result));

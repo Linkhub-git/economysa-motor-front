@@ -59,3 +59,18 @@
         margin-right: 20px;
     }
 }
+@media only screen and (min-width: 1200px){
+    .btn-formContainer{
+        width: 15%;
+    }
+    .btn-formContainer button{
+        width: 100%;
+        margin: 0 auto 16px;  
+    }
+    .btn-formContainer2{
+        width: 15%;
+    }
+    .btn-formContainer2 button{
+        width: 100%;
+    }
+}

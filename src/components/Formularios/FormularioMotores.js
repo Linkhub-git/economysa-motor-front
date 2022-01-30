@@ -85,11 +85,12 @@ function FormularioMotores() {
                                    </Form.Group>
                         })}
                     </Form>
-                </div>
                 <div className='btns-container'>
                         <div className='btn-formContainer'>
+                            <button className='btn-saveForm'><i className="fas fa-save"></i> Guardar</button>
                         </div>
-                    </div>
+                </div>
+                </div>
         </div>
         <Footer/>
       </section>

@@ -86,10 +86,19 @@ function FormularioMotores() {
                         })}
                     </Form>
                 <div className='chexboxContainer'>
-                    <label htmlFor="" className='labelContainerCheckBox'>Estado
-                    <input type="checkbox" checked="checked"/>
-                    <span className='checkmark'></span></label>
+                    <label htmlFor="checkBoxMotor" className='labelContainerCheckBox'>Estado
+                        <input type="checkbox" id='checkBoxMotor' checked="checked"/>
+                        <span className='checkmark'></span>
+                    </label>
                 </div>
+                <Form className='chexboxContainer'>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Estado" />
+                    </Form.Group>
+                </Form>
+                    <label htmlFor="" className=''>Estado</label>
+                        <input type="checkbox" checked="checked"/>
+                    
                 <div className='btns-container'>
                         <div className='btn-formContainer'>
                             <button className='btn-saveForm'><i className="fas fa-save"></i> Guardar</button>

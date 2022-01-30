@@ -15,7 +15,7 @@ function LoginLightMode() {
   const url = "https://viringo-dev.herokuapp.com/oauth/token";
   const user = "angular_client"; 
   const pass = 123456;
-  const encodeData = btoa(user + ":" + pass);
+  const encodeData = btoa(process.env.REACT_APP_USER_TOKEN + ":" + pass);
   let urlencoded = new URLSearchParams();
   urlencoded.append("username", email);
   urlencoded.append("password", password);

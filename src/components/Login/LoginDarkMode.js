@@ -8,13 +8,7 @@ function LoginDarkMode() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    
-    /* Configuración de API */
-    const url = "https://viringo-dev.herokuapp.com/oauth/token";
-    const user = "angular_client"; 
-    const pass = 123456;
     const encodeData = btoa(process.env.REACT_APP_USER_TOKEN + ":" + process.env.REACT_APP_PASS_TOKEN);
-    let item = (email, password);
     let urlencoded = new URLSearchParams();
     urlencoded.append("username", email);
     urlencoded.append("password", password);

@@ -87,7 +87,8 @@ function FormularioMotores() {
                     </Form>
                 </div>
                 <div className='btns-container'>
-                        
+                        <div className='btn-formContainer'>
+                        </div>
                     </div>
         </div>
         <Footer/>

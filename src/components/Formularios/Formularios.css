@@ -14,6 +14,10 @@
     font-weight: bold;
     margin: 17px 0 10px;
 }
+.chexboxContainer{
+    position: relative;
+    left: 4px;
+}
 .btn-formContainer{
     display: flex;
     justify-content: center;
@@ -59,6 +63,11 @@
         margin-right: 20px;
     }
 }
+@media only screen and (min-width: 1000px){
+    .chexboxContainer{
+        left: 32px;
+    }
+}
 @media only screen and (min-width: 1200px){
     .btn-formContainer{
         width: 15%;
@@ -72,5 +81,15 @@
     }
     .btn-formContainer2 button{
         width: 100%;
+    }
+}
+@media only screen and (min-width: 1350px){
+    .chexboxContainer{
+        left: 40px;
+    }
+}
+@media only screen and (min-width: 1600px){
+    .chexboxContainer{
+        left: 48px;
     }
 }

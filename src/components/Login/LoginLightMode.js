@@ -8,6 +8,8 @@ function LoginLightMode() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   console.log(process.env.REACT_APP_URL_TOKEN);
+  console.log(process.env.REACT_APP_USER_TOKEN);
+  console.log(process.env.REACT_APP_PASS_TOKEN);
 
   /* Configuración de API */
   const url = "https://viringo-dev.herokuapp.com/oauth/token";
@@ -36,8 +38,7 @@ function LoginLightMode() {
     let token = await result.access_token
     localStorage.setItem("user-info", JSON.stringify(result));
     localStorage.setItem("tokenKey", JSON.stringify(token));
-
-
+    console.log(result);
   }
   const formulario = e => {
     e.preventDefault()

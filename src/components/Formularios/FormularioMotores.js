@@ -71,7 +71,7 @@ function FormularioMotores() {
   return (
     <section className="globalContainerContent">
       <Sidebar/>
-      <section className=''>
+      <section className='fondoGeneral'>
         <Header/>
         <div className='divEspacioHome'><p>...</p></div>
         <div className='infoPrincipal'>

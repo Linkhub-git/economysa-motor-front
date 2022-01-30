@@ -89,6 +89,8 @@ function FormularioMotores() {
                         <div className='btn-formContainer'>
                             <button className='btn-saveForm'><i className="fas fa-save"></i> Guardar</button>
                         </div>
+                        <div className='btn-formContainer2'>
+                        </div>
                 </div>
                 </div>
         </div>

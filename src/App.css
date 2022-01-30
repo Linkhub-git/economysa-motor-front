@@ -1,6 +1,7 @@
 .globalContainerContent{
-  width: 100vw;
+  max-width: 100vw;
   display: flex;
+  overflow-x: hidden
 }
 body{
   width: 100%;

@@ -86,8 +86,9 @@ function FormularioMotores() {
                         })}
                     </Form>
                 <div className='chexboxContainer'>
+                    <label htmlFor="" className='labelContainerCheckBox'>Estado
                     <input type="checkbox" checked="checked"/>
-                    <label htmlFor="">Estado</label>
+                    <span className='checkmark'></span></label>
                 </div>
                 <div className='btns-container'>
                         <div className='btn-formContainer'>

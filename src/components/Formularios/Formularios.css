@@ -17,7 +17,33 @@
 .chexboxContainer{
     position: relative;
     left: 4px;
+    width: 88px;
 }
+.labelContainerCheckBox{
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.labelContainerCheckBox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
 .btn-formContainer{
     display: flex;
     justify-content: center;

@@ -13,7 +13,7 @@ function LoginDarkMode() {
     const url = "https://viringo-dev.herokuapp.com/oauth/token";
     const user = "angular_client"; 
     const pass = 123456;
-    const encodeData = btoa(user + ":" + pass);
+    const encodeData = btoa(process.env.REACT_APP_USER_TOKEN + ":" + process.env.REACT_APP_PASS_TOKEN);
     let item = (email, password);
     let urlencoded = new URLSearchParams();
     urlencoded.append("username", email);
@@ -30,7 +30,7 @@ function LoginDarkMode() {
       }
     /* Llamado a la API */
     async function login (e){ 
-        let result = await fetch(url,configAPI);
+        let result = await fetch(process.env.REACT_APP_URL_TOKEN,configAPI);
           result = await result.json();
           let token = await result.access_token
         localStorage.setItem("user-info", JSON.stringify(result));

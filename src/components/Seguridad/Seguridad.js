@@ -52,9 +52,11 @@ function Seguridad() {
                                         <button className='btn-search'>Buscar</button>
                                       </Form>
                                   </div>
+                                  <p className='textRegistrosEncontrados'>registro(s) encontrados</p>
                                 </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
+                    
                   </div>
 
 

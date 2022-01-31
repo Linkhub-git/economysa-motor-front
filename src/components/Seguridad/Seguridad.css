@@ -39,6 +39,9 @@
 .filtradoBusquedaContainer .accordion-button{
     background-color: #f5f5f5;
 }
+.filtradoBusquedaContainer .accordion-body{
+    padding: 0;
+}
 .textRegistrosEncontrados{
     height: 40px;
     padding: 10px 15px;

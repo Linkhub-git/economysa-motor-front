@@ -55,9 +55,6 @@
 .filtradoBusquedaContainer .accordion-button:focus{
     box-shadow: none;
 }
-.filtradoBusquedaContainer{
-
-}
 .filtradoBusquedaContainer .accordion-item{
     border: none;
 }

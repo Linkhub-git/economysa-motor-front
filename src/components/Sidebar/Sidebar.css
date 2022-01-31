@@ -151,6 +151,9 @@
 .accordion-button{
     padding-left: 10px;
 }
+.accordion-button:focus{
+    box-shadow: none;
+}
 @media only screen and (min-width: 992px){
     .sidebarContainer{
         width: 25vw;

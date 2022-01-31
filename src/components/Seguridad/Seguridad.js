@@ -41,7 +41,18 @@ function Seguridad() {
                       <Accordion.Item eventKey="0">
                           <Accordion.Header>Filtros de Búsqueda</Accordion.Header>
                               <Accordion.Body>
-                                
+                                <div className='formularioContainerAll'>
+                                    <Form className='formularioContainer'>
+                                      <Form.Group className="mb-3 inputUsuario" controlId="formBasicEmail">
+                                        <Form.Control type="text" placeholder="Nombres" />
+                                      </Form.Group>
+
+                                      <Form.Group className="mb-3 inputUsuario" controlId="formBasicPassword">
+                                        <Form.Control type="email" placeholder="Correo electrónico" />
+                                      </Form.Group>
+                                      <button className='btn-search'>Buscar</button>
+                                    </Form>
+                                </div>
                               </Accordion.Body>
                       </Accordion.Item>
                   </Accordion>

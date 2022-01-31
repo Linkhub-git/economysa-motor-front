@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
-import { Form, Table, Pagination } from 'react-bootstrap';
+import { Form, Table, Pagination, Accordion } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import './Motor.css';
 
@@ -54,22 +54,8 @@ function Motor() {
         <div className='infoPrincipalSeguridadYMotor'>
             <section className='infoListadoUsuarioContainer'>
                 <h2>{tituloMotor.titulo}</h2>
-                  <div className='filtradoBusquedaContainer'>
-                      <div className='subtitleContainer'>
-                      <p>Filtros de Búsqueda</p>
-                      <i className="fas fa-minus"></i>
-                      {/* <i className="fas fa-plus"></i> */}
-                      </div>
-                        <div className='formularioContainerAll'>
-                            <Form className='formularioContainer'>
-                              <Form.Group className="mb-3 inputCodigo" controlId="formBasicEmail">
-                                <Form.Control type="text" placeholder="Código" />
-                              </Form.Group>
-
-                              <button className='btn-search'>Buscar</button>
-                            </Form>
-                      </div>
-                      <p className='textRegistrosEncontrados'>registro(s) encontrados</p>
+                <div className='filtradoBusquedaContainer'>
+                    
                   </div>
             </section>
         </div>

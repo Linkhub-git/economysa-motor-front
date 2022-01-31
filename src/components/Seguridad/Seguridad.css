@@ -46,10 +46,10 @@
     padding-right: 0;
 }
 .filtradoBusquedaContainer .accordion-button::after{
-    background-image: url("../../images/iconoMenos.png");
+    background-image: url("../../images/iconoMas.png");
 }
 .filtradoBusquedaContainer .accordion-button:not(.collapsed)::after{
-    background-image: url("../../images/iconoMas.png");
+    background-image: url("../../images/iconoMenos.png");
     transform: none;
 }
 .filtradoBusquedaContainer{

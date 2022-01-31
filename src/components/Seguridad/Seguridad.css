@@ -36,6 +36,9 @@
     background-color: #fff;
     margin-bottom: 20px;
 }
+.filtradoBusquedaContainer .accordion-item{
+    border: none;
+}
 .filtradoBusquedaContainer .accordion-button{
     background-color: #f5f5f5;
 }

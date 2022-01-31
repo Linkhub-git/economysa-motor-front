@@ -55,7 +55,15 @@ function Motor() {
             <section className='infoListadoUsuarioContainer'>
                 <h2>{tituloMotor.titulo}</h2>
                 <div className='filtradoBusquedaContainer'>
-                    
+                    <Accordion defaultActiveKey="0">
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header>Filtros de Búsqueda</Accordion.Header>
+                                <Accordion.Body>
+                                  
+                                  <p className='textRegistrosEncontrados'>registro(s) encontrados</p>
+                                </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
                   </div>
             </section>
         </div>

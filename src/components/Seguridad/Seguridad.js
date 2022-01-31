@@ -36,6 +36,11 @@ function Seguridad() {
                       </div>
                       <p className='textRegistrosEncontrados'>registro(s) encontrados</p>
                   </div>
+
+                  
+
+
+
             </section>
         </div>
         <section className='tableContainer'>

@@ -94,6 +94,14 @@
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
+.accordion-button{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.accordion-item:first-of-type .accordion-button{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
 .linkBar{
     display: flex;
     justify-content: space-between;

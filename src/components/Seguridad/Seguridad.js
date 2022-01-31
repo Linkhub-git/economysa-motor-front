@@ -20,7 +20,6 @@ function Seguridad() {
                       <div className='subtitleContainer'>
                       <p>Filtros de Búsqueda</p>
                       <i className="fas fa-minus"></i>
-                      {/* <i className="fas fa-plus"></i> */}
                       </div>
                         <div className='formularioContainerAll'>
                             <Form className='formularioContainer'>
@@ -36,27 +35,27 @@ function Seguridad() {
                         </div>
                       <p className='textRegistrosEncontrados'>registro(s) encontrados</p>
                   </div>
+                  <div className='filtradoBusquedaContainer'>
+                    <Accordion defaultActiveKey="0">
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header>Filtros de Búsqueda</Accordion.Header>
+                                <Accordion.Body>
+                                  <div className='formularioContainerAll'>
+                                      <Form className='formularioContainer'>
+                                        <Form.Group className="mb-3 inputUsuario" controlId="formBasicEmail">
+                                          <Form.Control type="text" placeholder="Nombres" />
+                                        </Form.Group>
 
-                  <Accordion defaultActiveKey="0">
-                      <Accordion.Item eventKey="0">
-                          <Accordion.Header>Filtros de Búsqueda</Accordion.Header>
-                              <Accordion.Body>
-                                <div className='formularioContainerAll'>
-                                    <Form className='formularioContainer'>
-                                      <Form.Group className="mb-3 inputUsuario" controlId="formBasicEmail">
-                                        <Form.Control type="text" placeholder="Nombres" />
-                                      </Form.Group>
-
-                                      <Form.Group className="mb-3 inputUsuario" controlId="formBasicPassword">
-                                        <Form.Control type="email" placeholder="Correo electrónico" />
-                                      </Form.Group>
-                                      <button className='btn-search'>Buscar</button>
-                                    </Form>
-                                </div>
-                              </Accordion.Body>
-                      </Accordion.Item>
-                  </Accordion>
-
+                                        <Form.Group className="mb-3 inputUsuario" controlId="formBasicPassword">
+                                          <Form.Control type="email" placeholder="Correo electrónico" />
+                                        </Form.Group>
+                                        <button className='btn-search'>Buscar</button>
+                                      </Form>
+                                  </div>
+                                </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
+                  </div>
 
 
             </section>

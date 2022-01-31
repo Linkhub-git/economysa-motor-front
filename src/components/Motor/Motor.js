@@ -62,7 +62,7 @@ function Motor() {
                                   <div className='formularioContainerAll'>
                                       <Form className='formularioContainer'>
                                         <Form.Group className="mb-3 inputUsuario" controlId="formBasicEmail">
-                                          <Form.Control type="text" placeholder="Nombres" />
+                                          <Form.Control type="text" placeholder="Código" />
                                         </Form.Group>
                                       </Form>
                                   </div>

@@ -64,10 +64,6 @@ function Motor() {
                                         <Form.Group className="mb-3 inputUsuario" controlId="formBasicEmail">
                                           <Form.Control type="text" placeholder="Código" />
                                         </Form.Group>
-
-                                        <Form.Group className="mb-3 inputUsuario" controlId="formBasicPassword">
-                                          <Form.Control type="email" placeholder="Correo electrónico" />
-                                        </Form.Group>
                                         <button className='btn-search'>Buscar</button>
                                       </Form>
                                   </div>

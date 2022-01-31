@@ -3,7 +3,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import './Seguridad.css';
-import { Form, Table, Pagination } from 'react-bootstrap';
+import { Form, Table, Pagination, Accordion } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Seguridad() {
@@ -33,11 +33,18 @@ function Seguridad() {
                               </Form.Group>
                               <button className='btn-search'>Buscar</button>
                             </Form>
-                      </div>
+                        </div>
                       <p className='textRegistrosEncontrados'>registro(s) encontrados</p>
                   </div>
 
-                  
+                  <Accordion defaultActiveKey="0">
+                      <Accordion.Item eventKey="0">
+                          <Accordion.Header>Filtros de Búsqueda</Accordion.Header>
+                              <Accordion.Body>
+                                
+                              </Accordion.Body>
+                      </Accordion.Item>
+                  </Accordion>
 
 
 

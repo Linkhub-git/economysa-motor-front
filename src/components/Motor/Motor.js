@@ -59,7 +59,13 @@ function Motor() {
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Filtros de Búsqueda</Accordion.Header>
                                 <Accordion.Body>
-                                  
+                                  <div className='formularioContainerAll'>
+                                      <Form className='formularioContainer'>
+                                        <Form.Group className="mb-3 inputUsuario" controlId="formBasicEmail">
+                                          <Form.Control type="text" placeholder="Nombres" />
+                                        </Form.Group>
+                                      </Form>
+                                  </div>
                                   <p className='textRegistrosEncontrados'>registro(s) encontrados</p>
                                 </Accordion.Body>
                         </Accordion.Item>

@@ -52,8 +52,8 @@
     background-image: url("../../images/iconoMenos.png");
     transform: none;
 }
-.filtradoBusquedaContainer{
-
+.filtradoBusquedaContainer .accordion-button:focus{
+    box-shadow: none;
 }
 .filtradoBusquedaContainer{
 

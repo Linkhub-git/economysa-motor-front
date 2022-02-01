@@ -144,6 +144,9 @@
     padding: 0 20px;
     cursor: pointer;
 }
+.activeHeader{
+    background-color: #5e81ac;
+}
 @media only screen and (min-width: 1200px){
     .header{
         width: 85vw;

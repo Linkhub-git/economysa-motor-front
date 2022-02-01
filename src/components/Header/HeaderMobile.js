@@ -13,7 +13,7 @@ function HeaderMobile() {
                 <p>Mirage</p>
             </div>
             <div className='headerBtnContainerMobile'>
-                <i className="fas fa-bars" onClick={()=> setShowSideBar(!showSideBar) }></i>
+                <i className={showSideBar === false ? "fas fa-bars" : "fas fa-bars activeHeader"} onClick={()=> setShowSideBar(!showSideBar) }></i>
                 <i className="fas fa-align-right"></i>
                 <i className="fas fa-ellipsis-v"></i>
             </div>

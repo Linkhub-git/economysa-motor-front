@@ -1,10 +1,11 @@
 .sidebarContainer{
     background-color: #fff;
-    width: 15vw;
+    width: 250px;
     height: 100vh;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     z-index: 1;
     position: absolute;
+    top: 75px;
 }
 .iconTitleSideBar{
     display: none;
@@ -165,8 +166,9 @@
 }
 @media only screen and (min-width: 992px){
     .sidebarContainer{
-        width: 25vw;
-        position: initial;
+        min-width: 22vw;
+        position: relative;
+        top: 0;
     }
     .iconTitleSideBar{
         display: flex;
@@ -177,11 +179,11 @@
 }
 @media only screen and (min-width: 1200px){
     .sidebarContainer{
-        width: 20vw;
+        min-width: 15vw;
     }
 }
-@media only screen and (min-width: 1600px){
+@media only screen and (min-width: 1400px){
     .sidebarContainer{
-        width: 15vw;
+        min-width: 13vw;
     }
 }

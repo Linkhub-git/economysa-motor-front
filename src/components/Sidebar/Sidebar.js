@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Sidebar.css';
 import Logo from '../../images/logo.png'
 import { Link } from 'react-router-dom';
@@ -6,8 +6,31 @@ import { Accordion } from 'react-bootstrap';
 
 function Sidebar(props) {
   console.log(props.btnShowSideBar);
+  function prueba(e){
+    console.log(e.target);
+  }
+  const sideBar = useRef();
+  console.log(sideBar);
+
+  const ocultarSidebar = (e) =>{
+    if(e.target !== sideBar){
+      console.log("Hola");
+    }
+  }
+  useEffect(()=>{
+    let handler = (event) =>{
+      if(!sideBar.current.contains(event.target)){
+        props.setShowSideBar(false)
+      }
+    }
+    document.addEventListener("mousedown", handler);
+
+    return() =>{
+      document.removeEventListener("mousedown", handler);
+    }
+  })
   return (
-    <aside className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
+    <aside ref={sideBar} onClick={ocultarSidebar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
     <div className='iconTitleSideBar'>
         <Link className='linkHeaderSidebar' to="/">
             <img src={Logo} alt="ej" />

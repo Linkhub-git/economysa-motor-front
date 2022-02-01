@@ -193,6 +193,7 @@
         min-width: 22vw;
         position: relative;
         top: 0;
+        left: 0;
     }
     .iconTitleSideBar{
         display: flex;

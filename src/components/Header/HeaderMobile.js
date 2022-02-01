@@ -3,7 +3,7 @@ import './Header.css';
 import Logo from '../../images/logo.png'
 
 function HeaderMobile() {
-  const [showSideBar1, setShowSideBar1] = useState(true);
+  const [showSideBar1, setShowSideBar1] = useState(false);
   const [showSideBar2, setShowSideBar2] = useState(false);
   const [showSideBar3, setShowSideBar3] = useState(false);
   /* Utilizar acá el showSideBar3, que es el que muestra el span en versión mobile 
@@ -12,7 +12,7 @@ function HeaderMobile() {
   return {
     showSideBar1, 
     showSideBar2, 
-    showSideBar3,
+    setShowSideBar1,
     render:(
       <header className="headerMobile">
         <div className='headerContentMobile'>

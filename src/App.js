@@ -5,10 +5,10 @@ import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
-  const {showSideBar1, showSideBar2,showSideBar3,render} = Header();
+  const {showSideBar1, showSideBar2,render} = Header();
   return (
     <section className="globalContainerContent">
-      <Sidebar btnHeader={showSideBar1} />
+      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} />
       <section className='fondoGeneral'>
         {render}
         <div className='divEspacioHome'><p>...</p></div>

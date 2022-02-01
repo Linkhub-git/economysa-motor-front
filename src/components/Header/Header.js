@@ -6,11 +6,10 @@ import { Link } from 'react-router-dom';
 function Header() {
   const [showSpan, setShowSpan] = useState(false)
   
-  const {showSideBar1, showSideBar2,showSideBar3,render} = HeaderMobile();
-    return{
+  const {showSideBar1, showSideBar2,render} = HeaderMobile();
+  return{
       showSideBar1, 
       showSideBar2, 
-      showSideBar3,
         render:(
             <header className="header">
               {render}

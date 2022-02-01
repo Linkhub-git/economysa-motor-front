@@ -6,6 +6,9 @@ function HeaderMobile() {
   const [showSideBar1, setShowSideBar1] = useState(false);
   const [showSideBar2, setShowSideBar2] = useState(false);
   const [showSideBar3, setShowSideBar3] = useState(false);
+  /* Utilizar acá el showSideBar3, que es el que muestra el span en versión mobile 
+  En la versión mobile tiene también un pequeño span, utilizar como base el que hice antes
+  ya que es modificar y agregar menos cosas*/
   return {
     showSideBar1, 
     showSideBar2, 

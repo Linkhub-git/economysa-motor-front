@@ -4,7 +4,8 @@ import Logo from '../../images/logo.png'
 import { Link } from 'react-router-dom';
 import { Accordion } from 'react-bootstrap';
 
-function Sidebar() {
+function Sidebar(props) {
+  console.log(props.btnShowSideBar);
   return (
     <aside className="sidebarContainer activeShow">
     <div className='iconTitleSideBar'>

@@ -60,6 +60,12 @@
     right: 10px;
     top: 9px;
 }
+.fa-lock-open{
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+}
 .linksContainer{
     padding: 0px 10px;
 }

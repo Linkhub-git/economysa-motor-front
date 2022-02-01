@@ -35,7 +35,9 @@ function Sidebar(props) {
             <img src={Logo} alt="ej" />
             <span>Economysa</span>
         </Link>
-      <button onClick={() => setHideSidebarDesk(!hideSidebarDesk)}><i className="fas fa-lock"></i></button>
+
+      <button className={hideSidebarDesk === true ? "" : "sideBarHideDesktop"} onClick={() => setHideSidebarDesk(!hideSidebarDesk)}><i className={hideSidebarDesk === true ? "fas fa-lock" : "fas fa-lock-open"}></i></button>
+      
     </div>
     <div className='linksContainer'>
         <Link className='linkSidebar' to="/">Dasboard <i className="fas fa-home"></i></Link>

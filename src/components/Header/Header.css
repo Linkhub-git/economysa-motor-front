@@ -164,8 +164,14 @@
     cursor: pointer;
     transition: 250ms;
 }
-.headerBtnContainerMobile a:hover{
-    color: #434c5e;
+.firstLinkHeader a:hover{
+    color: #ffffff;
+}
+.middleLinkHeader a:hover{
+    color: #ffffff;
+}
+.lastLinkHeader a:hover{
+    color: #ffffff;
 }
 .headerBtnContainerMobile i:hover{
     color: #5e81ac;
@@ -178,19 +184,8 @@
 }
 .activeHeader:hover{
     background-color: #5e81ac;
-    color: rgb(255, 0, 0);
-    transition: 100ms;
-}
-.activeHeader:hover{
-    background-color: #5e81ac;
     color: rgb(255, 255, 255);
     transition: 100ms;
-}
-.activeHeader:hover + .activeHeader a{
-    color: rgb(255, 255, 255);
-}
-.activeHeader:hover + .activeHeader i{
-    color: rgb(255, 255, 255);
 }
 .activeHeader i:hover{
     color: #fff;

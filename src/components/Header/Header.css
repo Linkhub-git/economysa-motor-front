@@ -172,9 +172,25 @@
     transition: 250ms;
 }
 .activeHeader{
-    background-color: #5e81ac;
+    background-color: #000;
     color: #fff;
     border-radius: 50%;
+}
+.activeHeader:hover{
+    background-color: #5e81ac;
+    color: rgb(255, 0, 0);
+    transition: 100ms;
+}
+.activeHeader:hover{
+    background-color: #5e81ac;
+    color: rgb(255, 255, 255);
+    transition: 100ms;
+}
+.activeHeader:hover + .activeHeader a{
+    color: rgb(255, 255, 255);
+}
+.activeHeader:hover + .activeHeader i{
+    color: rgb(255, 255, 255);
 }
 .activeHeader i:hover{
     color: #fff;
@@ -186,6 +202,11 @@
 .activeLasLink i:hover{
     color: #fff;
     transition: 250ms;
+}
+@media only screen and (min-width: 992px){
+    .header{
+        width:78vw;
+    }
 }
 @media only screen and (min-width: 1200px){
     .header{

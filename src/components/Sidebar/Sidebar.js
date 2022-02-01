@@ -7,7 +7,7 @@ import { Accordion } from 'react-bootstrap';
 function Sidebar(props) {
   console.log(props.btnShowSideBar);
   return (
-    <aside className="sidebarContainer activeShow">
+    <aside className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
     <div className='iconTitleSideBar'>
         <Link className='linkHeaderSidebar' to="/">
             <img src={Logo} alt="ej" />

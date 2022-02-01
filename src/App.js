@@ -11,15 +11,17 @@ function App() {
       <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} />
       <section className='fondoGeneral'>
         {render}
-        <div className='divEspacioHome'><p>...</p></div>
-        <div className='infoPrincipal'>
-          <div className='infoPrincipalContainer'>
-            <h1>Empty Page</h1>
-            <p>Use this page to start from scratch and place your custom content.</p>
-            <button>Home</button>
-          </div>
-        </div>
-        <Footer/>
+        <section className={showSideBar1 === false ? 'containerHome' : 'containerHome hideContentSideBar' }>
+          <div className='divEspacioHome'><p>...</p></div>
+          <div className='infoPrincipal'>
+            <div className='infoPrincipalContainer'>
+              <h1>Empty Page</h1>
+              <p>Use this page to start from scratch and place your custom content.</p>
+              <button>Home</button>
+            </div>
+          </div>        
+          <Footer/>
+        </section>
       </section>
     </section>
   );

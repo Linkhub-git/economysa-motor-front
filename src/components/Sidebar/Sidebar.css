@@ -11,6 +11,9 @@
 .activeShow{
     left: 0;
 }
+.hideContentSideBar{
+    opacity: 0.2;
+}
 .iconTitleSideBar{
     display: none;
 }

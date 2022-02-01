@@ -7,6 +7,7 @@
     position: absolute;
     top: 75px;
     left: -260px;
+    transition: 250ms;
 }
 .activeShow{
     left: 0;
@@ -20,6 +21,7 @@
     opacity:0.8;
     background-color: #2e3440;
     position: absolute;
+    transition: 250ms;
 }
 .iconTitleSideBar{
     display: none;

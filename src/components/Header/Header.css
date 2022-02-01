@@ -139,13 +139,47 @@
 .headerBtnContainerMobile{
     padding-top: 24px;
 }
+.firstLinkHeader{
+    color: #434c5e;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    margin: 0 12px;
+}
+.middleLinkHeader{
+    color: #434c5e;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    margin: 0 12px;
+}
+.lastLinkHeader{
+    color: #434c5e;
+    width: 60px;
+    height: 40px;
+    padding: 8px;
+    margin: 0 20px 0 12px;
+}
 .headerBtnContainerMobile i{
     font-size: 20px;
-    padding: 0 20px;
     cursor: pointer;
+    transition: 250ms;
+}
+.headerBtnContainerMobile a:hover{
+    color: #434c5e;
+}
+.headerBtnContainerMobile i:hover{
+    color: #5e81ac;
+    transition: 250ms;
 }
 .activeHeader{
     background-color: #5e81ac;
+    color: #fff;
+    border-radius: 50%;
+}
+.activeHeader i:hover{
+    color: #fff;
+    transition: 250ms;
 }
 @media only screen and (min-width: 1200px){
     .header{

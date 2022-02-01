@@ -151,13 +151,12 @@
     width: 40px;
     height: 40px;
     padding: 8px;
-    margin: 0 12px;
+    margin: 0 0 0 8px;
 }
 .lastLinkHeader{
     color: #434c5e;
     width: 60px;
-    height: 40px;
-    padding: 8px;
+    padding: 8px 14px;
     margin: 0 20px 0 12px;
 }
 .headerBtnContainerMobile i{
@@ -178,6 +177,13 @@
     border-radius: 50%;
 }
 .activeHeader i:hover{
+    color: #fff;
+    transition: 250ms;
+}
+.activeLasLink{
+    padding: 8px 14px;
+}
+.activeLasLink i:hover{
     color: #fff;
     transition: 250ms;
 }

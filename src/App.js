@@ -12,6 +12,7 @@ function App() {
       <section className='fondoGeneral'>
         {render}
         <section className={showSideBar1 === false ? 'containerHome' : 'containerHome hideContentSideBar' }>
+          {showSideBar1 === true ? <div className='backgroundBlackSideBar'></div> : ''}
           <div className='divEspacioHome'><p>...</p></div>
           <div className='infoPrincipal'>
             <div className='infoPrincipalContainer'>

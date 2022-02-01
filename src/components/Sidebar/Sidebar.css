@@ -12,7 +12,14 @@
     left: 0;
 }
 .hideContentSideBar{
-    opacity: 0.2;
+    
+}
+.backgroundBlackSideBar{
+    width: 100%;
+    height: 100%;
+    opacity:0.8;
+    background-color: #2e3440;
+    position: absolute;
 }
 .iconTitleSideBar{
     display: none;

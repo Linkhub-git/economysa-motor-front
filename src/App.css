@@ -1,11 +1,12 @@
-.globalContainerContent{
-  max-width: 100vw;
-  display: flex;
-  overflow-x: hidden
-}
 body{
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden
+}
+.globalContainerContent{
+  width: 100vw;
+  display: flex;
+  overflow-x: hidden
 }
 .fondoGeneral{
   height: 100vh;

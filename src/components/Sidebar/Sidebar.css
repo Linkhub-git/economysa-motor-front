@@ -181,6 +181,14 @@
     box-shadow: none;
 }
 @media only screen and (min-width: 992px){
+    .backgroundBlackSideBar{
+        width: 10%;
+        height: 10%;
+        opacity:0;
+        background-color: #2e3440;
+        position: absolute;
+        transition: 250ms;
+    }
     .sidebarContainer{
         min-width: 22vw;
         position: relative;

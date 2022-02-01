@@ -200,16 +200,16 @@
 }
 @media only screen and (min-width: 992px){
     .header{
-        width:78vw;
+        max-width:78vw;
     }
 }
 @media only screen and (min-width: 1200px){
     .header{
-        width: 85vw;
+        max-width:100%;
     }
 }
 @media only screen and (min-width: 1600px){
     .header{
-        width: 87vw;
+        max-width:100vw;
     }
 }

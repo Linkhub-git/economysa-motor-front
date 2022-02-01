@@ -6,7 +6,7 @@ import { Accordion } from 'react-bootstrap';
 
 function Sidebar() {
   return (
-    <aside className="sidebarContainer">
+    <aside className="sidebarContainer activeShow">
     <div className='iconTitleSideBar'>
         <Link className='linkHeaderSidebar' to="/">
             <img src={Logo} alt="ej" />

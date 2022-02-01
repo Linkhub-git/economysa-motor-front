@@ -8,6 +8,9 @@
     top: 75px;
     left: -260px;
 }
+.activeShow{
+    left: 0;
+}
 .iconTitleSideBar{
     display: none;
 }

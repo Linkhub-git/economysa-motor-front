@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -6,9 +6,10 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header();
+  const [hideSidebarDesk, setHideSidebarDesk] = useState(true);
   return (
     <section className="globalContainerContent">
-      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} />
+      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} />
       <section className='fondoGeneral'>
         {render}
         <section className="containerHome">

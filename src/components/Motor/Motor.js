@@ -7,6 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 import './Motor.css';
 
 function Motor() {
+  const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header();
   const params = useParams();
   const id = Number(params.id)
   let titulosMotores = [
@@ -47,9 +48,9 @@ function Motor() {
   let columnasTablaMotorSeleccionado = columnasTablasMotores.find(titulo => titulo.id === id)
   return (
     <section className="globalContainerContent">
-      <Sidebar/>
+      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} />
       <section className='fondoGeneral'>
-        <Header/>
+        {render}
         <div className='divEspacioHome'><p>...</p></div>
         <div className='infoPrincipalSeguridadYMotor'>
             <section className='infoListadoUsuarioContainer'>

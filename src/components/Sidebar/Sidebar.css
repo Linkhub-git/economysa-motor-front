@@ -238,18 +238,24 @@
         left: -80px;
     }
     .showALittleSidebarLogo{
-        
+        position: relative;
     }
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{
         position: absolute;
         top: 0px;
-        left: -150%;
+        left: -140%;
     }
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo span{
         display: initial;
+        position: relative;
+        top: 6px;
+        left: -110px;
     }
     .showALittleSidebarLogo .sideBarHideDesktopHideButton{
         visibility: initial;
+        position: relative;
+        top: 6px;
+        left: 10px;
     }
 }
 @media only screen and (min-width: 1200px){

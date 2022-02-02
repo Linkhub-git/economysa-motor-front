@@ -36,7 +36,7 @@ function Sidebar(props) {
     }
   })
   /* Ocultar & mostrar sidebar */
-  async function funcionPrueba (){
+  async function ChangeStyleSidebar (){
     if(props.hideSidebarDesk === false){
         setShowAlittleSidebar(true)
     }else if(props.hideSidebarDesk === true){
@@ -75,7 +75,7 @@ function Sidebar(props) {
 
 
   return(
-    <aside onMouseOver={funcionPrueba} ref={sideBarDesktop} className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
+    <aside onMouseOver={ChangeStyleSidebar} ref={sideBarDesktop} className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
         <div  className={showAlittleSidebar === false ? "" : "showALittleSidebar"}>
             <div ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
                   <div ref={logoSidebar} className={showAlittleSidebar === false ? "iconTitleSideBar" : "iconTitleSideBar showALittleSidebarLogo"}>

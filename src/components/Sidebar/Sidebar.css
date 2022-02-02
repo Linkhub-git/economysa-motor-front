@@ -243,13 +243,13 @@
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{
         position: absolute;
         top: 0px;
-        left: -140%;
+        left: -13vw;
     }
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo span{
         display: initial;
         position: relative;
         top: 6px;
-        left: -110px;
+        left: -9vw;
     }
     .showALittleSidebarLogo .sideBarHideDesktopHideButton{
         visibility: initial;

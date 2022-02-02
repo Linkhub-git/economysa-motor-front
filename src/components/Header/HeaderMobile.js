@@ -21,7 +21,7 @@ function HeaderMobile() {
                   <p>Mirage</p>
               </div>
               <div className='headerBtnContainerMobile'>
-                <a href="#" onClick={()=> setShowSideBar1(!showSideBar1)} className={showSideBar1 === true ? "firstLinkHeader" : "firstLinkHeader activeHeader"}> <i className="fas fa-bars"></i></a>
+                <a href="#" onClick={()=> setShowSideBar1(!showSideBar1)} className={showSideBar1 === false ? "firstLinkHeader" : "firstLinkHeader activeHeader"}> <i className="fas fa-bars"></i></a>
                 <a href="#" onClick={()=> setShowSideBar2(!showSideBar2)} className={showSideBar2 === false ? "middleLinkHeader" : "middleLinkHeader activeHeader"}><i className="fas fa-align-right"></i></a>
                 <a href="#" onClick={()=> setShowSideBar3(!showSideBar3)} className={showSideBar3 === false ? "lastLinkHeader" : "lastLinkHeader activeHeader activeLasLink"}><i className="fas fa-ellipsis-v"></i></a>
               </div>

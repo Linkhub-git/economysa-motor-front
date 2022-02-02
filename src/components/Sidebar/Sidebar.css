@@ -316,4 +316,10 @@
         position: absolute;
         left: -5.5vw;
     }
+    .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{
+        left: -147.5%;
+    }
+    .showALittleSidebarLogo .sideBarHideDesktopMoveLogo span{
+        left: -100%;
+    }
 }

@@ -6,7 +6,6 @@ import { Accordion } from 'react-bootstrap';
 
 function Sidebar(props) {
   
-  const [showAlittleSidebar, setShowAlittleSidebar] = useState(false)
   /* Evento con useEffect para añadir y remover evento para ocultar sideBar */
   const sideBar = useRef();
   const sideBarDesktop = useRef();
@@ -23,7 +22,7 @@ function Sidebar(props) {
       document.removeEventListener("mousedown", handler);
     }
   })
-  useEffect(()=>{
+  /*  useEffect(()=>{
     let handler = (event) =>{
       if(!sideBar.current.contains(event.target)){
         props.setShowSideBar(false)
@@ -34,24 +33,24 @@ function Sidebar(props) {
     return() =>{
       document.removeEventListener("mouseover", handler);
     }
-  })
+  })  */
+  async function Test(){
+    props.setShowSideBar(false)
+  }
   /* Ocultar & mostrar sidebar */
   async function ChangeStyleSidebar (){
     if(props.hideSidebarDesk === false){
-        setShowAlittleSidebar(true)
+        props.setShowAlittleSidebar(true)
     }else if(props.hideSidebarDesk === true){
-      setShowAlittleSidebar(false)
+      props.setShowAlittleSidebar(false)
     }
   }
-  useEffect(()=>{
-    document.addEventListener("mouseout", (event)=>{
-      if(props.hideSidebarDesk === false){
-        if(!sideBarDesktop.current.contains(event.target)){
-          setShowAlittleSidebar(false)
-        }
-      }
-    });
-  })
+  
+  async function ChangeStyleSidebarOut (){
+    if(props.hideSidebarDesk === false){
+      props.setShowAlittleSidebar(false)
+    }
+  }
 
   /* Al esconder el sideBar para desk simplemente debo jugar con esconder una parte.
   Cosa que cuando se pase el mouse por encima, se muestre el contenido.
@@ -73,17 +72,21 @@ function Sidebar(props) {
   
   -Al clickear, que se remueva el position absolute*/
 
+  async function hideSidebar(){
+    props.setHideSidebarDesk(!props.hideSidebarDesk)
+  }
 
+  console.log(props.showAlittleSidebar);
   return(
-    <aside onMouseOver={ChangeStyleSidebar} ref={sideBarDesktop} className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
-        <div  className={showAlittleSidebar === false ? "" : "showALittleSidebar"}>
-            <div ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
-                  <div ref={logoSidebar} className={showAlittleSidebar === false ? "iconTitleSideBar" : "iconTitleSideBar showALittleSidebarLogo"}>
+    <aside onMouseOver={ChangeStyleSidebar} onMouseOut={ChangeStyleSidebarOut} ref={sideBarDesktop} className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
+        <div  className={props.showAlittleSidebar === false ? "" : "showALittleSidebar"}>
+            <div onMouseOver={Test} ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
+                  <div ref={logoSidebar} className={props.showAlittleSidebar === false ? "iconTitleSideBar" : "iconTitleSideBar showALittleSidebarLogo"}>
                       <Link className={props.hideSidebarDesk === true ? "linkHeaderSidebar" : "linkHeaderSidebar sideBarHideDesktopMoveLogo"} to="/">
                           <img src={Logo} alt="Logo" />
                           <span>Economysa</span>
                       </Link>
-                      <button className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktopHideButton"} onClick={() => props.setHideSidebarDesk(!props.hideSidebarDesk)}><i className={props.hideSidebarDesk === true ? "fas fa-lock" : "fas fa-lock-open"}></i></button>
+                      <button className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktopHideButton"} onClick={() => hideSidebar()}><i className={props.hideSidebarDesk === true ? "fas fa-lock" : "fas fa-lock-open"}></i></button>
                   </div>
                   <div className='linksContainer'>
                       <Link className='linkSidebar' to="/">Dasboard <i className="fas fa-home"></i></Link>

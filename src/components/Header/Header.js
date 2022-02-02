@@ -3,16 +3,20 @@ import './Header.css';
 import Logo from '../../images/fotoEjemplo.jpg';
 import HeaderMobile from "./HeaderMobile";
 import { Link } from 'react-router-dom';
-function Header(hideSidebarDesk) {
+function Header(hideSidebarDesk,showAlittleSidebar,setShowAlittleSidebar) {
   const [showSpan, setShowSpan] = useState(false)
-  
+
+  async function pruebaPase(){
+    showAlittleSidebar(false)
+    console.log("test");
+  }
   const {showSideBar1, showSideBar2, setShowSideBar1,render} = HeaderMobile();
   return{
       showSideBar1, 
       showSideBar2,
       setShowSideBar1, 
         render:(
-            <header className={hideSidebarDesk === true ? 'header' : "headerSinSidebar"}>
+            <header onMouseOver={()=> pruebaPase()} className={hideSidebarDesk === true ? 'header' : "headerSinSidebar"}>
               {render}
               <div className='headerContent' onClick={()=>setShowSpan(!showSpan)}>
                   <img src={Logo} alt="ej" />

@@ -6,12 +6,13 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const [hideSidebarDesk, setHideSidebarDesk] = useState(true);
-  const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header(hideSidebarDesk);
+  const [showAlittleSidebar, setShowAlittleSidebar] = useState(false)
+  const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header(hideSidebarDesk,setShowAlittleSidebar, showAlittleSidebar);
   return (
     <section className="globalContainerContent">
-      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} />
+      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} showAlittleSidebar={showAlittleSidebar} setShowAlittleSidebar={setShowAlittleSidebar}/>
       <section className='fondoGeneral'>
-        {render}
+        {render} 
         <section className={hideSidebarDesk === true ? "containerHome" : "contentHideSidebar"}>
           {showSideBar1 === true ? <div className='backgroundBlackSideBar'></div> : ''}
           <div className='divEspacioHome'><p>...</p></div>

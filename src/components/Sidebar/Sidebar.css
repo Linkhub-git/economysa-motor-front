@@ -239,6 +239,7 @@
     }
     .showALittleSidebarLogo{
         position: relative;
+        z-index: 55;
     }
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{
         position: absolute;

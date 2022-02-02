@@ -300,4 +300,8 @@
     .sidebarContainer{
         min-width: 13%;
     }
+    .showALittleSidebar{
+        position: absolute;
+        left: -5.5vw;
+    }
 }

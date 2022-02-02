@@ -7,11 +7,12 @@ import { Form, Table, Pagination, Accordion } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Seguridad() {
+  const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header();
   return (
     <section className="globalContainerContent">
-      <Sidebar/>
+      <Sidebar {...{showSideBar1, showSideBar2,setShowSideBar1}} />
       <section className='fondoGeneral'>
-        <Header/>
+        {render}
         <div className='divEspacioHome'><p>...</p></div>
         <div className='infoPrincipalSeguridadYMotor'>
             <section className='infoListadoUsuarioContainer'>

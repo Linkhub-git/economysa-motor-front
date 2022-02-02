@@ -237,10 +237,13 @@
         position: absolute;
         left: -80px;
     }
+    .showALittleSidebarLogo{
+        
+    }
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{
         position: absolute;
         top: 0px;
-        left: -60%;
+        left: -150%;
     }
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo span{
         display: initial;

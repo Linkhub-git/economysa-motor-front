@@ -211,7 +211,7 @@
     .sideBarHideDesktop{
         position: absolute;
         right: 93%; 
-        transition: 550ms;
+        transition: 10ms;
     }
     /* Oculta las flechas al estar acotado el sidebar */
     .sideBarHideDesktopIcons button::after{
@@ -236,7 +236,17 @@
     .showALittleSidebar{
         position: absolute;
         left: -80px;
-        transition: 550ms;
+    }
+    .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{
+        position: absolute;
+        top: 0px;
+        left: -60%;
+    }
+    .showALittleSidebarLogo .sideBarHideDesktopMoveLogo span{
+        display: initial;
+    }
+    .showALittleSidebarLogo .sideBarHideDesktopHideButton{
+        visibility: initial;
     }
 }
 @media only screen and (min-width: 1200px){

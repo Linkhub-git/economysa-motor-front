@@ -61,6 +61,8 @@ body{
 .infoPrincipalContainer button:hover{
   transition: background-color 0.15s, box-shadow 0.15s;
 }
+
+
 @media only screen and (min-width: 1200px){
   .contentHideSidebar{
     width: 95.5%;

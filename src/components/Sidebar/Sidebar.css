@@ -201,7 +201,7 @@
     }
     .sideBarHideDesktop{
         position: absolute;
-        /* right: 95vw; */
+        right: 95vw;
         transition: 250ms;
     }
     .titleLink button .accordion-button::after{

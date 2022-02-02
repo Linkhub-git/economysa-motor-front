@@ -32,7 +32,8 @@ function Sidebar(props) {
   función DESDE EL PADRE, y recibir el dato actualizado del hijo, para trabajar en base a ello
   
   Tengo que trabajar en la clase para ocultar la flecha del sidebar, y ya puedo encargarme
-  de adaptar el resto de la página*/
+  de adaptar el resto de la página
+  Como mencioné antes, una vez tenga ocultos las flechas, */
   console.log(hideSidebarDesk);
   return(
     <aside className={hideSidebarDesk === true ? "asddsa" : "sideBarHideDesktop"}>

@@ -282,6 +282,10 @@
         right: 95%; 
         transition: 550ms;
     }
+    .showALittleSidebar{
+        position: absolute;
+        left: -5vw;
+    }
 }
 @media only screen and (min-width: 1600px){
     .sideBarHideDesktopMoveLogo{

@@ -32,7 +32,7 @@ function Sidebar(props) {
   Para pasar la información de si el sidebar está oculto o no, al padre, definir un estado y una
   función DESDE EL PADRE, y recibir el dato actualizado del hijo, para trabajar en base a ello
   
-  Tengo que trabajar en la clase para ocultar la flecha del sidebar, y ya puedo encargarme
+  DONE - Tengo que trabajar en la clase para ocultar la flecha del sidebar, y ya puedo encargarme
   de adaptar el resto de la página
   Como mencioné antes, una vez tenga ocultos las flechas, */
   return(

@@ -6,3 +6,40 @@
         width: 35%
     }
 }
+@media only screen and (min-width: 992px){
+    .contentHideSidebarMotor{
+        max-width: 94%;
+        position: relative;
+        left: 70px;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .contentHideSidebarMotor{
+        max-width: 94%;
+        left: 80px;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .contentHideSidebarMotor{
+        max-width: 96%;
+        left: 70px;
+    }
+}
+@media only screen and (min-width: 1400px){
+    .contentHideSidebarMotor{
+        max-width: 95.8%;
+        left: 70px;
+    }
+}
+@media only screen and (min-width: 1600px){
+    .contentHideSidebarMotor{
+        max-width: 95.8%;
+        left: 80px;
+    }
+}
+@media only screen and (min-width: 1800px){
+    .contentHideSidebarMotor{    
+        max-width: 95%;
+        left: 100px;
+    }
+}

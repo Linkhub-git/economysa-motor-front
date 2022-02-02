@@ -50,7 +50,7 @@ function Motor() {
   return (
     <section className="globalContainerContent">
       <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} />
-      <section className='fondoGeneral'>
+      <section className={hideSidebarDesk === true ? "fondoGeneral" : "fondoGeneral contentHideSidebarMotor"}>
         {render}
         <div className='divEspacioHome'><p>...</p></div>
         <div className='infoPrincipalSeguridadYMotor'>

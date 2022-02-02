@@ -34,7 +34,12 @@ function Sidebar(props) {
   
   DONE - Tengo que trabajar en la clase para ocultar la flecha del sidebar, y ya puedo encargarme
   de adaptar el resto de la página
-  Como mencioné antes, una vez tenga ocultos las flechas, */
+  Como mencioné antes, una vez tenga ocultos las flechas, 
+  Ahora queda las 2 siguientes tareas:
+  -Hacer que al pasar el mouse por encima, se remuevan el valor "left" 
+  & que se muestre el botón para hacer toggle
+  
+  -Al clickear, que se remueva el position absolute*/
   return(
     <aside className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
           <div ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>

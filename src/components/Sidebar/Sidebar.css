@@ -167,6 +167,11 @@
 .titleLink{
     position: relative;
 }
+.accordion-button:hover{
+    background-color: rgb(180, 180, 180);
+    border-radius: 6px;
+    transition: 300ms;
+}
 .accordion-button::after{
     margin-right: 20px;
     background-image: url("../../images/flechaAbajo.png");
@@ -227,6 +232,11 @@
         align-items: center;
         justify-content: space-around;
         padding: 16px 0px 24px;
+    }
+    .showALittleSidebar{
+        position: absolute;
+        left: -80px;
+        transition: 550ms;
     }
 }
 @media only screen and (min-width: 1200px){

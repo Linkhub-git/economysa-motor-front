@@ -272,14 +272,9 @@
         transition: 550ms;
     }
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{
-        position: absolute;
-        top: 0px;
         left: -13vw;
     }
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo span{
-        display: initial;
-        position: relative;
-        top: 6px;
         left: -9vw;
     }
 }
@@ -296,6 +291,12 @@
     .showALittleSidebar{
         position: absolute;
         left: -5vw;
+    }
+    .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{
+        left: -14.5vw;
+    }
+    .showALittleSidebarLogo .sideBarHideDesktopMoveLogo span{
+        left: -11vw;
     }
 }
 @media only screen and (min-width: 1600px){

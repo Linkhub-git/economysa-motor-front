@@ -243,13 +243,13 @@
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{
         position: absolute;
         top: 0px;
-        left: -13vw;
+        left: -150%;
     }
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo span{
         display: initial;
         position: relative;
         top: 6px;
-        left: -9vw;
+        left: -110px;
     }
     .showALittleSidebarLogo .sideBarHideDesktopHideButton{
         visibility: initial;
@@ -270,6 +270,17 @@
         position: absolute;
         right: 93.5%; 
         transition: 550ms;
+    }
+    .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{
+        position: absolute;
+        top: 0px;
+        left: -13vw;
+    }
+    .showALittleSidebarLogo .sideBarHideDesktopMoveLogo span{
+        display: initial;
+        position: relative;
+        top: 6px;
+        left: -9vw;
     }
 }
 @media only screen and (min-width: 1400px){

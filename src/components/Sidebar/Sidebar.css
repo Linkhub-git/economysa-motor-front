@@ -204,6 +204,10 @@
         /* right: 95vw; */
         transition: 250ms;
     }
+    .titleLink button .accordion-button::after{
+        background-image: none;
+        background-color: #fff000;
+    }
     .sidebarContainer{
         min-width: 22vw;
         position: relative;

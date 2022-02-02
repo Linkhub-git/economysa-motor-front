@@ -29,7 +29,10 @@ function Sidebar(props) {
   Simplemente es cuestión de añadir o remover el position absolute, luego ver el evento onMouse o hover 
   
   Para pasar la información de si el sidebar está oculto o no, al padre, definir un estado y una
-  función DESDE EL PADRE, y recibir el dato actualizado del hijo, para trabajar en base a ello*/
+  función DESDE EL PADRE, y recibir el dato actualizado del hijo, para trabajar en base a ello
+  
+  Tengo que trabajar en la clase para ocultar la flecha del sidebar, y ya puedo encargarme
+  de adaptar el resto de la página*/
   console.log(hideSidebarDesk);
   return(
     <aside className={hideSidebarDesk === true ? "asddsa" : "sideBarHideDesktop"}>

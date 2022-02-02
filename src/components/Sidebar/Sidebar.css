@@ -198,8 +198,12 @@
     }
     .sideBarHideDesktop{
         position: absolute;
-        right: 95vw;
-        transition: 250ms;
+        right: 95vw; 
+        transition: 550ms;
+    }
+    /* Oculta las flechas al estar acotado el sidebar */
+    .sideBarHideDesktopIcons button::after{
+        background-image: none;
     }
     .titleLink button .accordion-button::after{
         background-image: none;

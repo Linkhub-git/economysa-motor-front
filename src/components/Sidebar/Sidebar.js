@@ -40,7 +40,7 @@ function Sidebar(props) {
           <div ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
             <div className='iconTitleSideBar'>
                 <Link className='linkHeaderSidebar' to="/">
-                    <img src={Logo} alt="ej" />
+                    <img src={Logo} alt="Logo" />
                     <span>Economysa</span>
                 </Link>
               <button onClick={() => setHideSidebarDesk(!hideSidebarDesk)}><i className={hideSidebarDesk === true ? "fas fa-lock" : "fas fa-lock-open"}></i></button>
@@ -49,7 +49,7 @@ function Sidebar(props) {
                 <Link className='linkSidebar' to="/">Dasboard <i className="fas fa-home"></i></Link>
                     <Accordion>
                         <Accordion.Item eventKey="0" className='contentContainerLink'>
-                            <Accordion.Header className='titleLink'>Seguridad <i className="fas fa-lock lockLink"></i></Accordion.Header>
+                            <Accordion.Header className={hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Seguridad <i className="fas fa-lock lockLink"></i></Accordion.Header>
                                 <Accordion.Body className='contentInsideLink'>
                                     <div className="individualLinkContainer">
                                       <Link to="/Seguridad" className='linkBar'>Usuario <i className="fas fa-users"></i></Link>
@@ -57,7 +57,7 @@ function Sidebar(props) {
                                 </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1" className='contentContainerLink'>
-                            <Accordion.Header  className='titleLink'>Motor <i className="fas fa-globe-americas"></i></Accordion.Header>
+                            <Accordion.Header  className={hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Motor <i className="fas fa-globe-americas"></i></Accordion.Header>
                                 <Accordion.Body className='contentInsideLink'>
                                     <div className="individualLinkContainer">
                                       <Link to="/motor/1" className='linkBar'>Clientes<i className="fas fa-list-ul"></i></Link>

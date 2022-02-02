@@ -38,7 +38,9 @@ function Sidebar(props) {
     document.addEventListener("mouseover", (event)=>{
       if(props.hideSidebarDesk === false){
         if(sideBarDesktop.current.contains(event.target)){
-          console.log("Prueba");
+          setShowAlittleSidebar(true)
+        }else{
+          setShowAlittleSidebar(false)
         }
       }
     })
@@ -66,7 +68,7 @@ function Sidebar(props) {
   console.log(showAlittleSidebar);
   return(
     <aside className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
-        <div ref={sideBarDesktop}>
+        <div ref={sideBarDesktop} className={showAlittleSidebar === false ? "" : "showALittleSidebar"}>
             <div ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
                   <div className='iconTitleSideBar'>
                       <Link className={props.hideSidebarDesk === true ? "linkHeaderSidebar" : "linkHeaderSidebar sideBarHideDesktopMoveLogo"} to="/">

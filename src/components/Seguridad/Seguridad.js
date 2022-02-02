@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
@@ -7,11 +7,12 @@ import { Form, Table, Pagination, Accordion } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Seguridad() {
+  const [hideSidebarDesk, setHideSidebarDesk] = useState(true);
   const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header();
   return (
     <section className="globalContainerContent">
-      <Sidebar {...{showSideBar1, showSideBar2,setShowSideBar1}} />
-      <section className='fondoGeneral'>
+      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} />
+      <section className={hideSidebarDesk === true ? "fondoGeneral" : "fondoGeneral contentHideSidebarSeguridad"}>
         {render}
         <div className='divEspacioHome'><p>...</p></div>
         <div className='infoPrincipalSeguridadYMotor'>

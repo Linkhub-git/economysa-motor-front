@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
@@ -7,6 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 import './Motor.css';
 
 function Motor() {
+  const [hideSidebarDesk, setHideSidebarDesk] = useState(true);
   const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header();
   const params = useParams();
   const id = Number(params.id)
@@ -48,7 +49,7 @@ function Motor() {
   let columnasTablaMotorSeleccionado = columnasTablasMotores.find(titulo => titulo.id === id)
   return (
     <section className="globalContainerContent">
-      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} />
+      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} />
       <section className='fondoGeneral'>
         {render}
         <div className='divEspacioHome'><p>...</p></div>

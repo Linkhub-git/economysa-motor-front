@@ -35,15 +35,7 @@ function Sidebar(props) {
       document.removeEventListener("mouseover", handler);
     }
   })
-  /* useEffect(()=>{
-    document.addEventListener("mouseover", (event)=>{
-      if(props.hideSidebarDesk === false){
-        if(sideBarDesktop.current.contains(event.target)){
-          setShowAlittleSidebar(true)
-        }
-      }
-    });
-  })  */
+  /* Ocultar & mostrar sidebar */
   async function funcionPrueba (){
     if(props.hideSidebarDesk === false){
         setShowAlittleSidebar(true)
@@ -51,13 +43,6 @@ function Sidebar(props) {
       setShowAlittleSidebar(false)
     }
   }
-
-  /* async function funcionPrueba2(){
-    if(props.hideSidebarDesk === false){
-        setShowAlittleSidebar(false)
-    }
-  } */
-
   useEffect(()=>{
     document.addEventListener("mouseout", (event)=>{
       if(props.hideSidebarDesk === false){
@@ -67,6 +52,7 @@ function Sidebar(props) {
       }
     });
   })
+
   /* Al esconder el sideBar para desk simplemente debo jugar con esconder una parte.
   Cosa que cuando se pase el mouse por encima, se muestre el contenido.
 

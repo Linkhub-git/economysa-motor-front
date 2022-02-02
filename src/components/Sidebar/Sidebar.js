@@ -36,7 +36,7 @@ function Sidebar(props) {
   Como mencioné antes, una vez tenga ocultos las flechas, */
   console.log(hideSidebarDesk);
   return(
-    <aside className={hideSidebarDesk === true ? "asddsa" : "sideBarHideDesktop"}>
+    <aside className={hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
           <div ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
             <div className='iconTitleSideBar'>
                 <Link className='linkHeaderSidebar' to="/">

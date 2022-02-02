@@ -39,11 +39,11 @@ function Sidebar(props) {
     <aside className={hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
           <div ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
             <div className='iconTitleSideBar'>
-                <Link className='linkHeaderSidebar' to="/">
+                <Link className={hideSidebarDesk === true ? "linkHeaderSidebar" : "linkHeaderSidebar sideBarHideDesktopMoveLogo"} to="/">
                     <img src={Logo} alt="Logo" />
                     <span>Economysa</span>
                 </Link>
-              <button onClick={() => setHideSidebarDesk(!hideSidebarDesk)}><i className={hideSidebarDesk === true ? "fas fa-lock" : "fas fa-lock-open"}></i></button>
+              <button className={hideSidebarDesk === true ? "" : "sideBarHideDesktopHideButton"} onClick={() => setHideSidebarDesk(!hideSidebarDesk)}><i className={hideSidebarDesk === true ? "fas fa-lock" : "fas fa-lock-open"}></i></button>
             </div>
             <div className='linksContainer'>
                 <Link className='linkSidebar' to="/">Dasboard <i className="fas fa-home"></i></Link>

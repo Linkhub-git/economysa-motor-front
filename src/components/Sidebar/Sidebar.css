@@ -196,6 +196,16 @@
         position: absolute;
         transition: 250ms;
     }
+    .sideBarHideDesktopMoveLogo{
+        position: relative;
+        left: 180px;
+    }
+    .sideBarHideDesktopMoveLogo span{
+        display: none;
+    }
+    .sideBarHideDesktopHideButton{
+        visibility: hidden;
+    }
     .sideBarHideDesktop{
         position: absolute;
         right: 95vw; 

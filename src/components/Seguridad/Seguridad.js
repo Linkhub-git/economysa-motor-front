@@ -8,10 +8,11 @@ import { Link } from 'react-router-dom';
 
 function Seguridad() {
   const [hideSidebarDesk, setHideSidebarDesk] = useState(true);
-  const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header();
+  const [showAlittleSidebar, setShowAlittleSidebar] = useState(false);
+  const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header("",setShowAlittleSidebar, showAlittleSidebar);
   return (
     <section className="globalContainerContent">
-      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} />
+      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} showAlittleSidebar={showAlittleSidebar} setShowAlittleSidebar={setShowAlittleSidebar}/>
       <section className={hideSidebarDesk === true ? "fondoGeneral" : "fondoGeneral contentHideSidebarSeguridad"}>
         {render}
         <div className='divEspacioHome'><p>...</p></div>

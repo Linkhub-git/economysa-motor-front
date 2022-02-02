@@ -8,7 +8,7 @@ import './Motor.css';
 
 function Motor() {
   const [hideSidebarDesk, setHideSidebarDesk] = useState(true);
-  const [showAlittleSidebar, setShowAlittleSidebar] = useState(false)
+  const [showAlittleSidebar, setShowAlittleSidebar] = useState(false);
   const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header( "",setShowAlittleSidebar, showAlittleSidebar);
   const params = useParams();
   const id = Number(params.id)

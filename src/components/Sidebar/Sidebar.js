@@ -35,8 +35,6 @@ function Sidebar(props) {
   Tengo que trabajar en la clase para ocultar la flecha del sidebar, y ya puedo encargarme
   de adaptar el resto de la página
   Como mencioné antes, una vez tenga ocultos las flechas, */
-  console.log(props.hideSidebarDesk);
-  console.log(props.setHideSidebarDesk);
   return(
     <aside className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
           <div ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>

@@ -3,10 +3,11 @@ import './Header.css';
 import Logo from '../../images/fotoEjemplo.jpg';
 import HeaderMobile from "./HeaderMobile";
 import { Link } from 'react-router-dom';
-function Header() {
+function Header(hideSidebarDesk) {
   const [showSpan, setShowSpan] = useState(false)
   
   const {showSideBar1, showSideBar2, setShowSideBar1,render} = HeaderMobile();
+  console.log(hideSidebarDesk);
   return{
       showSideBar1, 
       showSideBar2,

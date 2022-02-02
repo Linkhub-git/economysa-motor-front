@@ -5,8 +5,8 @@ import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
-  const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header();
   const [hideSidebarDesk, setHideSidebarDesk] = useState(true);
+  const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header(hideSidebarDesk);
   return (
     <section className="globalContainerContent">
       <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} />

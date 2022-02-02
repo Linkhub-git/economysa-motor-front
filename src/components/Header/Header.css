@@ -39,7 +39,10 @@
         display: none;
     }
     .header{
-        width: 85vw;
+        width: 100%;
+    }
+    .headerSinSidebar{
+
     }
     .headerContent{
         display: flex;
@@ -197,19 +200,4 @@
 .activeLasLink i:hover{
     color: #fff;
     transition: 250ms;
-}
-@media only screen and (min-width: 992px){
-    .header{
-        min-width:20%;
-    }
-}
-@media only screen and (min-width: 1200px){
-    .header{
-        min-width:100%;
-    }
-}
-@media only screen and (min-width: 1600px){
-    .header{
-        min-width:100%;
-    }
 }

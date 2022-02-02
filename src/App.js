@@ -12,7 +12,7 @@ function App() {
       <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} />
       <section className='fondoGeneral'>
         {render}
-        <section className="containerHome">
+        <section className={hideSidebarDesk === true ? "containerHome" : "contentHideSidebar"}>
           {showSideBar1 === true ? <div className='backgroundBlackSideBar'></div> : ''}
           <div className='divEspacioHome'><p>...</p></div>
           <div className='infoPrincipal'>

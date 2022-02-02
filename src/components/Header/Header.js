@@ -13,7 +13,7 @@ function Header(hideSidebarDesk) {
       showSideBar2,
       setShowSideBar1, 
         render:(
-            <header className="header">
+            <header className={hideSidebarDesk === true ? 'header' : "headerSinSidebar"}>
               {render}
               <div className='headerContent' onClick={()=>setShowSpan(!showSpan)}>
                   <img src={Logo} alt="ej" />

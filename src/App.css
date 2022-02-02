@@ -4,15 +4,23 @@ body{
   overflow-x: hidden
 }
 .globalContainerContent{
-  width: 100vw;
+  width: 100%;
   display: flex;
   overflow-x: hidden
 }
 .fondoGeneral{
-  width: 100vw;
+  width: 90%;
   height: 100vh;
   background-color: #eceff4;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.containerHome{
+  width: 100%;
+}
+.contentHideSidebar{
+  width: 93.7%;
+  position: relative;
+  left: 75px;
 }
 .divEspacioHome{
   background-color: #d8dee9;
@@ -52,4 +60,18 @@ body{
 }
 .infoPrincipalContainer button:hover{
   transition: background-color 0.15s, box-shadow 0.15s;
+}
+@media only screen and (min-width: 1200px){
+  .contentHideSidebar{
+    width: 95.5%;
+    position: relative;
+    left: 75px;
+  }
+}
+@media only screen and (min-width: 1600px){
+  .contentHideSidebar{
+    width: 95%;
+    position: relative;
+    left: 92px;
+  }
 }

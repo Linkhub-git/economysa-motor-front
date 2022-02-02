@@ -6,7 +6,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const [hideSidebarDesk, setHideSidebarDesk] = useState(true);
-  const [showAlittleSidebar, setShowAlittleSidebar] = useState(false)
+  const [showAlittleSidebar, setShowAlittleSidebar] = useState(false);
   const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header(hideSidebarDesk,setShowAlittleSidebar, showAlittleSidebar);
   return (
     <section className="globalContainerContent">

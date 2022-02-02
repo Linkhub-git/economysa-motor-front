@@ -198,7 +198,7 @@
     }
     .sideBarHideDesktopMoveLogo{
         position: relative;
-        left: 170px;
+        left: 60%;
     }
     .sideBarHideDesktopMoveLogo span{
         display: none;
@@ -208,7 +208,7 @@
     }
     .sideBarHideDesktop{
         position: absolute;
-        right: 95vw; 
+        right: 93%; 
         transition: 550ms;
     }
     /* Oculta las flechas al estar acotado el sidebar */
@@ -236,8 +236,37 @@
     .sidebarContainer{
         min-width: 20vw;
     }
+    .sideBarHideDesktopMoveLogo{
+        position: relative;
+        left: 60%;
+    }
+    .sideBarHideDesktop{
+        position: absolute;
+        right: 93.5%; 
+        transition: 550ms;
+    }
+}
+@media only screen and (min-width: 1400px){
+    .sideBarHideDesktopMoveLogo{
+        position: relative;
+        left: 63%;
+    }
+    .sideBarHideDesktop{
+        position: absolute;
+        right: 95%; 
+        transition: 550ms;
+    }
 }
 @media only screen and (min-width: 1600px){
+    .sideBarHideDesktopMoveLogo{
+        position: relative;
+        left: 60%;
+    }
+    .sideBarHideDesktop{
+        position: absolute;
+        right: 94.5%; 
+        transition: 550ms;
+    }
     .sidebarContainer{
         min-width: 13vw;
     }

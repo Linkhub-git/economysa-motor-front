@@ -50,7 +50,7 @@ function Motor() {
   let columnasTablaMotorSeleccionado = columnasTablasMotores.find(titulo => titulo.id === id)
   return (
     <section className="globalContainerContent">
-      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} showAlittleSidebar={showAlittleSidebar} setShowAlittleSidebar={setShowAlittleSidebar} />
+      <Sidebar numberActiveSidebar="2" btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} showAlittleSidebar={showAlittleSidebar} setShowAlittleSidebar={setShowAlittleSidebar} />
       <section className={hideSidebarDesk === true ? "fondoGeneral" : "fondoGeneral contentHideSidebarMotor"}>
         {render}
         <div className='divEspacioHome'><p>...</p></div>

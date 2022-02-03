@@ -13,7 +13,7 @@ function Seguridad() {
   
   return (
     <section className="globalContainerContent">
-      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} showAlittleSidebar={showAlittleSidebar} setShowAlittleSidebar={setShowAlittleSidebar}/>
+      <Sidebar numberActiveSidebar="1" btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} showAlittleSidebar={showAlittleSidebar} setShowAlittleSidebar={setShowAlittleSidebar}/>
       <section className={hideSidebarDesk === true ? "fondoGeneral" : "fondoGeneral contentHideSidebarSeguridad"}>
         {render}
         <div className='divEspacioHome'><p>...</p></div>

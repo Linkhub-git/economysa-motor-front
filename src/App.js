@@ -10,7 +10,7 @@ function App() {
   const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header(hideSidebarDesk,setShowAlittleSidebar, showAlittleSidebar);
   return (
     <section className="globalContainerContent">
-      <Sidebar btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} showAlittleSidebar={showAlittleSidebar} setShowAlittleSidebar={setShowAlittleSidebar}/>
+      <Sidebar numberActiveSidebar= "0" btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} showAlittleSidebar={showAlittleSidebar} setShowAlittleSidebar={setShowAlittleSidebar}/>
       <section className='fondoGeneral'>
         {render} 
         <section className={hideSidebarDesk === true ? "containerHome" : "contentHideSidebar"}>

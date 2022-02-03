@@ -66,7 +66,6 @@ function Sidebar(props) {
                       <button className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktopHideButton"} onClick={() => hideSidebar()}><i className={props.hideSidebarDesk === true ? "fas fa-lock" : "fas fa-lock-open"}></i></button>
                   </div>
                   <div className='linksContainer'>
-                      <Link className='' to="/">Dasboard <i className="fas fa-home"></i></Link>
                           <Accordion>
                               <Accordion.Item eventKey="0" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
                                   <Accordion.Header className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Dashoard <i className="fas fa-home"></i></Accordion.Header>

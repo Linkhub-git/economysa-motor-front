@@ -6,10 +6,11 @@ function HeaderMobile() {
   const [showSideBar1, setShowSideBar1] = useState(false);
   const [showSideBar2, setShowSideBar2] = useState(false);
   const [showSideBar3, setShowSideBar3] = useState(false);
+  const [showGraphics, setShowGraphics] = useState(false);
   /* Utilizar acá el showSideBar3, que es el que muestra el span en versión mobile 
   En la versión mobile tiene también un pequeño span, utilizar como base el que hice antes
   ya que es modificar y agregar menos cosas*/
-  console.log(showSideBar3);
+  console.log(showGraphics);
   return {
     showSideBar1, 
     showSideBar2, 
@@ -29,7 +30,7 @@ function HeaderMobile() {
         </div>
         <div className={showSideBar3 === true ? "spanMobile" : "spanMobileHide"}>
             <div className='espacioVacioHeader'></div>
-            <div className='spanMobileContainer'>
+            <div onClick={()=> setShowGraphics(!showGraphics )} className='spanMobileContainer'>
                   <img src={Logo} alt="" />
                   <h1>Olivia Eklund</h1>
                   <span>Design</span>  

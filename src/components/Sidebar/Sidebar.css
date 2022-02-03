@@ -74,6 +74,9 @@
 .linkSidebarHome .accordion-button:not(.collapsed)::after{
     background-image: none;
 }
+.linkSidebarHome .accordion-button::after{
+    background-image: none;
+}
 .linkSidebar:hover{
     background-color: rgb(180, 180, 180);
     color: #2e3440;

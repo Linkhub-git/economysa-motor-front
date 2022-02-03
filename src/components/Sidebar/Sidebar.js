@@ -23,7 +23,6 @@ function Sidebar(props) {
     }
   })
   /* Ocultar & mostrar sidebar */
-
   async function ChangeStyleSidebar (){
     if(props.hideSidebarDesk === false){
         props.setShowAlittleSidebar(true)
@@ -41,6 +40,9 @@ function Sidebar(props) {
   async function hideSidebar(){
     props.setHideSidebarDesk(!props.hideSidebarDesk)
   }
+  /* Tareas para mañana:
+  -Pasar el link del Home dentro del desplegable para que al estar activo permanezcan los estilos
+  -Ver cómo puedo añadirle una transición cuando se oculta el sidebar (corroborar cómo lo hice en el mobile, ya que hay una transición) */
 
   console.log(props.showAlittleSidebar);
   return(

@@ -198,6 +198,10 @@
         position: absolute;
         transition: 250ms;
     }
+    .sideBarHideDesktop{
+        transition-delay: 250ms;
+        transition-property: margin-right;
+    }
     .sideBarHideDesktopMoveLogo{
         position: relative;
         left: 60%;

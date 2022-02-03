@@ -142,6 +142,10 @@
     background-color: rgb(245, 245, 245);
     transition: 500ms;
 }
+.fa-home{
+    position: absolute;
+    right: 12px;
+}
 .fa-users{
     font-size: 18px;
     position: absolute;

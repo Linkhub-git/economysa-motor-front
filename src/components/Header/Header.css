@@ -83,7 +83,19 @@
     right: 82px;
 }
 .graphicSpanHeaderContainer{
-
+    width: 96%;
+    margin: auto;
+    position: relative;
+}
+.graphicSpanHeaderContainer::before{
+    position: absolute;
+    bottom: 143px;
+    width: 100%;
+    height: 6px;
+    top: -2px;
+    border-radius: 4px;
+    background-color: #5e81ac;
+    content: " ";
 }
 .userInformationSpanMobile{
     display: flex;
@@ -100,6 +112,9 @@
     background-image: url("../../images/bg-profilemenu.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
 }
 @media only screen and (min-width: 992px){
     .headerMobile{

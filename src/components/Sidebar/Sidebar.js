@@ -57,7 +57,6 @@ function Sidebar(props) {
   defaultActiveKey={['0']} alwaysOpen
   Puedo jugar con los props, y añadirla o quitarla (cambiar el número) dependiendo de la props que caiga */
 
-  console.log(props.showAlittleSidebar);
   return(
     <aside onMouseOver={ChangeStyleSidebar} onMouseOut={ChangeStyleSidebarOut} ref={sideBarDesktop} className={props.hideSidebarDesk === true ? "testSidebar" : "testSidebar sideBarHideDesktop"}>
         <div  className={props.showAlittleSidebar === false ? "testSidebar" : "testSidebar showALittleSidebar"}>

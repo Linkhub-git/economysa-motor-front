@@ -50,7 +50,6 @@
 }
 .spanMobileHide{
     visibility: hidden;
-    transition: 250ms;
 }
 .espacioVacioHeader{
     height: 75px;

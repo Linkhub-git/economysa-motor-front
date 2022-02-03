@@ -34,6 +34,15 @@
     position: relative;
     top: 16px;
 }
+/* Span oculto mobile */
+.spanMobile{
+    transition: 250ms;
+    background-color: #000fff;
+}
+.spanMobileHide{
+    visibility: hidden;
+    transition: 250ms;
+}
 @media only screen and (min-width: 992px){
     .headerMobile{
         display: none;

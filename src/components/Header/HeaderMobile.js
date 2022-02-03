@@ -9,6 +9,7 @@ function HeaderMobile() {
   /* Utilizar acá el showSideBar3, que es el que muestra el span en versión mobile 
   En la versión mobile tiene también un pequeño span, utilizar como base el que hice antes
   ya que es modificar y agregar menos cosas*/
+  console.log(showSideBar3);
   return {
     showSideBar1, 
     showSideBar2, 
@@ -26,8 +27,8 @@ function HeaderMobile() {
                 <a href="#" onClick={()=> setShowSideBar3(!showSideBar3)} className={showSideBar3 === false ? "lastLinkHeader" : "lastLinkHeader activeHeader activeLasLink"}><i className="fas fa-ellipsis-v"></i></a>
               </div>
         </div>
-        <div className='spanMobile'>
-
+        <div className={showSideBar3 === true ? "spanMobile" : "spanMobileHide"}>
+      <h1>Hola</h1>
         </div>
       </header>
     )

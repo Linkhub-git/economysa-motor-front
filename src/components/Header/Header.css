@@ -61,6 +61,7 @@
     flex-direction: row;
     height: 75px;
     padding: 14px 16px 0;
+    cursor: pointer;
 }
 .spanMobileContainer img{
     width: 48px;

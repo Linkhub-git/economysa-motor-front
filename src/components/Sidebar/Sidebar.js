@@ -53,6 +53,10 @@ function Sidebar(props) {
   -Pasar el link del Home dentro del desplegable para que al estar activo permanezcan los estilos
   -Ver cómo puedo añadirle una transición cuando se oculta el sidebar (corroborar cómo lo hice en el mobile, ya que hay una transición) */
 
+  /* Con la siguiente propiedad:
+  defaultActiveKey={['0']} alwaysOpen
+  Puedo jugar con los props, y añadirla o quitarla (cambiar el número) dependiendo de la props que caiga */
+
   console.log(props.showAlittleSidebar);
   return(
     <aside onMouseOver={ChangeStyleSidebar} onMouseOut={ChangeStyleSidebarOut} ref={sideBarDesktop} className={props.hideSidebarDesk === true ? "testSidebar" : "testSidebar sideBarHideDesktop"}>
@@ -66,9 +70,12 @@ function Sidebar(props) {
                       <button className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktopHideButton"} onClick={() => hideSidebar()}><i className={props.hideSidebarDesk === true ? "fas fa-lock" : "fas fa-lock-open"}></i></button>
                   </div>
                   <div className='linksContainer'>
-                          <Accordion>
+                      <Link className='' to="/"></Link>
+                          <Accordion defaultActiveKey={['0']} alwaysOpen>
                               <Accordion.Item eventKey="0" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
-                                  <Accordion.Header className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Dashoard <i className="fas fa-home"></i></Accordion.Header>
+                                  <Link className='' to="/">
+                                    <Accordion.Header className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Dashoard <i className="fas fa-home"></i></Accordion.Header>
+                                  </Link>
                               </Accordion.Item>
                               
                               <Accordion.Item eventKey="1" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>

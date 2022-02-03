@@ -82,6 +82,25 @@
     top: 26px;
     right: 82px;
 }
+.graphicSpanHeaderContainer{
+
+}
+.userInformationSpanMobile{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.userInformationSpanMobile img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.bannerGraphicHeader{
+    background-image: url("../../images/bg-profilemenu.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 @media only screen and (min-width: 992px){
     .headerMobile{
         display: none;

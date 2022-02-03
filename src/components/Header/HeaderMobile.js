@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Header.css';
 import Logo from '../../images/logo.png'
-
+import Graphic from '../../images/barsHeader.svg'
+import { Accordion } from 'react-bootstrap';
 function HeaderMobile() {
   const [showSideBar1, setShowSideBar1] = useState(false);
   const [showSideBar2, setShowSideBar2] = useState(false);
@@ -34,6 +35,39 @@ function HeaderMobile() {
                   <img src={Logo} alt="" />
                   <h1>Olivia Eklund</h1>
                   <span>Design</span>  
+            </div>
+            <div className='graphicSpanHeaderContainer'>
+                <div className='bannerGraphicHeader'>
+                    <div>
+                        <p>Weekly Performance</p>
+                        <img src={Graphic} alt="" />
+                    </div>
+                    <div className='userInformationSpanMobile'>
+                        <img src={Logo} alt="" />
+                        <span className='nameHeaderHide'>Olivia Eklund</span>
+                        <span className='puestOHeaderHide'>Design</span>
+                    </div>
+                </div>
+                <Accordion defaultActiveKey="0">
+                    <Accordion.Item eventKey="0">
+                        <Accordion.Header>Accordion Item #1</Accordion.Header>
+                          <Accordion.Body>
+                            Lorem ipsum 
+                          </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="1">
+                        <Accordion.Header>Accordion Item #2</Accordion.Header>
+                          <Accordion.Body>
+                            Lorem ipsum 
+                          </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="2">
+                        <Accordion.Header>Accordion Item #2</Accordion.Header>
+                          <Accordion.Body>
+                            Lorem ipsum 
+                          </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
             </div>
         </div>
       </header>

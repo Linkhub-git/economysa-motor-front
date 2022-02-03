@@ -133,7 +133,14 @@
     position: relative;
     top: 12px;
 }
+.prueba .accordion .accordion-item .accordion-header{
+    background-color: #fff;
 
+}
+.prueba .accordion .accordion-item .accordion-header button{
+    background-color: #000;
+    color: #fff000;
+}
 @media only screen and (min-width: 992px){
     .headerMobile{
         display: none;

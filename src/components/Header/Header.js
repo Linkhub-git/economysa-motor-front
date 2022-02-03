@@ -8,7 +8,6 @@ function Header(hideSidebarDesk,showAlittleSidebar,setShowAlittleSidebar) {
 
   async function pruebaPase(){
     showAlittleSidebar(false)
-    console.log("test");
   }
   const {showSideBar1, showSideBar2, setShowSideBar1,render} = HeaderMobile();
   return{

@@ -135,11 +135,21 @@
 }
 .prueba .accordion .accordion-item .accordion-header{
     background-color: #fff;
-
+}
+.asddsa{
+    
 }
 .prueba .accordion .accordion-item .accordion-header button{
-    background-color: #000;
-    color: #fff000;
+    display: block;
+    position: relative;
+}
+.prueba .accordion .accordion-item .accordion-header button i{
+    position: absolute;
+    left: 0;
+}
+.prueba .accordion .accordion-item .accordion-header button .asddsa span{
+    display: block;
+    position: relative;
 }
 @media only screen and (min-width: 992px){
     .headerMobile{

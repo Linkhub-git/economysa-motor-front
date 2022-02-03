@@ -51,10 +51,14 @@ function HeaderMobile() {
                 <div className='prueba'>
                     <Accordion defaultActiveKey="0">
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header>Accordion Item #1</Accordion.Header>
-                              <Accordion.Body>
-                                Lorem ipsum 
-                              </Accordion.Body>
+                            <Accordion.Header>
+                              <i className="fas fa-list-ul"></i>
+                              <div className='asddsa'>
+                                <span>Tasks</span>
+                                <span>3 open issues</span>
+                              </div>
+                            </Accordion.Header>
+                              <Accordion.Body>...</Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header>Accordion Item #2</Accordion.Header>

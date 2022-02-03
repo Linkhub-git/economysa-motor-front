@@ -3,6 +3,7 @@ import './Sidebar.css';
 import Logo from '../../images/logo.png'
 import { Link } from 'react-router-dom';
 import { Accordion } from 'react-bootstrap';
+import { gsap } from 'gsap'
 
 function Sidebar(props) {
   
@@ -40,14 +41,22 @@ function Sidebar(props) {
   async function hideSidebar(){
     props.setHideSidebarDesk(!props.hideSidebarDesk)
   }
+  let background = "#fff000"
+  useEffect(()=>{
+    gsap.to(props.hideSidebarDesk.current, {
+      duration: 1,
+      backgroundColor: background,
+      ease: "none"
+    })
+  },[props.showAlittleSidebar])
   /* Tareas para mañana:
   -Pasar el link del Home dentro del desplegable para que al estar activo permanezcan los estilos
   -Ver cómo puedo añadirle una transición cuando se oculta el sidebar (corroborar cómo lo hice en el mobile, ya que hay una transición) */
 
   console.log(props.showAlittleSidebar);
   return(
-    <aside onMouseOver={ChangeStyleSidebar} onMouseOut={ChangeStyleSidebarOut} ref={sideBarDesktop} className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
-        <div  className={props.showAlittleSidebar === false ? "" : "showALittleSidebar"}>
+    <aside onMouseOver={ChangeStyleSidebar} onMouseOut={ChangeStyleSidebarOut} ref={sideBarDesktop} className={props.hideSidebarDesk === true ? "testSidebar" : "testSidebar sideBarHideDesktop"}>
+        <div  className={props.showAlittleSidebar === false ? "testSidebar" : "testSidebar showALittleSidebar"}>
             <div ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
                   <div ref={logoSidebar} className={props.showAlittleSidebar === false ? "iconTitleSideBar" : "iconTitleSideBar showALittleSidebarLogo"}>
                       <Link className={props.hideSidebarDesk === true ? "linkHeaderSidebar" : "linkHeaderSidebar sideBarHideDesktopMoveLogo"} to="/">
@@ -59,6 +68,14 @@ function Sidebar(props) {
                   <div className='linksContainer'>
                       <Link className='linkSidebar' to="/">Dasboard <i className="fas fa-home"></i></Link>
                           <Accordion>
+                              <Accordion.Item eventKey="0" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
+                                  <Accordion.Header className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Seguridad <i className="fas fa-lock lockLink"></i></Accordion.Header>
+                                      <Accordion.Body className='contentInsideLink'>
+                                          <div className="individualLinkContainer">
+                                            <Link to="/Seguridad" className='linkBar'>Usuario <i className="fas fa-users"></i></Link>
+                                          </div>
+                                      </Accordion.Body>
+                              </Accordion.Item>
                               <Accordion.Item eventKey="0" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
                                   <Accordion.Header className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Seguridad <i className="fas fa-lock lockLink"></i></Accordion.Header>
                                       <Accordion.Body className='contentInsideLink'>

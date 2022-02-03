@@ -198,11 +198,16 @@
         position: absolute;
         transition: 250ms;
     }
+    .testSidebar{
+        transition: 500ms;
+    }
     .sideBarHideDesktop{
-        transition-delay: 250ms;
-        transition-property: margin-right;
+        transition: 500ms;
+        /* position: relative;
+        left: -13.5vw; */
     }
     .sideBarHideDesktopMoveLogo{
+        transition: 500ms;
         position: relative;
         left: 60%;
     }
@@ -238,11 +243,13 @@
         padding: 16px 0px 24px;
     }
     .showALittleSidebar{
+        transition: 500ms;
         position: absolute;
         left: -7vw;
     }
     .showALittleSidebarLogo{
         position: relative;
+        transition: 500ms;
         z-index: 55;
     }
     .showALittleSidebarLogo .sideBarHideDesktopMoveLogo img{

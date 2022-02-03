@@ -215,7 +215,7 @@
     }
     /* Oculta las flechas al estar acotado el sidebar */
     .sideBarHideDesktopIcons button::after{
-        background-image: none;
+        visibility: hidden;
     }
     .titleLink button .accordion-button::after{
         background-image: none;
@@ -258,8 +258,8 @@
         top: 6px;
         left: 10px;
     }
-    .hideArrowSidebar{
-        background-color: blueviolet;
+    .hideArrowSidebar button::after{
+        visibility: initial;
     }
 }
 @media only screen and (min-width: 1200px){

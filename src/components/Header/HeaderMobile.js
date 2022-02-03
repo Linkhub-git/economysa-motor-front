@@ -26,6 +26,9 @@ function HeaderMobile() {
                 <a href="#" onClick={()=> setShowSideBar3(!showSideBar3)} className={showSideBar3 === false ? "lastLinkHeader" : "lastLinkHeader activeHeader activeLasLink"}><i className="fas fa-ellipsis-v"></i></a>
               </div>
         </div>
+        <div className='spanMobile'>
+
+        </div>
       </header>
     )
   };

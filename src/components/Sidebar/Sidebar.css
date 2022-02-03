@@ -258,6 +258,9 @@
         top: 6px;
         left: 10px;
     }
+    .hideArrowSidebar{
+        background-color: blueviolet;
+    }
 }
 @media only screen and (min-width: 1200px){
     .sidebarContainer{

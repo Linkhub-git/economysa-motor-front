@@ -22,22 +22,8 @@ function Sidebar(props) {
       document.removeEventListener("mousedown", handler);
     }
   })
-  /*  useEffect(()=>{
-    let handler = (event) =>{
-      if(!sideBar.current.contains(event.target)){
-        props.setShowSideBar(false)
-      }
-    }
-    document.addEventListener("mouseover", handler);
-
-    return() =>{
-      document.removeEventListener("mouseover", handler);
-    }
-  })  */
-  async function Test(){
-    props.setShowSideBar(false)
-  }
   /* Ocultar & mostrar sidebar */
+
   async function ChangeStyleSidebar (){
     if(props.hideSidebarDesk === false){
         props.setShowAlittleSidebar(true)
@@ -52,26 +38,6 @@ function Sidebar(props) {
     }
   }
 
-  /* Al esconder el sideBar para desk simplemente debo jugar con esconder una parte.
-  Cosa que cuando se pase el mouse por encima, se muestre el contenido.
-
-
-  Luego, por otra parte, lo que tengo que hacer es jugar con los eventos onClick para dejar de manera
-  fija el sidebar, eso se puede hacer añadiendo clases para alterar el position absolute
-  Simplemente es cuestión de añadir o remover el position absolute, luego ver el evento onMouse o hover 
-  
-  DONE -Para pasar la información de si el sidebar está oculto o no, al padre, definir un estado y una
-  función DESDE EL PADRE, y recibir el dato actualizado del hijo, para trabajar en base a ello
-  
-  DONE - Tengo que trabajar en la clase para ocultar la flecha del sidebar, y ya puedo encargarme
-  de adaptar el resto de la página
-  Como mencioné antes, una vez tenga ocultos las flechas, 
-  Ahora queda las 2 siguientes tareas:
-  -Hacer que al pasar el mouse por encima, se remuevan el valor "left" 
-  & que se muestre el botón para hacer toggle
-  
-  -Al clickear, que se remueva el position absolute*/
-
   async function hideSidebar(){
     props.setHideSidebarDesk(!props.hideSidebarDesk)
   }
@@ -80,7 +46,7 @@ function Sidebar(props) {
   return(
     <aside onMouseOver={ChangeStyleSidebar} onMouseOut={ChangeStyleSidebarOut} ref={sideBarDesktop} className={props.hideSidebarDesk === true ? "" : "sideBarHideDesktop"}>
         <div  className={props.showAlittleSidebar === false ? "" : "showALittleSidebar"}>
-            <div onMouseOver={Test} ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
+            <div ref={sideBar} className={props.btnShowSideBar === false ? "sidebarContainer" : "sidebarContainer activeShow"}>
                   <div ref={logoSidebar} className={props.showAlittleSidebar === false ? "iconTitleSideBar" : "iconTitleSideBar showALittleSidebarLogo"}>
                       <Link className={props.hideSidebarDesk === true ? "linkHeaderSidebar" : "linkHeaderSidebar sideBarHideDesktopMoveLogo"} to="/">
                           <img src={Logo} alt="Logo" />
@@ -91,7 +57,7 @@ function Sidebar(props) {
                   <div className='linksContainer'>
                       <Link className='linkSidebar' to="/">Dasboard <i className="fas fa-home"></i></Link>
                           <Accordion>
-                              <Accordion.Item eventKey="0" className='contentContainerLink'>
+                              <Accordion.Item eventKey="0" className={props.hideSidebarDesk === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
                                   <Accordion.Header className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Seguridad <i className="fas fa-lock lockLink"></i></Accordion.Header>
                                       <Accordion.Body className='contentInsideLink'>
                                           <div className="individualLinkContainer">

@@ -28,7 +28,12 @@ function HeaderMobile() {
               </div>
         </div>
         <div className={showSideBar3 === true ? "spanMobile" : "spanMobileHide"}>
-      <h1>Hola</h1>
+            <div className='espacioVacioHeader'></div>
+            <div className='spanMobileContainer'>
+                  <img src={Logo} alt="" />
+                  <h1>Olivia Eklund</h1>
+                  <span>Design</span>  
+            </div>
         </div>
       </header>
     )

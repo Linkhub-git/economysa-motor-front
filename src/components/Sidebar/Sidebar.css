@@ -170,6 +170,9 @@
 .titleLink{
     position: relative;
 }
+.linkDashboardSidebar button{
+    margin-top: 16px;
+}
 .accordion-button:hover{
     background-color: rgb(180, 180, 180);
     border-radius: 6px;
@@ -210,6 +213,7 @@
         left: -13.5vw; */
     }
     .sideBarHideDesktopMoveLogo{
+        
         transition: 500ms;
         position: relative;
         left: 60%;
@@ -231,13 +235,13 @@
     }
     .titleLink button .accordion-button::after{
         background-image: none;
-        background-color: #fff000;
     }
     .sidebarContainer{
         min-width: 22vw;
         position: relative;
         top: 0;
         left: 0;
+        transition: 250ms;
     }
     .iconTitleSideBar{
         display: flex;
@@ -249,6 +253,7 @@
         transition: 500ms;
         position: absolute;
         left: -7vw;
+        background-color: #fff000;
     }
     .showALittleSidebarLogo{
         position: relative;

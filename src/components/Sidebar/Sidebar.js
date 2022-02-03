@@ -72,7 +72,7 @@ function Sidebar(props) {
                       <Link className='' to="/"></Link>
                           <Accordion defaultActiveKey={props.numberActiveSidebar} alwaysOpen>
                               <Accordion.Item eventKey="0" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
-                                  <Link className='linkSidebarHome' to="/">
+                                  <Link className='linkSidebarHome linkDashboardSidebar' to="/">
                                     <Accordion.Header className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Dashoard <i className="fas fa-home"></i></Accordion.Header>
                                   </Link>
                               </Accordion.Item>

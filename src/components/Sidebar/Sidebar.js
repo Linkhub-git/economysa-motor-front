@@ -70,13 +70,8 @@ function Sidebar(props) {
                           <Accordion>
                               <Accordion.Item eventKey="0" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
                                   <Accordion.Header className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Dashoard <i className="fas fa-lock lockLink"></i></Accordion.Header>
-                                      <Accordion.Body className='contentInsideLink'>
-                                          <div className="individualLinkContainer">
-                                            <Link to="/Seguridad" className='linkBar'>Usuario <i className="fas fa-users"></i></Link>
-                                          </div>
-                                      </Accordion.Body>
                               </Accordion.Item>
-                              <Accordion.Item eventKey="0" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
+                              <Accordion.Item eventKey="1" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
                                   <Accordion.Header className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Seguridad <i className="fas fa-lock lockLink"></i></Accordion.Header>
                                       <Accordion.Body className='contentInsideLink'>
                                           <div className="individualLinkContainer">
@@ -84,7 +79,7 @@ function Sidebar(props) {
                                           </div>
                                       </Accordion.Body>
                               </Accordion.Item>
-                              <Accordion.Item eventKey="1" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
+                              <Accordion.Item eventKey="2" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
                                   <Accordion.Header  className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Motor <i className="fas fa-globe-americas"></i></Accordion.Header>
                                       <Accordion.Body className='contentInsideLink'>
                                           <div className="individualLinkContainer">

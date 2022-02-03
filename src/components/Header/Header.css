@@ -2,7 +2,9 @@
     width: 100vw;
     height: 75px;
     background-color: #eceff4;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+    box-shadow: 0 3px 5px 0 rgb(33 35 39 / 15%);
+    z-index: 300;
 }
 .headerContent{
     display: none;
@@ -10,6 +12,9 @@
 }
 .headerMobile{
     display: initial;
+    background-color: #000fff;
+    box-shadow: 0 3px 5px 0 rgb(33 35 39 / 15%);
+    
 }
 .headerContentMobile{
     display: flex;
@@ -38,9 +43,10 @@
 .spanMobile{
     transition: 250ms;
     position: absolute;
+    top: 70px;
     width: 100%;
     background-color: #eceff4;
-    box-shadow: 0 3px 5px -2px rgb(33 35 39 / 30%);
+    box-shadow: 0 3px 5px 0 rgb(33 35 39 / 15%);
 }
 .spanMobileHide{
     visibility: hidden;
@@ -64,9 +70,17 @@
     font-size: 16px;
     font-weight: 500;
     color: #4c566a;
+    position: relative;
+    top: 6px;
+    left: 12px;
 }
 .spanMobileContainer span{
-    
+    font-size: 13px;
+    font-weight: 500;
+    color: #9199a9;
+    position: relative;
+    top: 26px;
+    right: 82px;
 }
 @media only screen and (min-width: 992px){
     .headerMobile{

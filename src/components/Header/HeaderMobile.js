@@ -38,14 +38,14 @@ function HeaderMobile() {
             </div>
             <div className='graphicSpanHeaderContainer'>
                 <div className='bannerGraphicHeader'>
-                    <div>
+                    <div className='weeklyPerfomanceContainer'>
                         <p>Weekly Performance</p>
                         <img src={Graphic} alt="" />
                     </div>
                     <div className='userInformationSpanMobile'>
                         <img src={Logo} alt="" />
-                        <span className='nameHeaderHide'>Olivia Eklund</span>
-                        <span className='puestOHeaderHide'>Design</span>
+                        <h1 className='nameHeaderHideSpanMobile'>Olivia Eklund</h1>
+                        <span className='puestOHeaderHideSpanMobile'>Design</span>
                     </div>
                 </div>
                 <Accordion defaultActiveKey="0">

@@ -108,6 +108,17 @@
     height: 40px;
     border-radius: 50%;
 }
+.userInformationSpanMobile h1{
+    color: #eceff4;
+    margin: 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+.userInformationSpanMobile span{
+    color: #c3ccdd;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
 .bannerGraphicHeader{
     background-image: url("../../images/bg-profilemenu.jpg");
     background-size: cover;
@@ -116,6 +127,13 @@
     justify-content: space-between;
     padding: 0 16px;
 }
+.bannerGraphicHeader p{
+    font-size: 11px;
+    color: #c3ccdd;
+    position: relative;
+    top: 12px;
+}
+
 @media only screen and (min-width: 992px){
     .headerMobile{
         display: none;

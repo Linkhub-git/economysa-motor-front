@@ -54,8 +54,8 @@ function HeaderMobile() {
                             <Accordion.Header>
                               <i className="fas fa-list-ul"></i>
                               <div className='asddsa'>
-                                <span>Tasks</span>
-                                <span>3 open issues</span>
+                                <span className='titleListGraphics'>Tasks</span>
+                                <span className='subTitleListGraphics'>3 open issues</span>
                               </div>
                             </Accordion.Header>
                               <Accordion.Body>...</Accordion.Body>

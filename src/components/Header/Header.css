@@ -140,16 +140,18 @@
     
 }
 .prueba .accordion .accordion-item .accordion-header button{
-    display: block;
     position: relative;
+    z-index: 300;
 }
 .prueba .accordion .accordion-item .accordion-header button i{
     position: absolute;
-    left: 0;
+    left: 14px;
+    top: 28px;
 }
 .prueba .accordion .accordion-item .accordion-header button .asddsa span{
     display: block;
     position: relative;
+    padding-left: 32px;
 }
 @media only screen and (min-width: 992px){
     .headerMobile{

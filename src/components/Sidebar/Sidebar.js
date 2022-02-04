@@ -57,7 +57,6 @@ function Sidebar(props) {
   defaultActiveKey={['0']} alwaysOpen
   Puedo jugar con los props, y añadirla o quitarla (cambiar el número) dependiendo de la props que caiga */
 
-  console.log(props.showAlittleSidebar);
   return(
     <aside onMouseOver={ChangeStyleSidebar} onMouseOut={ChangeStyleSidebarOut} ref={sideBarDesktop} className={props.hideSidebarDesk === true ? "testSidebar" : "testSidebar sideBarHideDesktop"}>
         <div  className={props.showAlittleSidebar === false ? "testSidebar" : "testSidebar showALittleSidebar"}>
@@ -73,7 +72,7 @@ function Sidebar(props) {
                       <Link className='' to="/"></Link>
                           <Accordion defaultActiveKey={props.numberActiveSidebar} alwaysOpen>
                               <Accordion.Item eventKey="0" className={props.showAlittleSidebar === false ? "contentContainerLink" : "contentContainerLink hideArrowSidebar"}>
-                                  <Link className='linkSidebarHome' to="/">
+                                  <Link className='linkSidebarHome linkDashboardSidebar' to="/">
                                     <Accordion.Header className={props.hideSidebarDesk === true ? "titleLink" : "titleLink sideBarHideDesktopIcons"}>Dashoard <i className="fas fa-home"></i></Accordion.Header>
                                   </Link>
                               </Accordion.Item>

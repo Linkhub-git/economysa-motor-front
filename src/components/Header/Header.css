@@ -2,7 +2,9 @@
     width: 100vw;
     height: 75px;
     background-color: #eceff4;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+    box-shadow: 0 3px 5px 0 rgb(33 35 39 / 15%);
+    z-index: 300;
 }
 .headerContent{
     display: none;
@@ -10,6 +12,9 @@
 }
 .headerMobile{
     display: initial;
+    background-color: #000fff;
+    box-shadow: 0 3px 5px 0 rgb(33 35 39 / 15%);
+    
 }
 .headerContentMobile{
     display: flex;
@@ -33,6 +38,120 @@
     margin-left: 10px;
     position: relative;
     top: 16px;
+}
+/* Span oculto mobile */
+.spanMobile{
+    transition: 250ms;
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    background-color: #eceff4;
+    box-shadow: 0 3px 5px 0 rgb(33 35 39 / 15%);
+}
+.spanMobileHide{
+    visibility: hidden;
+}
+.espacioVacioHeader{
+    height: 75px;
+    border-bottom: 1px solid rgba(145, 153, 169, 0.3);
+}
+.spanMobileContainer{
+    display: flex;
+    flex-direction: row;
+    height: 75px;
+    padding: 14px 16px 0;
+    cursor: pointer;
+}
+.spanMobileContainer img{
+    width: 48px;
+    height: 48px
+}
+.spanMobileContainer h1{
+    font-size: 16px;
+    font-weight: 500;
+    color: #4c566a;
+    position: relative;
+    top: 6px;
+    left: 12px;
+}
+.spanMobileContainer span{
+    font-size: 13px;
+    font-weight: 500;
+    color: #9199a9;
+    position: relative;
+    top: 26px;
+    right: 82px;
+}
+.graphicSpanHeaderContainer{
+    width: 96%;
+    margin: auto;
+    position: relative;
+}
+.graphicSpanHeaderContainer::before{
+    position: absolute;
+    bottom: 143px;
+    width: 100%;
+    height: 6px;
+    top: -2px;
+    border-radius: 4px;
+    background-color: #5e81ac;
+    content: " ";
+}
+.userInformationSpanMobile{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.userInformationSpanMobile img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.userInformationSpanMobile h1{
+    color: #eceff4;
+    margin: 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+.userInformationSpanMobile span{
+    color: #c3ccdd;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.bannerGraphicHeader{
+    background-image: url("../../images/bg-profilemenu.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+}
+.bannerGraphicHeader p{
+    font-size: 11px;
+    color: #c3ccdd;
+    position: relative;
+    top: 12px;
+}
+.prueba .accordion .accordion-item .accordion-header{
+    background-color: #fff;
+}
+.asddsa{
+    
+}
+.prueba .accordion .accordion-item .accordion-header button{
+    position: relative;
+    z-index: 300;
+}
+.prueba .accordion .accordion-item .accordion-header button i{
+    position: absolute;
+    left: 14px;
+    top: 28px;
+}
+.prueba .accordion .accordion-item .accordion-header button .asddsa span{
+    display: block;
+    position: relative;
+    padding-left: 32px;
 }
 @media only screen and (min-width: 992px){
     .headerMobile{

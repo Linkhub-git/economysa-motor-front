@@ -207,11 +207,6 @@
     .testSidebar{
         transition: 500ms;
     }
-    .sideBarHideDesktop{
-        transition: 500ms;
-        /* position: relative;
-        left: -13.5vw; */
-    }
     .sideBarHideDesktopMoveLogo{
         
         transition: 500ms;
@@ -250,10 +245,12 @@
         padding: 16px 0px 24px;
     }
     .showALittleSidebar{
-        transition: 500ms;
         position: absolute;
         left: -7vw;
         background-color: #fff000;
+        animation: fadeIn; 
+        animation-duration: 0.2s;
+        z-index: 400;
     }
     .showALittleSidebarLogo{
         position: relative;

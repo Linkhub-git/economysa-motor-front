@@ -26,7 +26,7 @@ function Header(hideSidebarDesk,showAlittleSidebar,setShowAlittleSidebar) {
               </div>
               {/* Span hide */}
               {showSpan === true ? 
-              <div className='containerAllSpanHeaderHide'>
+              <div className='containerAllSpanHeaderHide' data-aos="zoom-in-down">
                   <div className='userInformationBackground'>
                       <div className='userInformation'>
                         <img src={Logo} alt="" />

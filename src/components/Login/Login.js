@@ -6,8 +6,8 @@ function Login() {
    const [darkMode, setDarkMode] = useState(false);
   
   const url = process.env.REACT_APP_USER_TOKEN;
-  const user = provves.env.REACT_APP_USER_TOKEN; 
-  const pass = 123456;
+  const user = process.env.REACT_APP_USER_TOKEN; 
+  const pass = process.env.REACT_APP_PASS_TOKEN;
   const encodeData = btoa(user + ":" + pass);
   const httpOptions = {
     headers: ({

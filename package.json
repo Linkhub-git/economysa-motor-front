@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
     "gsap": "^3.9.1",
     "mini-css-extract-plugin": "2.4.5",
     "proxy": "^1.0.2",

@@ -3,6 +3,7 @@ import './Header.css';
 import Logo from '../../images/logo.png'
 import Graphic from '../../images/barsHeader.svg'
 import { Accordion } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 function HeaderMobile() {
   const [showSideBar1, setShowSideBar1] = useState(false);
   const [showSideBar2, setShowSideBar2] = useState(false);
@@ -31,12 +32,12 @@ function HeaderMobile() {
         </div>
         <div className={showSideBar3 === true ? "spanMobile" : "spanMobileHide"}>
             <div className='espacioVacioHeader'></div>
-            <div onClick={()=> setShowGraphics(!showGraphics )} className='spanMobileContainer'>
+            <div onClick={()=> setShowGraphics(!showGraphics )} className={showSideBar3 === true ? "spanMobileContainer" : ""}>
                   <img src={Logo} alt="" />
                   <h1>Olivia Eklund</h1>
                   <span>Design</span>  
             </div>
-            <div className='graphicSpanHeaderContainer'>
+            <div className={showGraphics === false ? "graphicSpanHeaderContainerHide" : "graphicSpanHeaderContainer"}>
                 <div className='bannerGraphicHeader'>
                     <div className='weeklyPerfomanceContainer'>
                         <p>Weekly Performance</p>
@@ -48,31 +49,47 @@ function HeaderMobile() {
                         <span className='puestOHeaderHideSpanMobile'>Design</span>
                     </div>
                 </div>
-                <div className='prueba'>
-                    <Accordion defaultActiveKey="0">
+                <div className='listGraphicHeaderContainer'>
+                    <Accordion>
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header>
-                              <i className="fas fa-list-ul"></i>
-                              <div className='asddsa'>
-                                <span className='titleListGraphics'>Tasks</span>
-                                <span className='subTitleListGraphics'>3 open issues</span>
-                              </div>
-                            </Accordion.Header>
+                              <Accordion.Header>
+                                  <i className="fas fa-list-ul"></i>
+                                    <div className='textContainerBtnGraphicHeaderMobile'>
+                                      <span className='titleListGraphics'>Tasks</span>
+                                      <span className='subTitleListGraphics'>3 open issues</span>
+                                    </div>
+                              </Accordion.Header>
                               <Accordion.Body>...</Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
-                            <Accordion.Header>Accordion Item #2</Accordion.Header>
+                                <Accordion.Header>
+                                    <i className="fas fa-shopping-cart"></i>
+                                      <div className='textContainerBtnGraphicHeaderMobile'>
+                                        <span className='titleListGraphics'>Payments</span>
+                                        <span className='subTitleListGraphics'>24 new</span>
+                                      </div>
+                                </Accordion.Header>
                               <Accordion.Body>
                                 Lorem ipsum 
                               </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="2">
-                            <Accordion.Header>Accordion Item #2</Accordion.Header>
-                              <Accordion.Body>
-                                Lorem ipsum 
-                              </Accordion.Body>
+                                <Accordion.Header>
+                                    <i className="fas fa-users"></i>
+                                      <div className='textContainerBtnGraphicHeaderMobile'>
+                                        <span className='titleListGraphics'>Clients</span>
+                                        <span className='subTitleListGraphics'>+80%</span>
+                                      </div>
+                                </Accordion.Header>
+                                <Accordion.Body>
+                                  Lorem ipsum 
+                                </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
+                </div>
+                <div className='containerLogOutMobile'>
+                    <Link className='linkLogOutMobile' to="/login"><button>Sign Out</button></Link>
+                    <Link to="/">Buy Mirage</Link>
                 </div>
             </div>
         </div>

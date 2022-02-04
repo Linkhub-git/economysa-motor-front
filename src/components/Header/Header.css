@@ -53,7 +53,7 @@
 }
 .espacioVacioHeader{
     height: 75px;
-    border-bottom: 1px solid rgba(145, 153, 169, 0.3);
+    
 }
 .spanMobileContainer{
     display: flex;
@@ -61,6 +61,9 @@
     height: 75px;
     padding: 14px 16px 0;
     cursor: pointer;
+    animation: fadeInDown;
+    animation-duration: 0.75s; 
+    border-top: 1px solid rgba(145, 153, 169, 0.3);
 }
 .spanMobileContainer img{
     width: 48px;
@@ -86,6 +89,10 @@
     width: 96%;
     margin: auto;
     position: relative;
+    cursor: pointer;
+    transition: 250ms;
+    animation: fadeIn;
+    animation-duration: 0.75s; 
 }
 .graphicSpanHeaderContainer::before{
     position: absolute;
@@ -133,25 +140,83 @@
     position: relative;
     top: 12px;
 }
-.prueba .accordion .accordion-item .accordion-header{
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header{
     background-color: #fff;
 }
-.asddsa{
-    
-}
-.prueba .accordion .accordion-item .accordion-header button{
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header button{
     position: relative;
     z-index: 300;
+    
 }
-.prueba .accordion .accordion-item .accordion-header button i{
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header button:hover{
+    background: rgb(250, 254, 255);
+    
+}
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header button i{
     position: absolute;
-    left: 14px;
-    top: 28px;
+    left: 16px;
+    top: 24px;
+    cursor: pointer;
+    padding: 0;
 }
-.prueba .accordion .accordion-item .accordion-header button .asddsa span{
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header button .fa-list-ul{
+    color: #d08770;
+}
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header button .fa-shopping-cart{
+    color: #81a1c1;
+}
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header button .fa-users{
+    color: #a3be8c;
+}
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header button .textContainerBtnGraphicHeaderMobile .titleListGraphics{
     display: block;
     position: relative;
-    padding-left: 32px;
+    padding-left: 40px;
+    color: #4c566a;
+    font-size: 14px;
+    cursor: pointer;
+}
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header button .textContainerBtnGraphicHeaderMobile .subTitleListGraphics{
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    color: #4c566a;
+    cursor: pointer;
+    font-size: 14px;
+}
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header button::after{
+    transform: rotate(-90deg); 
+    position: relative;
+    left: 24px;
+    width: 10px;
+    height: 10px;
+    background-size: 100% 100%;
+}
+.listGraphicHeaderContainer .accordion .accordion-item .accordion-header button:not(.collapsed)::after{
+    transform: rotate(0deg); 
+}
+
+.graphicSpanHeaderContainerHide{
+    display: none;
+    transition: 250ms;
+}
+.containerLogOutMobile{
+    width: 99.7%;
+    margin: auto;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+    display: flex;
+    justify-content: space-between;
+}
+.linkLogOutMobile button{
+    font-size: 14px;
+    border: none;
+    color: #434c5e;
+    padding: 4px 7px;
+    border-radius: 4px;
+    background-color: #d8dee9;
+    cursor: pointer;
 }
 @media only screen and (min-width: 992px){
     .headerMobile{

@@ -5,7 +5,7 @@ import LoginLightMode from './LoginLightMode';
 function Login() {
    const [darkMode, setDarkMode] = useState(false);
   
-  const url = "https://viringo-dev.herokuapp.com/oauth/token"
+  const url = process.env.REACT_APP_USER_TOKEN;
   const user = "angular_client"; 
   const pass = 123456;
   const encodeData = btoa(user + ":" + pass);

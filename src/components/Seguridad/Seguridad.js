@@ -5,12 +5,15 @@ import Sidebar from '../Sidebar/Sidebar';
 import './Seguridad.css';
 import { Form, Table, Pagination, Accordion } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 function Seguridad() {
   const [hideSidebarDesk, setHideSidebarDesk] = useState(true);
   const [showAlittleSidebar, setShowAlittleSidebar] = useState(false);
   const {showSideBar1, showSideBar2,setShowSideBar1,render} = Header("",setShowAlittleSidebar, showAlittleSidebar);
-  
+  const arrayEjemplo = ["Nombre 1","Nombre 2","Nombre 3","Nombre 4","Nombre 5"]
+  const arrayEjemploCorreos = ["Correo 1","Correo 2","Correo 3","Correo 4","Correo 5"]
   return (
     <section className="globalContainerContent">
       <Sidebar numberActiveSidebar="1" btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} showAlittleSidebar={showAlittleSidebar} setShowAlittleSidebar={setShowAlittleSidebar}/>
@@ -27,13 +30,20 @@ function Seguridad() {
                                 <Accordion.Body>
                                   <div className='formularioContainerAll'>
                                       <Form className='formularioContainer'>
-                                        <Form.Group className="mb-3 inputUsuario" controlId="formBasicEmail">
-                                          <Form.Control type="text" placeholder="Nombres" />
-                                        </Form.Group>
-
-                                        <Form.Group className="mb-3 inputUsuario" controlId="formBasicPassword">
-                                          <Form.Control type="email" placeholder="Correo electrónico" />
-                                        </Form.Group>
+                                        <Autocomplete
+                                          disablePortal
+                                          id="combo-box-demo"
+                                          options={arrayEjemplo}
+                                          sx={{ width: 300 }}
+                                          renderInput={(params) => <TextField {...params} label="Nombres" />}
+                                        />
+                                        <Autocomplete
+                                          disablePortal
+                                          id="combo-box-demo"
+                                          options={arrayEjemploCorreos}
+                                          sx={{ width: 300 }}
+                                          renderInput={(params) => <TextField {...params} label="Correo Electrónico" />}
+                                        />
                                         <button className='btn-search'>Buscar</button>
                                       </Form>
                                   </div>

@@ -12,7 +12,6 @@ function HeaderMobile() {
   /* Utilizar acá el showSideBar3, que es el que muestra el span en versión mobile 
   En la versión mobile tiene también un pequeño span, utilizar como base el que hice antes
   ya que es modificar y agregar menos cosas*/
-  console.log(showGraphics);
   return {
     showSideBar1, 
     showSideBar2, 

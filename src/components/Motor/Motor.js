@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import { Form, Table, Pagination, Accordion } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import './Motor.css';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 function Motor() {
   const [hideSidebarDesk, setHideSidebarDesk] = useState(true);
@@ -48,6 +50,13 @@ function Motor() {
   ]
   let tituloMotor = titulosMotores.find(titulo => titulo.id === id)
   let columnasTablaMotorSeleccionado = columnasTablasMotores.find(titulo => titulo.id === id)
+
+  useEffect(()=>{
+    fetch('https://economysa-motor-back-dev-m6zmiutpfa-ue.a.run.app')
+  .then(response => response.json())
+  .then(data => console.log(data));
+  })
+  const arrayCodigos = ["Code 1","Code 2","Code 3","Code 4","Code 5"]
   return (
     <section className="globalContainerContent">
       <Sidebar numberActiveSidebar="2" btnShowSideBar={showSideBar1} btnMiddle={showSideBar2} setShowSideBar={setShowSideBar1} hideSidebarDesk={hideSidebarDesk} setHideSidebarDesk={setHideSidebarDesk} showAlittleSidebar={showAlittleSidebar} setShowAlittleSidebar={setShowAlittleSidebar} />
@@ -64,9 +73,13 @@ function Motor() {
                                 <Accordion.Body>
                                   <div className='formularioContainerAll'>
                                       <Form className='formularioContainer'>
-                                        <Form.Group className="mb-3 inputUsuario" controlId="formBasicEmail">
-                                          <Form.Control type="text" placeholder="Código" />
-                                        </Form.Group>
+                                        <Autocomplete
+                                            disablePortal
+                                            id="combo-box-demo"
+                                            options={arrayCodigos}
+                                            sx={{ width: 300 }}
+                                            renderInput={(params) => <TextField {...params} label="Código" />}
+                                          />
                                         <button className='btn-search'>Buscar</button>
                                       </Form>
                                   </div>

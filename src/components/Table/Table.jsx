@@ -3,7 +3,14 @@ import { FaStepBackward, FaStepForward } from "react-icons/fa";
 import { useTable } from "react-table";
 import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
 
-export const Table = ({ columnsData, data, button }) => {
+export const Table = ({
+  columnsData,
+  data,
+  button,
+  setCurrentPage,
+  limMax,
+  currentPage,
+}) => {
   //Memorizamos las columnas
   const columns = React.useMemo(() => columnsData, [columnsData]);
   //Usamos el hook de react-table que nos permitirá construir la data necesaria
@@ -11,6 +18,29 @@ export const Table = ({ columnsData, data, button }) => {
   //Desestructuramos las propiedades que usaremos
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
+
+  //Soporte para la paginación
+  //Siguiente Pagina
+  const handleNextPage = () => {
+    if (currentPage < limMax) {
+      setCurrentPage((st) => st + 1);
+    }
+  };
+  //Pagina anterior
+  const handlePrevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage((st) => st - 1);
+    }
+  };
+  //Primera pagina
+  const handleFirstPage = () => {
+    setCurrentPage(0);
+  };
+  //Ultima pagina
+  const handleLastPage = () => {
+    setCurrentPage(limMax);
+  };
+
   return (
     <div className="bg-gray-50 p-4 rounded border-gray-200 border-1 shadow-gray-200 shadow-md mt-5">
       {button}
@@ -71,19 +101,35 @@ export const Table = ({ columnsData, data, button }) => {
         </tbody>
       </table>
       <div className="w-full flex items-center justify-center ">
-        <button className="bg-white text-gray-700 p-2 border-1 ">
+        <button
+          disabled={currentPage === 0}
+          onClick={handleFirstPage}
+          className="bg-white text-gray-700 p-2 border-1 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           <FaStepBackward />
         </button>
-        <button className="bg-white text-gray-700 p-2 border-1 ">
+        <button
+          disabled={currentPage === 0}
+          onClick={handlePrevPage}
+          className="bg-white text-gray-700 p-2 border-1 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           <BsCaretLeftFill />
         </button>
         <button className="h-full text-gray-700 px-3">
-          <p className="inline-block">1</p>
+          <p className="inline-block">{currentPage + 1}</p>
         </button>
-        <button className="bg-white text-gray-700 p-2 border-1 ">
+        <button
+          disabled={currentPage === limMax}
+          onClick={handleNextPage}
+          className="bg-white text-gray-700 p-2 border-1  disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           <BsCaretRightFill />
         </button>
-        <button className="bg-white text-gray-700 p-2 border-1 ">
+        <button
+          disabled={currentPage === limMax}
+          onClick={handleLastPage}
+          className="bg-white text-gray-700 p-2 border-1  disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           <FaStepForward />
         </button>
       </div>

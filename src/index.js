@@ -11,15 +11,28 @@ import NotFound from "./components/NotFound/NotFound";
 import { DashboardPage } from "./pages/DashboardPage";
 import { SecurityPage } from "./pages/SecurityPage";
 import { CategoriesPage } from "./pages/CategoriesPage";
+import { MarksPage } from "./pages/MarksPage";
+import { ListUnityPage } from "./pages/ListUnityPage";
+import { ProductsPage } from "./pages/ProductsPage";
+import { ProvidersPage } from "./pages/ProvidersPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { MechsPage } from "./pages/MechsPage";
 
 ReactDOM.render(
   <React.StrictMode>
+    <ToastContainer position="top-center" />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/security" element={<SecurityPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/categories" element={<CategoriesPage />} />
+        <Route path="/marks" element={<MarksPage />} />
+        <Route path="/units" element={<ListUnityPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/providers" element={<ProvidersPage />} />
+        <Route path="/mechs" element={<MechsPage />} />
         <Route
           path="/Seguridad/create-user"
           exact={true}

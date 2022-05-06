@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { apiUrl } from "../api/apiUrl";
 import { PageContainer } from "../components/layout/pageContainer";
 import { Title } from "../components/layout/Title";
@@ -6,14 +6,14 @@ import { Cell } from "../components/Table/Cell";
 import { Header } from "../components/Table/Header";
 import { Table } from "../components/Table/Table";
 
-export const CategoriesPage = () => {
+export const MarksPage = () => {
   const [data, setData] = useState([]);
   const [paginacion, setPaginacion] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
 
   const fetchData = async (page) => {
     try {
-      const { data } = await apiUrl.get(`/category?size=10&page=${page}`);
+      const { data } = await apiUrl.get(`/brand?size=10&page=${page}`);
       if (page === 0) {
         setPaginacion(data.totalPages);
       }
@@ -41,17 +41,17 @@ export const CategoriesPage = () => {
     {
       Header: () => <Header texto="PADRE" />,
       accessor: "parentName",
-      Cell: ({ value }) => <Cell text={value} />,
+      Cell: ({ value }) => <Cell text={value.toUpperCase()} />,
     },
     {
       Header: () => <Header texto="NOMBRE" />,
       accessor: "name",
-      Cell: ({ value }) => <Cell text={value} />,
+      Cell: ({ value }) => <Cell text={value.toUpperCase()} />,
     },
   ];
   return (
     <PageContainer>
-      <Title title="Listado de Categorías" />
+      <Title title="Listado de Marcas" />
       <Table
         data={data}
         columnsData={columns}

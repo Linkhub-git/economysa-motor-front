@@ -1,5 +1,7 @@
-import React from "react";
+import { format, parseISO } from "date-fns";
+import React, { useCallback, useEffect, useState } from "react";
 import { FaPlus, FaUser } from "react-icons/fa";
+import { apiUrl } from "../api/apiUrl";
 import { PageContainer } from "../components/layout/pageContainer";
 import { Title } from "../components/layout/Title";
 import { ActionCell } from "../components/Table/ActionCell";
@@ -8,72 +10,79 @@ import { Header } from "../components/Table/Header";
 import { Table } from "../components/Table/Table";
 
 export const SecurityPage = () => {
-  const data = [
-    {
-      nombre: "Jeferson Cieza",
-      correo: "jcieza90@gmail.com",
-      roles: "admin",
-      telefono: "983552193",
-      fecha_creacion: "20-08-2020 12:07:50",
-      acciones: "editar",
-    },
-    {
-      nombre: "Jose Urbano",
-      correo: "jurbano@gmail.com",
-      roles: "editor",
-      telefono: "983552193",
-      fecha_creacion: "07-03-2022 14:54:34",
-      acciones: "editar",
-    },
-    {
-      nombre: "Juan Cieza",
-      correo: "jcieza91@gmail.com",
-      roles: "admin",
-      telefono: "983552193",
-      fecha_creacion: "20-08-2020 12:07:50",
-      acciones: "editar",
-    },
-    {
-      nombre: "Luz Sanchez",
-      correo: "luz02m@gmail.com",
-      roles: "admin",
-      telefono: "983552193",
-      fecha_creacion: "20-08-2020 12:07:50",
-      acciones: "editar",
-    },
-  ];
+  const [data, setData] = useState([]);
+  const [paginacion, setPaginacion] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+
   const columns = [
     {
       Header: () => <Header texto="Nombre" />,
-      accessor: "nombre",
-      Cell: ({ value }) => <Cell text={value} />,
+      accessor: "name",
+      Cell: ({ row }) => (
+        <Cell text={`${row.original.name}  ${row.original.lastName}`} />
+      ),
     },
     {
       Header: () => <Header texto="Correo" />,
-      accessor: "correo",
+      accessor: "email",
       Cell: ({ value }) => <Cell text={value} />,
     },
     {
       Header: () => <Header texto="Roles" />,
-      accessor: "roles",
+      accessor: "role",
       Cell: ({ value }) => <Cell text={value} />,
     },
     {
       Header: () => <Header texto="Teléfono" />,
-      accessor: "telefono",
+      accessor: "phone",
       Cell: ({ value }) => <Cell text={value} />,
     },
     {
       Header: () => <Header texto="Fecha Creación" />,
-      accessor: "fecha_creacion",
-      Cell: ({ value }) => <Cell text={value} />,
+      accessor: "creationDate",
+      Cell: ({ value }) => (
+        <Cell text={format(parseISO(value), "MM/dd/yyyy")} />
+      ),
     },
     {
       Header: () => <Header texto="Acciones" />,
-      accessor: "acciones",
-      Cell: ({ value }) => <ActionCell editar={value} />,
+      accessor: "status",
+      Cell: () => <ActionCell editar={true} />,
     },
   ];
+
+  const fetchData = useCallback(async (page) => {
+    try {
+      const { data } = await apiUrl.get("/user?page=0&size=10");
+      setData(data.content);
+      if (page === 0) {
+        setPaginacion(data.totalPages);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
+  // const fetchData = async (page) => {
+  //   try {
+  //     const { data } = await apiUrl.get(`/user?size=10&page=${page}`);
+  //     if (page === 0) {
+  //       setPaginacion(data.totalPages);
+  //     }
+  //     console.log(data);
+  //     setData(data.content);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  useEffect(() => {
+    fetchData(0);
+  }, [fetchData]);
+
+  useEffect(() => {
+    fetchData(currentPage);
+  }, [currentPage, fetchData]);
 
   return (
     <PageContainer>
@@ -112,6 +121,9 @@ export const SecurityPage = () => {
         }
         data={data}
         columnsData={columns}
+        setCurrentPage={setCurrentPage}
+        limMax={paginacion}
+        currentPage={currentPage}
       />
     </PageContainer>
   );

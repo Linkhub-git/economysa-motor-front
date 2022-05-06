@@ -1,9 +1,9 @@
 import React from "react";
-// import Footer from "../Footer/Footer";
-// import Header from "../Header/Header";
-// import Sidebar from "../Sidebar/Sidebar";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import Sidebar from "../Sidebar/Sidebar";
 import "./Formularios.css";
-// import { Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 function FormularioUsuarios() {
   let arrayInputsUsers = [

@@ -8,7 +8,7 @@ function Footer() {
         <img alt="user" className="w-14 h-14" src={Logo} />
         <div className="pl-2 flex-col">
           <p className="text-white">Economysa - 2022 &copy;</p>
-          <p className="text-gray-300 text-sm">Linkhub.ai</p>
+          <p className="text-gray-300 text-sm">linkhub.ai</p>
         </div>
       </div>
     </footer>

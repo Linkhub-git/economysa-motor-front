@@ -15,7 +15,7 @@ export const MarksPage = () => {
     try {
       const { data } = await apiUrl.get(`/brand?size=10&page=${page}`);
       if (page === 0) {
-        setPaginacion(data.totalPages);
+        setPaginacion(data.totalPages - 1);
       }
       console.log(data);
       setData(data.content);

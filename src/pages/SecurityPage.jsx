@@ -1,6 +1,7 @@
 import { format, parseISO } from "date-fns";
 import React, { useCallback, useEffect, useState } from "react";
 import { FaPlus, FaUser } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { apiUrl } from "../api/apiUrl";
 import { PageContainer } from "../components/layout/pageContainer";
 import { Title } from "../components/layout/Title";
@@ -13,6 +14,8 @@ export const SecurityPage = () => {
   const [data, setData] = useState([]);
   const [paginacion, setPaginacion] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
+
+  const navigate = useNavigate();
 
   const columns = [
     {
@@ -47,7 +50,14 @@ export const SecurityPage = () => {
     {
       Header: () => <Header texto="Acciones" />,
       accessor: "status",
-      Cell: () => <ActionCell editar={true} />,
+      Cell: ({ row }) => {
+        return (
+          <ActionCell
+            editar={true}
+            onClick={() => navigate(`/security/edit/${row.original.id}`)}
+          />
+        );
+      },
     },
   ];
 
@@ -56,25 +66,12 @@ export const SecurityPage = () => {
       const { data } = await apiUrl.get("/user?page=0&size=10");
       setData(data.content);
       if (page === 0) {
-        setPaginacion(data.totalPages);
+        setPaginacion(data.totalPages - 1);
       }
     } catch (err) {
       console.log(err);
     }
   }, []);
-
-  // const fetchData = async (page) => {
-  //   try {
-  //     const { data } = await apiUrl.get(`/user?size=10&page=${page}`);
-  //     if (page === 0) {
-  //       setPaginacion(data.totalPages);
-  //     }
-  //     console.log(data);
-  //     setData(data.content);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   useEffect(() => {
     fetchData(0);
@@ -110,11 +107,16 @@ export const SecurityPage = () => {
           Usuario 2
         </li>
         <hr />
-        <li className="text-sm text-gray-500">4 registro(s) encontrados</li>
+        <li className="text-sm text-gray-500">
+          {data && data.length} registro(s) encontrados
+        </li>
       </ul>
       <Table
         button={
-          <button className="rounded text-white px-2 py-1 flex bg-sky-900 items-center">
+          <button
+            className="rounded text-white px-2 py-1 flex bg-sky-900 items-center"
+            onClick={() => navigate("/security/new")}
+          >
             <FaPlus className="mr-2" />
             Nuevo
           </button>

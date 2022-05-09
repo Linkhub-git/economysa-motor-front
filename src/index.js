@@ -33,11 +33,8 @@ ReactDOM.render(
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/providers" element={<ProvidersPage />} />
         <Route path="/mechs" element={<MechsPage />} />
-        <Route
-          path="/Seguridad/create-user"
-          exact={true}
-          element={<FormularioUsuarios />}
-        />
+        <Route path="/security/new" element={<FormularioUsuarios />} />
+        <Route path="/security/edit/:id" element={<FormularioUsuarios />} />
         <Route path="/motor/:id" exact={true} element={<Motor />} />
         <Route
           path="/motor/form-motor"

@@ -14,6 +14,7 @@ export const SecurityPage = () => {
   const [data, setData] = useState([]);
   const [paginacion, setPaginacion] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
+  const [showFilters, setShowFilters] = useState(false);
 
   const navigate = useNavigate();
 
@@ -87,30 +88,28 @@ export const SecurityPage = () => {
       <div className="bg-gray-200 px-3 py-2 mt-4 rounded flex-col w-full items-center justify-between">
         <button
           type="button"
-          aria-controls="dropdown-example4"
           className="font-semibold text-md flex items-center w-full justify-between"
-          data-collapse-toggle="dropdown-example4"
+          onClick={() => setShowFilters((st) => !st)}
         >
           Filtros de Búsqueda <FaPlus />
         </button>
       </div>
-      <ul
-        id="dropdown-example4"
-        className="hidden py-2 px-3 space-y-2 bg-white"
-      >
-        <li className="flex items-center">
-          <FaUser className="mr-3" />
-          Usuario 1
-        </li>
-        <li className="flex items-center">
-          <FaUser className="mr-3" />
-          Usuario 2
-        </li>
-        <hr />
-        <li className="text-sm text-gray-500">
-          {data && data.length} registro(s) encontrados
-        </li>
-      </ul>
+      {showFilters && (
+        <ul className="py-2 px-3 space-y-2 bg-white">
+          <li className="flex items-center">
+            <FaUser className="mr-3" />
+            Usuario 1
+          </li>
+          <li className="flex items-center">
+            <FaUser className="mr-3" />
+            Usuario 2
+          </li>
+          <hr />
+          <li className="text-sm text-gray-500">
+            {data && data.length} registro(s) encontrados
+          </li>
+        </ul>
+      )}
       <Table
         button={
           <button

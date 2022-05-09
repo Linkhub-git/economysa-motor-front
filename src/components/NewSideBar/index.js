@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../images/logo.png";
 import {
   FaBookmark,
@@ -12,6 +12,10 @@ import {
 import { BiWorld } from "react-icons/bi";
 import { Link } from "react-router-dom";
 export const TailwindSideBar = () => {
+  const [showSeguridad, setShowSeguridad] = useState(false);
+  const [showConfig, setShowConfig] = useState(false);
+  const [showMotor, setShowMotor] = useState(false);
+
   return (
     <aside className="w-80" aria-label="Sidebar">
       <div className="overflow-y-auto py-3 px-3 bg-gray-50 h-full dark:bg-gray-800 shadow-xl shadow-black">
@@ -50,8 +54,11 @@ export const TailwindSideBar = () => {
             <button
               type="button"
               className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-              aria-controls="dropdown-example"
-              data-collapse-toggle="dropdown-example"
+              onClick={() => {
+                setShowMotor(false);
+                setShowConfig(false);
+                setShowSeguridad((st) => !st);
+              }}
             >
               <div className="text-gray-400">
                 <FaLock />
@@ -72,23 +79,28 @@ export const TailwindSideBar = () => {
                 ></path>
               </svg>
             </button>
-            <ul id="dropdown-example" className="hidden py-2 space-y-2">
-              <li>
-                <Link
-                  to="/security"
-                  className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >
-                  Usuarios <FaUsers />
-                </Link>
-              </li>
-            </ul>
+            {showSeguridad && (
+              <ul className="py-2 space-y-2">
+                <li>
+                  <Link
+                    to="/security"
+                    className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Usuarios <FaUsers />
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <button
               type="button"
               className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-              aria-controls="dropdown-example1"
-              data-collapse-toggle="dropdown-example1"
+              onClick={() => {
+                setShowSeguridad(false);
+                setShowMotor(false);
+                setShowConfig((st) => !st);
+              }}
             >
               <div className="text-gray-400">
                 <FaPaperclip />
@@ -109,39 +121,44 @@ export const TailwindSideBar = () => {
                 ></path>
               </svg>
             </button>
-            <ul id="dropdown-example1" className="hidden py-2 space-y-2">
-              <li>
-                <Link
-                  to="/categories"
-                  className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >
-                  Categorías <FaDirections />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/marks"
-                  className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >
-                  Marcas <FaMoneyBill />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/units"
-                  className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >
-                  Unidades <FaMicrosoft />
-                </Link>
-              </li>
-            </ul>
+            {showConfig && (
+              <ul className="py-2 space-y-2">
+                <li>
+                  <Link
+                    to="/categories"
+                    className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Categorías <FaDirections />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/marks"
+                    className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Marcas <FaMoneyBill />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/units"
+                    className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Unidades <FaMicrosoft />
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
           <li>
             <button
               type="button"
               className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-              aria-controls="dropdown-example2"
-              data-collapse-toggle="dropdown-example2"
+              onClick={() => {
+                setShowConfig(false);
+                setShowSeguridad(false);
+                setShowMotor((st) => !st);
+              }}
             >
               <div className="text-gray-400">
                 <BiWorld />
@@ -162,32 +179,34 @@ export const TailwindSideBar = () => {
                 ></path>
               </svg>
             </button>
-            <ul id="dropdown-example2" className="hidden py-2 space-y-2">
-              <li>
-                <Link
-                  to="/products"
-                  className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >
-                  Productos <FaBookmark />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/mechs"
-                  className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >
-                  Mecánicas <FaBookmark />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/providers"
-                  className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                >
-                  Proveedores <FaBookmark />
-                </Link>
-              </li>
-            </ul>
+            {showMotor && (
+              <ul className="py-2 space-y-2">
+                <li>
+                  <Link
+                    to="/products"
+                    className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Productos <FaBookmark />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/mechs"
+                    className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Mecánicas <FaBookmark />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/providers"
+                    className="flex justify-between items-center p-2 pl-11 w-[90%] mx-auto text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Proveedores <FaBookmark />
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
         </ul>
       </div>

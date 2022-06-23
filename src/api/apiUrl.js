@@ -7,5 +7,7 @@ export const apiUrl = axios.create({
     "Content-Type": "application/json",
     Accept: "*/*",
     authorization: "Bearer e86e6188-ddbe-4bdf-a7c0-00134210b9bf",
+    
   },
 });
+// e86e6188-ddbe-4bdf-a7c0-00134210b9bf

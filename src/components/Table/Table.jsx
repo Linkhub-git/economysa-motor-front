@@ -42,7 +42,7 @@ export const Table = ({
   };
 
   return (
-    <div className="bg-gray-50 p-4 rounded border-gray-200 border-1 shadow-gray-200 shadow-md mt-5">
+    <div className="bg-gray-50 p-4 rounded border-gray-200 border-1 shadow-gray-200 shadow-md mt-2">
       {button}
       <table
         className="border-1 table border-gray-800 mt-4 w-full"

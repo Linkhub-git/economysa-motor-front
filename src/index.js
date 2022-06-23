@@ -18,9 +18,12 @@ import { ProvidersPage } from "./pages/ProvidersPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MechsPage } from "./pages/MechsPage";
+import { CssBaseline } from "@mui/material";
+import { MecanicaProvider } from "./context/mecanicas";
 
 ReactDOM.render(
   <React.StrictMode>
+    <CssBaseline />
     <ToastContainer position="top-center" />
     <BrowserRouter>
       <Routes>
@@ -32,7 +35,14 @@ ReactDOM.render(
         <Route path="/units" element={<ListUnityPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/providers" element={<ProvidersPage />} />
-        <Route path="/mechs" element={<MechsPage />} />
+        <Route
+          path="/mechs"
+          element={
+            <MecanicaProvider>
+              <MechsPage />
+            </MecanicaProvider>
+          }
+        />
         <Route path="/security/new" element={<FormularioUsuarios />} />
         <Route path="/security/edit/:id" element={<FormularioUsuarios />} />
         <Route path="/motor/:id" exact={true} element={<Motor />} />

@@ -14,7 +14,7 @@ export const mecanicaReducer = (state = Mecanica_INITIAL_STATE, action) => {
       return {
         ...state,
         showForm: false,
-        mecanicas: [...state.mecanicas, action.payload]
+        mecanicas: [action.payload, ...state.mecanicas]
       }
   
     case typesMecanica.getAllMecanica:
@@ -35,19 +35,43 @@ export const mecanicaReducer = (state = Mecanica_INITIAL_STATE, action) => {
         ...state,
         updateMecanica: true,
         selectedMecanica: action.payload.mech,
-        mechanic_detail: action.payload.detail,
-        mechanic_bonus: action.payload.bonus,
+        mechanic_rules: action.payload.rules,
       }
 
     case typesMecanica.cleanMecanicaToUpdate:
       return {
         ...state,
+        showForm:false,
         selectedMecanica: null,
         updateMecanica: false,
-        mechanic_detail: null,
-        mechanic_bonus: null
+        mechanic_detail: [],
+        mechanic_bonus: [],
+        mechanic_rules: [],
       }
 
+    case typesMecanica.setMecanicaDetails:
+      return {
+        ...state,
+        mechanic_detail: [...state.mechanic_detail, ...action.payload]
+      }
+
+    case typesMecanica.updateMechanic:
+      return {
+        ...state,
+        showForm: false,
+        selectedMecanica: null,
+        updateMecanica: false,
+        mecanicas: [...state.mecanicas.filter(mech => mech.id !== action.payload.id), action.payload],
+        mechanic_rules: [],
+        mechanic_detail: [],
+        mechanic_bonus: [],
+      }
+
+    case typesMecanica.removeDetailMechanic:
+      return {
+        ...state,
+        mechanic_detail: state.mechanic_detail.filter(detail => detail.id !== action.payload)
+      }
     default:
       return state;
   }

@@ -5,6 +5,7 @@ import {
   MenuItem,
   InputAdornment,
   Box,
+  Grid,
   Button,
 } from "@mui/material";
 import {
@@ -21,9 +22,26 @@ import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { isAfter, format } from "date-fns";
 
-import {MdArrowBack, MdSave} from 'react-icons/md'
+import { MdArrowBack, MdSave } from "react-icons/md";
+import { useState } from "react";
+
+import moment from "moment";
+import { ProveedorContext } from "../../context/proveedores";
+
+const defaultRangeAndFactorItem = {
+  factor: 0,
+  startRange: 0,
+  endRange: 0,
+  percentageDiscount: 0,
+  productId: "",
+  quantityProduct: 0,
+  priority: 0,
+  bonusMax: 0,
+  bonusQuantity: 0
+};
 
 export const FormularioMecanica = () => {
+  const { proveedores } = useContext(ProveedorContext);
   const {
     register,
     handleSubmit,
@@ -49,36 +67,83 @@ export const FormularioMecanica = () => {
   const conditional = watch("conditional");
   const proveedor = watch("emitterId");
 
-  const { toggleForm, crearMecanica, updateMecanica, selectedMecanica } = useContext(MecanicaContext);
+  const [rangeDivisions, setRangeDivisions] = useState([
+    {
+      factor: 0,
+      startRange: 0,
+      endRange: 0,
+      percentageDiscount: 0,
+      productId: "",
+      quantityProduct: 0,
+      priority: 0,
+      bonusMax: 0,
+      bonusQuantity: 0
+    },
+  ]);
+
+  const { toggleForm, crearMecanica, updateMecanica, selectedMecanica, mechanic_rules, updateMechanic } =
+    useContext(MecanicaContext);
 
   const onSubmit = async (params) => {
-    if (params.type === "R") {
-      params.factor = null;
-      params.range1 = Number(params.range1).toFixed(2);
-      params.range2 = Number(params.range2).toFixed(2);
+    params.startDate = moment(params.startDate).format("YYYY-MM-DD");
+    params.endDate = moment(params.endDate).format("YYYY-MM-DD");
+    params.startTime = params.startTime.length < 8  ? params.startTime + ":00" : params.startTime;
+    params.endTime = params.endTime.length < 8  ? params.endTime + ":00" : params.endTime;
+
+    if (!moment(params.endDate).isAfter(params.startDate, "day")) {
+      toast.error("La fecha fin debe ser posterior a la fecha inicial");
+      return;
     }
 
-    if (params.type === "F") {
-      params.range1 = null;
-      params.range2 = null;
-      params.factor = Number(params.factor).toFixed(2);
+
+    const objectToSend = {
+      providerDescription: params.providerDescription,
+      catalogDescription: params.catalogDescription,
+      startDate: params.startDate,
+      endDate: params.endDate,
+      startTime: params.startTime,
+      endTime: params.endTime,
+      accumulate: params.accumulate,
+      promotionType: params.promotionType,
+      type: params.type,
+      conditional: params.conditional,
+      emitter: params.emitter,
+      emitterId: params.emitterId
+    };
+
+    if(updateMecanica){
+      updateMechanic(objectToSend, rangeDivisions)
+    } else {
+      crearMecanica(objectToSend, rangeDivisions);
     }
 
-    params.startDate = new Date(params.startDate).getTime();
-    params.endDate = new Date(params.endDate).getTime();
-
-    if(!isAfter(params.endDate, params.startDate)){
-      toast.error('La fecha fin debe ser posterior a la fecha inicial')
-      return
-    }
-
-    if(params.range1 && params.range2 && params.range1 > params.range2) {
-      toast.error('El rango 1 debe ser menor al rango 2')
-      return
-    }
-
-    crearMecanica(params);
   };
+
+  const handleAddRangeAndFactor = () => {
+    setRangeDivisions([...rangeDivisions, defaultRangeAndFactorItem]);
+  };
+
+  const onChangeRule = (e, index, field) => {
+    const newRules = [...rangeDivisions];
+
+    if(e.target.value === '') {
+      newRules[index][field] = e.target.value;
+    } else {
+      newRules[index][field] = Number(e.target.value);
+    }
+
+
+    setRangeDivisions(newRules)
+  }
+
+  const deleteCurrentRule = (index) => {
+    
+    const newRules = rangeDivisions.filter((_, indexRule) => indexRule !== index)
+
+    setRangeDivisions(newRules)
+  }
+  
+  
 
   useEffect(() => {
     if (tipo === "R") {
@@ -91,23 +156,38 @@ export const FormularioMecanica = () => {
   }, [tipo]);
 
   useEffect(() => {
+    if (updateMecanica && selectedMecanica) {
+      setValue("providerDescription", selectedMecanica.providerDescription);
+      setValue("catalogDescription", selectedMecanica.catalogDescription);
+      setValue(
+        "startDate",
+        selectedMecanica.startDate
+      );
+      setValue(
+        "endDate",
+        selectedMecanica.endDate
+      );
+      setValue(
+        "startTime",
+        selectedMecanica.startTime
+      );
+      setValue(
+        "endTime",
+        selectedMecanica.endTime,
+      );
+      setValue("accumulate", selectedMecanica.accumulate);
+      setValue("promotionType", selectedMecanica.promotionType);
+      setValue("type", selectedMecanica.type);
+      setValue("conditional", selectedMecanica.conditional);
 
-    if(updateMecanica && selectedMecanica) {
-      setValue("description", selectedMecanica.description)
-      setValue("startDate", format(new Date(selectedMecanica.startDate),'yyyy-MM-dd'))
-      setValue("endDate", format(new Date(selectedMecanica.endDate),'yyyy-MM-dd'))
-      setValue("accumulate", selectedMecanica.accumulate)
-      setValue("promotionType", selectedMecanica.promotionType)
-      setValue("type", selectedMecanica.type)
-      setValue("conditional", selectedMecanica.conditional)
-      setValue("factor", selectedMecanica.factor)
-      setValue("range1", selectedMecanica.range1)
-      setValue("range2", selectedMecanica.range2)
-      setValue("emitter", selectedMecanica.emitter)
-      setValue("emitterId", selectedMecanica.emitterId)
+      setValue("emitter", selectedMecanica.emitter);
+      if(selectedMecanica.emitter === 'P'){
+        setValue("emitterId", selectedMecanica.emitterObj.id);
+      }
+
+      setRangeDivisions(mechanic_rules)
     }
-
-  },[])
+  }, [selectedMecanica]);
 
   return (
     <>
@@ -121,10 +201,9 @@ export const FormularioMecanica = () => {
           <FormLabel component="legend" className="fw-bold mb-4">
             Definicion
           </FormLabel>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            
-            {
-              updateMecanica && (
+          <Grid container spacing={2}>
+            {updateMecanica && (
+              <Grid item xs={12} md={2}>
                 <TextField
                   label="Código"
                   variant="outlined"
@@ -132,30 +211,81 @@ export const FormularioMecanica = () => {
                   value={selectedMecanica.code || ""}
                   disabled
                 />
-              )
-            }
+              </Grid>
+            )}
 
-            <TextField
-              label="Descripción"
-              variant="outlined"
-              {...register("description", { required: true })}
-              disabled={updateMecanica}
-            />
-            <TextField
-              type="date"
-              InputLabelProps={{ shrink: true, required: true }}
-              label="Fecha Inicio"
-              variant="outlined"
-              {...register("startDate", { required: true })}
-            />
-            <TextField
-              type="date"
-              InputLabelProps={{ shrink: true, required: true }}
-              label="Fecha Fin"
-              variant="outlined"
-              {...register("endDate", { required: true })}
-            />
-          </div>
+            <Grid item xs={12} md={6}>
+              <TextField
+                label="Descripción Proveedor"
+                InputLabelProps={{ shrink: true}}
+                variant="outlined"
+                fullWidth
+                {...register("providerDescription", { required: true })}
+                // disabled={updateMecanica}
+              />
+            </Grid>
+
+            <Grid item xs={12} md={6}>
+              <TextField
+                label="Descripción Catalogo"
+                variant="outlined"
+                InputLabelProps={{ shrink: true}}
+                fullWidth
+                {...register("catalogDescription", { required: true })}
+                // disabled={updateMecanica}
+              />
+            </Grid>
+
+            <Grid item xs={12} md={2}>
+              <TextField
+                type="date"
+                InputLabelProps={{ shrink: true, required: true }}
+                label="Fecha Inicio"
+                fullWidth
+                variant="outlined"
+                {...register("startDate", { required: true })}
+              />
+            </Grid>
+
+            <Grid item xs={12} md={2}>
+              <TextField
+                type="date"
+                fullWidth
+                InputLabelProps={{ shrink: true, required: true }}
+                label="Fecha Fin"
+                variant="outlined"
+                {...register("endDate", { required: true })}
+              />
+            </Grid>
+
+            <Grid item xs={12} md={2}>
+              <TextField
+                id="time"
+                label="Hora Inicio"
+                type="time"
+                fullWidth
+                // defaultValue="07:30"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                {...register("startTime", { required: true })}
+              />
+            </Grid>
+
+            <Grid item xs={12} md={2}>
+              <TextField
+                id="time-final"
+                label="Hora Fin"
+                type="time"
+                fullWidth
+                // defaultValue="07:30"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                {...register("endTime", { required: true })}
+              />
+            </Grid>
+          </Grid>
         </FormControl>
 
         {/* Caracteristicas */}
@@ -168,6 +298,22 @@ export const FormularioMecanica = () => {
             Caracteristicas
           </FormLabel>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <TextField
+              select
+              fullWidth
+              label="Condicional"
+              helperText="Porfavor seleccione el condicional"
+              {...register("conditional", { required: true })}
+              value={conditional}
+              disabled={updateMecanica}
+            >
+              {conditionals.map((item) => (
+                <MenuItem key={item.code} value={item.code}>
+                  {item.name}
+                </MenuItem>
+              ))}
+            </TextField>
+
             <TextField
               select
               label="Acumula"
@@ -212,25 +358,11 @@ export const FormularioMecanica = () => {
                 </MenuItem>
               ))}
             </TextField>
-
-            <TextField
-              select
-              label="Condicional"
-              helperText="Porfavor seleccione el condicional"
-              {...register("conditional", { required: true })}
-              value={conditional}
-              disabled={updateMecanica}
-            >
-              {conditionals.map((item) => (
-                <MenuItem key={item.code} value={item.code}>
-                  {item.name}
-                </MenuItem>
-              ))}
-            </TextField>
           </div>
         </FormControl>
 
         {/* Factor y Rango */}
+
         <FormControl
           component="fieldset"
           fullWidth
@@ -240,64 +372,151 @@ export const FormularioMecanica = () => {
             Factor y Rango
           </FormLabel>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {/* Factor */}
+          
+            <Box display="flex" justifyContent="end">
+              <Button variant="contained" onClick={handleAddRangeAndFactor}>
+                +
+              </Button>
+            </Box>
+          
 
-            {(tipo === "F" || tipo === "X") && (
-              <TextField
-                type="number"
-                label="Factor"
-                placeholder="0"
-                {...register("factor", { required: true, shrink: true })}
-                disabled={updateMecanica}
-              />
-            )}
-
-            {/* Rango */}
-
-            {(tipo === "R" || tipo === "X") && (
+          {/* Factor */}
+          {rangeDivisions.map((division, index) => (
+            <Grid
+              container
+              spacing={2}
+              key={index}
+              alignItems="center"
+              sx={{ marginBottom: "16px" }}
+            >
               <>
-                <TextField
-                  type="number"
-                  label="Rango 1"
-                  InputLabelProps={{ shrink: true, required: true }}
-                  placeholder={acumula === "S" ? "0.00" : "0"}
-                  {...register("range1", { required: true })}
-                  disabled={updateMecanica}
-                  InputProps={
-                    acumula === "S"
-                      ? {
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              S/.
-                            </InputAdornment>
-                          ),
+                {(tipo === "F" || tipo === "X") && (
+                  <Grid item xs={12} md={1}>
+                    <TextField
+                      type="number"
+                      label="Factor"
+                      InputLabelProps={{ shrink: true }}
+                      placeholder="0"
+                      fullWidth
+                      onChange={(e) => onChangeRule(e, index, 'factor')}
+                      value={rangeDivisions[index].factor}
+                      // disabled={updateMecanica}
+                    />
+                  </Grid>
+                )}
+
+                {/* Rango */}
+
+                {(tipo === "R" || tipo === "X") && (
+                  <>
+                    <Grid item xs={12} md={2}>
+                      <TextField
+                        type="number"
+                        label="Rango Inicial"
+                        fullWidth
+                        InputLabelProps={{ shrink: true, required: false }}
+                        placeholder={acumula === "S" ? "0.00" : "0"}
+                        onChange={(e) => onChangeRule(e, index, 'startRange')}
+                        // disabled={updateMecanica}
+                        value={rangeDivisions[index].startRange}
+                        InputProps={
+                          acumula === "S"
+                            ? {
+                                startAdornment: (
+                                  <InputAdornment position="start">
+                                    S/.
+                                  </InputAdornment>
+                                ),
+                              }
+                            : null
                         }
-                      : null
-                  }
-                />
-                <TextField
-                  type="number"
-                  label="Rango 2"
-                  InputLabelProps={{ shrink: true, required: true }}
-                  placeholder={acumula === "S" ? "0.00" : "0"}
-                  disabled={updateMecanica}
-                  {...register("range2", { required: true })}
-                  InputProps={
-                    acumula === "S"
-                      ? {
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              S/.
-                            </InputAdornment>
-                          ),
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={2}>
+                      <TextField
+                        type="number"
+                        label="Rango Final"
+                        fullWidth
+                        InputLabelProps={{ shrink: true, required: false }}
+                        placeholder={acumula === "S" ? "0.00" : "0"}
+                        // disabled={updateMecanica}
+                        onChange={(e) => onChangeRule(e, index, 'endRange')}
+                        value={rangeDivisions[index].endRange}
+                        InputProps={
+                          acumula === "S"
+                            ? {
+                                startAdornment: (
+                                  <InputAdornment position="start">
+                                    S/.
+                                  </InputAdornment>
+                                ),
+                              }
+                            : null
                         }
-                      : null
-                  }
-                />
+                      />
+                    </Grid>
+                  </>
+                )}
+                <Grid item xs={12} md={1}>
+                  <TextField
+                    type="number"
+                    label={promotion === "D" ? "% Descuento" : "Producto"}
+                    onChange={(e) => onChangeRule(e, index, promotion === "D" ? "percentageDiscount" : "productId")}
+                    InputLabelProps={{ shrink: true }}
+                    fullWidth
+                    value={promotion === "D" ? rangeDivisions[index].percentageDiscount : rangeDivisions[index].productId }
+                    placeholder={"0"}
+                    // disabled={updateMecanica}
+                  />
+                </Grid>
+                {promotion !== "D" && (
+                  <>
+                    <Grid item xs={12} md={2}>
+                      <TextField
+                        type="number"
+                        label={"Cantidad a Bonificar"}
+                        InputLabelProps={{ shrink: true }}
+                        onChange={(e) => onChangeRule(e, index, 'bonusQuantity')}
+                        fullWidth
+                        value={rangeDivisions[index].bonusQuantity}
+                        placeholder={"0"}
+                        disabled={updateMecanica}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={2}>
+                      <TextField
+                        type="number"
+                        label={"Maximo a Bonificar"}
+                        InputLabelProps={{ shrink: true }}
+                        onChange={(e) => onChangeRule(e, index, 'bonusMax')}
+                        value={rangeDivisions[index].bonusMax}
+                        fullWidth
+                        placeholder={"0"}
+                        disabled={updateMecanica}
+                      />
+                    </Grid>
+                  </>
+                )}
+                <Grid item xs={12} md={1}>
+                  <TextField
+                    type="number"
+                    label="Prioridad"
+                    InputLabelProps={{ shrink: true }}
+                    onChange={(e) => onChangeRule(e, index, 'priority')}
+                    value={rangeDivisions[index].priority}
+                    placeholder={acumula === "S" ? "0.00" : "0"}
+                    // disabled={updateMecanica}
+                  />
+                </Grid>
+
+                { index > 0 && (
+                  <Grid item xs={12} md={1}>
+                    <Button color="error" variant="contained" onClick={() =>deleteCurrentRule(index)}>X</Button>
+                  </Grid>
+                )}
               </>
-            )}
-          </div>
+            </Grid>
+          ))}
         </FormControl>
 
         {/* Emisor */}
@@ -315,8 +534,8 @@ export const FormularioMecanica = () => {
               select
               label="Emisor"
               helperText="Porfavor seleccione el Emisor"
-              disabled={updateMecanica}
-              {...register("emitter", { required: true })}
+              // disabled={updateMecanica}
+              {...register("emitter", { required: false })}
               value={emisor}
             >
               {emisorOptions.map((item) => (
@@ -335,8 +554,14 @@ export const FormularioMecanica = () => {
                 helperText="Porfavor seleccione el Proveedor"
                 {...register("emitterId")}
                 value={proveedor}
-                disabled={updateMecanica}
-              ></TextField>
+                // disabled={updateMecanica}
+              >
+                {proveedores.map((item) => (
+                  <MenuItem key={item.id} value={item.id}>
+                    {item.name}
+                  </MenuItem>
+                ))}
+              </TextField>
             )}
           </div>
         </FormControl>
@@ -348,10 +573,20 @@ export const FormularioMecanica = () => {
           gap={2}
           className="mt-4"
         >
-          <Button variant="contained" color="success" type="submit" startIcon={<MdSave/>}>
+          <Button
+            variant="contained"
+            color="success"
+            type="submit"
+            startIcon={<MdSave />}
+          >
             Guardar
           </Button>
-          <Button variant="contained" color="error" onClick={toggleForm} startIcon={<MdArrowBack/>}>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={toggleForm}
+            startIcon={<MdArrowBack />}
+          >
             Atras
           </Button>
         </Box>

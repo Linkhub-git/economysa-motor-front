@@ -20,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { MechsPage } from "./pages/MechsPage";
 import { CssBaseline } from "@mui/material";
 import { MecanicaProvider } from "./context/mecanicas";
+import { ProveedorProvider } from "./context/proveedores";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -39,7 +40,9 @@ ReactDOM.render(
           path="/mechs"
           element={
             <MecanicaProvider>
-              <MechsPage />
+              <ProveedorProvider>
+                <MechsPage />
+              </ProveedorProvider>
             </MecanicaProvider>
           }
         />

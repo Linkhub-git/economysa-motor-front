@@ -6,4 +6,7 @@ export const typesMecanica = {
   deleteMecanica: "[Mecanica] Delete Mecanica to delete",
   mecanicaToUpdate: "[Mecanica] Mecanica To Update",
   cleanMecanicaToUpdate: "[Mecanica] Clean Mecanica to Update",
+  setMecanicaDetails: "[Mecanica] Set Mecanica Details",
+  removeDetailMechanic: "[Mecanica] Remove Mecanica Details",
+  updateMechanic: '[Mecanica] Update Mecanica'
 }

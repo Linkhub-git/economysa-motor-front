@@ -13,6 +13,9 @@ import { Table } from "../components/Table/Table";
 import { emisorOptions } from "../utils/mecanicasCombos";
 import { MecanicaContext } from "../context/mecanicas";
 import { DetailsCard } from "../components/Mecanica/DetailsCard";
+import { TabsMechanic } from "../components/Mecanica/TabsMechanic";
+import { apiUrl } from "../api/apiUrl";
+import { ProveedorContext } from "../context/proveedores";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -28,6 +31,7 @@ export const MechsPage = () => {
   const [selectedMecanicaToDelete, setSelectedMecanicaToDelete] = useState(null);
 
   const { mecanicas, showForm, toggleForm, updateMecanica, getMecanicas, deleteMecanica, mecanicaToUpdate, cleanMecanicaUpdate } = useContext(MecanicaContext)
+  const { getProveedores } = useContext(ProveedorContext)
 
   const fetchData = async (page) => {
     try {
@@ -40,6 +44,7 @@ export const MechsPage = () => {
       console.log(err);
     }
   };
+  
 
   useEffect(() => {
     fetchData(0);
@@ -48,6 +53,11 @@ export const MechsPage = () => {
   useEffect(() => {
     fetchData(currentPage);
   }, [currentPage]);
+
+  useEffect(() => {
+    getProveedores();
+  }, [])
+  
 
   useEffect(() => {
     if(filter === 'all') {
@@ -195,9 +205,13 @@ export const MechsPage = () => {
 
       {showForm && <FormularioMecanica />}
 
-      {showForm && updateMecanica && (
-        <DetailsCard/>
+      {showForm && (
+        <TabsMechanic/>
       )}
+
+      {/* {showForm && updateMecanica && (
+        <DetailsCard/>
+      )} */}
 
 
       <Dialog

@@ -20,10 +20,31 @@ import {
 import { useState, useContext } from "react";
 import { MecanicaContext } from "../../context/mecanicas";
 import { IoMdAddCircle } from "react-icons/io";
-import { detailConditional, detailtypes } from "../../utils/mecanicasCombos";
+
+
+const searchType = {
+  key: 'producto', value: 'Producto'
+}
+
+const fields = [
+  { key: 'cod_marca', value: 'Codigo de Marca'},
+  {key: 'marca', value: 'Marca'},
+  {key: 'cod_proveedor', value: 'Codigo Proveedor'},
+  {key: 'proveedor', value: 'Proveedor'},
+  {key: 'descripcion', value: 'Descripcion'},
+  {key: 'categoria', value: 'Categoria'},
+  {key: 'codigo', value: 'Codigo'},
+]
+
+const operators = [
+  { key: '=', value: 'igual'},
+  { key: 'list', value: 'puede ser'},
+  { key: 'like', value: 'como'},
+  { key: '!=', value: 'no es igual'},
+]
 
 const DetailTable = () => {
-  const { mechanic_detail } = useContext(MecanicaContext);
+  const { mechanic_detail = []} = useContext(MecanicaContext);
 
   return (
     <Table>
@@ -109,18 +130,10 @@ export const DetailsCard = () => {
     setOpen(false);
   };
 
+
   return (
     <Box sx={{ marginTop: 5 }}>
       <Card>
-        <Tabs
-          value={activeTab}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Tab label="Detalle" value="detalle" />
-          <Tab label="Productos a Bonificar" value="bonificar" />
-          <Tab label="Listas de Precios" value="precios" />
-        </Tabs>
 
         <CardContent>
           <Button
@@ -129,24 +142,15 @@ export const DetailsCard = () => {
             sx={{ marginBottom: 2 }}
             onClick={handleOpen}
           >
-            Agregar {activeTab === "detalle" && "detalle"}
-            {activeTab === "bonificar" && "producto"}
-            {activeTab === "precios" && "rubro"}
+            Agregar detalle
           </Button>
-
-          {activeTab === "detalle" && <DetailTable />}
-
-          {activeTab === "bonificar" && <ProductBonusTable />}
-
-          {activeTab === "precios" && <PriceListTable />}
         </CardContent>
       </Card>
 
       <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
         <DialogTitle>
-          Agregar {activeTab === "detalle" && "detalle"}
-          {activeTab === "bonificar" && "producto"}
-          {activeTab === "precios" && "rubro"}
+          Agregar 
+         
         </DialogTitle>
         <DialogContent>
           <form>
@@ -156,56 +160,40 @@ export const DetailsCard = () => {
               flexDirection="column"
               gap={3}
             >
-              {activeTab === "detalle" && (
+          
                 <>
+                  
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <TextField select label="Inc/Exc">
-                      {detailConditional.map((item) => (
-                        <MenuItem key={item.code} value={item.code}>
-                          {item.name}
+                    <TextField select label="Buscar">
+                      {searchType.map((item) => (
+                        <MenuItem key={item.key} value={item.key}>
+                          {item.value}
                         </MenuItem>
                       ))}
                     </TextField>
 
-                    <TextField select label="Tipo">
-                      {detailtypes.map((item) => (
-                        <MenuItem key={item.code} value={item.code}>
-                          {item.name}
+                    <TextField select label="Campo">
+                      {fields.map((item) => (
+                        <MenuItem key={item.key} value={item.key}>
+                          {item.value}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+
+                    <TextField select label="Operador">
+                      {operators.map((item) => (
+                        <MenuItem key={item.key} value={item.key}>
+                          {item.value}
                         </MenuItem>
                       ))}
                     </TextField>
                   </div>
 
                   <TextField label="Busqueda" fullWidth />
-                  <TextField label="Codigo" fullWidth disabled />
-                  <TextField label="Articulo - Proveedor" fullWidth disabled />
+
                 </>
-              )}
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <TextField
-                  label="% Descuento"
-                  type="number"
-                  placeholder="0"
-                  InputLabelProps={{ shrink: true, required: true }}
-                />
-                <TextField
-                  label="Cantidad"
-                  type="number"
-                  placeholder="0"
-                  InputLabelProps={{ shrink: true, required: true }}
-                />
-                <TextField
-                  label="Cantidad Maxima"
-                  type="number"
-                  placeholder="0"
-                  InputLabelProps={{ shrink: true, required: true }}
-                />
-              </div>
 
-              <TextField label="Producto" fullWidth InputLabelProps={{ shrink: true }}/>
-
-              <TextField label="Prioridad" fullWidth InputLabelProps={{ shrink: true, required: true }} />
 
 
             </Box>

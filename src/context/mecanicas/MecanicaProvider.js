@@ -6,14 +6,16 @@ import { MecanicaContext, mecanicaReducer } from "./";
 
 
 
+
 export const Mecanica_INITIAL_STATE = {
   mecanicas: [],
   showForm: false,
   updateMecanica: false,
   selectedMecanica: null,
-  mechanic_detail: null,
-  mechanic_bonus: null,
-  mechanic_entry: null,
+  mechanic_detail: [],
+  mechanic_rules: [],
+  mechanic_bonus: [],
+  mechanic_entry: [],
   totalPages: null
 };
 
@@ -49,7 +51,7 @@ export const MecanicaProvider = ({ children }) => {
     }
   };
 
-  const crearMecanica = async (mechParams) => {
+  const crearMecanica = async (mechParams, rangeParams) => {
     try {
       const { data } = await toast.promise(
         apiUrl.post('/mechanic', mechParams),
@@ -59,11 +61,17 @@ export const MecanicaProvider = ({ children }) => {
           error: 'No se pudo crear la mecanica'
         }
       )
+      
+      await apiUrl.post('/mechanic_rules', {
+        mechanic: data.id,
+        mechanicRules: rangeParams
+      });
 
       dispatch({
         type: typesMecanica.addMecanica,
         payload: data
       })
+
       
     } catch (error) {
       console.log(error)
@@ -74,20 +82,16 @@ export const MecanicaProvider = ({ children }) => {
     // TODO: Agregar Entry peticiones
     try {
       
-      const [detail, bonus] = await Promise.all(
-        [
-          apiUrl.get(`/mechanic_detail?mechanic=${mech.id}`).then(response => response.data),
-          apiUrl.get(`/mechanic_bonus?mechanicId=${mech.id}`).then(response => response.data)
-          // apiUrl.get(`/mechanic_entry?mechanic=${mech.id}`).then(response => response.data),
-        ]
-      )
+      // const { data } = await apiUrl.get(`/mechanic_rules/${mech.id}`)
+      const { data } = await apiUrl.get(`/mechanic_rules?mechanicId=${mech.id}`)
+
+      console.log(data);
       
       dispatch({
         type: typesMecanica.mecanicaToUpdate,
         payload: {
           mech,
-          detail,
-          bonus
+          rules: data.mechanicRules
         }
       })
 
@@ -97,11 +101,47 @@ export const MecanicaProvider = ({ children }) => {
 
   }
 
+  const updateMechanic = async (mechParams, rangeParams) => {
+    try {
+
+      const { data } = await apiUrl.put(`/mechanic/${state.selectedMecanica.id}`, mechParams)
+      
+      await apiUrl.post('/mechanic_rules', {
+        mechanic: state.selectedMecanica.id,
+        mechanicRules: rangeParams
+      });
+
+      dispatch({
+        type: typesMecanica.updateMechanic,
+        payload: data
+      })
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+
   const cleanMecanicaUpdate = () => {
     dispatch({
       type: typesMecanica.cleanMecanicaToUpdate
     })
   }
+
+  const setDetailsMechanic = (details) => {
+    dispatch({
+      type: typesMecanica.setMecanicaDetails,
+      payload: details
+    })
+  } 
+  
+  const removeDetailMechanic = (id) => {
+    dispatch({
+      type: typesMecanica.removeDetailMechanic,
+      payload: id
+    })
+  }
+  
 
   const deleteMecanica = async (mecanicaId) => {
     try {
@@ -132,7 +172,10 @@ export const MecanicaProvider = ({ children }) => {
         getMecanicas,
         deleteMecanica,
         mecanicaToUpdate,
-        cleanMecanicaUpdate
+        cleanMecanicaUpdate,
+        setDetailsMechanic,
+        removeDetailMechanic,
+        updateMechanic
       }}
     >
       {children}

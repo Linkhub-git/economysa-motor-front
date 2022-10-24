@@ -38,7 +38,7 @@ const defaultRangeAndFactorItem = {
   quantityProduct: 0,
   priority: 0,
   bonusMax: 0,
-  bonusQuantity: 0
+  bonusQuantity: 0,
 };
 
 export const FormularioMecanica = () => {
@@ -58,6 +58,10 @@ export const FormularioMecanica = () => {
       conditional: "",
       emitterId: "",
       factor: "",
+      funder: "E",
+      funderId: "",
+      level: 1,
+      chatbot: 1
     },
   });
 
@@ -67,6 +71,10 @@ export const FormularioMecanica = () => {
   const promotion = watch("promotionType");
   const conditional = watch("conditional");
   const proveedor = watch("emitterId");
+  const funderId = watch("funderId");
+  const funder = watch("funder");
+  const level = watch("level");
+  const chatbot = watch("chatbot");
 
   const [rangeDivisions, setRangeDivisions] = useState([
     {
@@ -78,24 +86,31 @@ export const FormularioMecanica = () => {
       quantityProduct: 0,
       priority: 0,
       bonusMax: 0,
-      bonusQuantity: 0
+      bonusQuantity: 0,
     },
   ]);
 
-  const { toggleForm, crearMecanica, updateMecanica, selectedMecanica, mechanic_rules, updateMechanic } =
-    useContext(MecanicaContext);
+  const {
+    toggleForm,
+    crearMecanica,
+    updateMecanica,
+    selectedMecanica,
+    mechanic_rules,
+    updateMechanic,
+  } = useContext(MecanicaContext);
 
   const onSubmit = async (params) => {
     params.startDate = moment(params.startDate).format("YYYY-MM-DD");
     params.endDate = moment(params.endDate).format("YYYY-MM-DD");
-    params.startTime = params.startTime.length < 8  ? params.startTime + ":00" : params.startTime;
-    params.endTime = params.endTime.length < 8  ? params.endTime + ":00" : params.endTime;
+    params.startTime =
+      params.startTime.length < 8 ? params.startTime + ":00" : params.startTime;
+    params.endTime =
+      params.endTime.length < 8 ? params.endTime + ":00" : params.endTime;
 
     if (!moment(params.endDate).isAfter(params.startDate, "day")) {
       toast.error("La fecha fin debe ser posterior a la fecha inicial");
       return;
     }
-
 
     const objectToSend = {
       providerDescription: params.providerDescription,
@@ -110,19 +125,17 @@ export const FormularioMecanica = () => {
       conditional: params.conditional,
       emitter: params.emitter,
       emitterId: params.emitterId,
-      funder: "P",
-      funderId: 421,
-      level: 1,
-      chatbot: 1
-
+      funder: params.funder,
+      funderId: params.funderId,
+      level: params.level,
+      chatbot: params.chatbot,
     };
 
-    if(updateMecanica){
-      updateMechanic(objectToSend, rangeDivisions)
+    if (updateMecanica) {
+      updateMechanic(objectToSend, rangeDivisions);
     } else {
       crearMecanica(objectToSend, rangeDivisions);
     }
-
   };
 
   const handleAddRangeAndFactor = () => {
@@ -132,24 +145,22 @@ export const FormularioMecanica = () => {
   const onChangeRule = (e, index, field) => {
     const newRules = [...rangeDivisions];
 
-    if(e.target.value === '') {
+    if (e.target.value === "") {
       newRules[index][field] = e.target.value;
     } else {
       newRules[index][field] = Number(e.target.value);
     }
 
-
-    setRangeDivisions(newRules)
-  }
+    setRangeDivisions(newRules);
+  };
 
   const deleteCurrentRule = (index) => {
-    
-    const newRules = rangeDivisions.filter((_, indexRule) => indexRule !== index)
+    const newRules = rangeDivisions.filter(
+      (_, indexRule) => indexRule !== index
+    );
 
-    setRangeDivisions(newRules)
-  }
-  
-  
+    setRangeDivisions(newRules);
+  };
 
   useEffect(() => {
     if (tipo === "R") {
@@ -165,33 +176,21 @@ export const FormularioMecanica = () => {
     if (updateMecanica && selectedMecanica) {
       setValue("providerDescription", selectedMecanica.providerDescription);
       setValue("catalogDescription", selectedMecanica.catalogDescription);
-      setValue(
-        "startDate",
-        selectedMecanica.startDate
-      );
-      setValue(
-        "endDate",
-        selectedMecanica.endDate
-      );
-      setValue(
-        "startTime",
-        selectedMecanica.startTime
-      );
-      setValue(
-        "endTime",
-        selectedMecanica.endTime,
-      );
+      setValue("startDate", selectedMecanica.startDate);
+      setValue("endDate", selectedMecanica.endDate);
+      setValue("startTime", selectedMecanica.startTime);
+      setValue("endTime", selectedMecanica.endTime);
       setValue("accumulate", selectedMecanica.accumulate);
       setValue("promotionType", selectedMecanica.promotionType);
       setValue("type", selectedMecanica.type);
       setValue("conditional", selectedMecanica.conditional);
 
       setValue("emitter", selectedMecanica.emitter);
-      if(selectedMecanica.emitter === 'P'){
+      if (selectedMecanica.emitter === "P") {
         setValue("emitterId", selectedMecanica.emitterObj.id);
       }
 
-      setRangeDivisions(mechanic_rules)
+      setRangeDivisions(mechanic_rules);
     }
   }, [selectedMecanica]);
 
@@ -223,7 +222,7 @@ export const FormularioMecanica = () => {
             <Grid item xs={12} md={6}>
               <TextField
                 label="Descripción Proveedor"
-                InputLabelProps={{ shrink: true}}
+                InputLabelProps={{ shrink: true }}
                 variant="outlined"
                 fullWidth
                 {...register("providerDescription", { required: true })}
@@ -235,7 +234,7 @@ export const FormularioMecanica = () => {
               <TextField
                 label="Descripción Catalogo"
                 variant="outlined"
-                InputLabelProps={{ shrink: true}}
+                InputLabelProps={{ shrink: true }}
                 fullWidth
                 {...register("catalogDescription", { required: true })}
                 // disabled={updateMecanica}
@@ -291,6 +290,80 @@ export const FormularioMecanica = () => {
                 {...register("endTime", { required: true })}
               />
             </Grid>
+
+            <Grid item xs={12} md={2}>
+              <TextField
+                id="level"
+                label="Nivel"
+                type="number"
+                fullWidth
+                // defaultValue="07:30"
+                value={level}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                {...register("level", { required: true })}
+              />
+            </Grid>
+
+            <Grid item xs={12} md={2}>
+              <TextField
+                id="chatbot"
+                label="Chatbot"
+                select
+                fullWidth
+                // defaultValue="07:30"
+                value={chatbot}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                {...register("chatbot", { required: true })}
+              >
+                <MenuItem value={0}>
+                  No
+                </MenuItem>
+                <MenuItem value={1}>
+                  Si
+                </MenuItem>
+              </TextField>
+            </Grid>
+
+            <Grid item xs={12} md={2}>
+              <TextField
+                select
+                label="Patrocinador"
+                helperText="Porfavor seleccione el Patrocinador"
+                // disabled={updateMecanica}
+                fullWidth
+                {...register("funder", { required: false })}
+                value={funder}
+              >
+                {emisorOptions.map((item) => (
+                  <MenuItem key={item.code} value={item.code}>
+                    {item.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+            {funder === "P" && (
+              <Grid item xs={12} md={3}>
+                <TextField
+                  select
+                  label="Proveedor"
+                  helperText="Porfavor seleccione el Proveedor"
+                  {...register("funderId")}
+                  fullWidth
+                  value={funderId}
+                  // disabled={updateMecanica}
+                >
+                  {proveedores.map((item) => (
+                    <MenuItem key={item.id} value={item.id}>
+                      {item.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+            )}
           </Grid>
         </FormControl>
 
@@ -365,7 +438,7 @@ export const FormularioMecanica = () => {
               ))}
             </TextField>
 
-            <ClientMechanic/>
+            <ClientMechanic />
           </div>
         </FormControl>
 
@@ -380,13 +453,11 @@ export const FormularioMecanica = () => {
             Factor y Rango
           </FormLabel>
 
-          
-            <Box display="flex" justifyContent="end">
-              <Button variant="contained" onClick={handleAddRangeAndFactor}>
-                +
-              </Button>
-            </Box>
-          
+          <Box display="flex" justifyContent="end">
+            <Button variant="contained" onClick={handleAddRangeAndFactor}>
+              +
+            </Button>
+          </Box>
 
           {/* Factor */}
           {rangeDivisions.map((division, index) => (
@@ -406,7 +477,7 @@ export const FormularioMecanica = () => {
                       InputLabelProps={{ shrink: true }}
                       placeholder="0"
                       fullWidth
-                      onChange={(e) => onChangeRule(e, index, 'factor')}
+                      onChange={(e) => onChangeRule(e, index, "factor")}
                       value={rangeDivisions[index].factor}
                       // disabled={updateMecanica}
                     />
@@ -424,7 +495,7 @@ export const FormularioMecanica = () => {
                         fullWidth
                         InputLabelProps={{ shrink: true, required: false }}
                         placeholder={acumula === "S" ? "0.00" : "0"}
-                        onChange={(e) => onChangeRule(e, index, 'startRange')}
+                        onChange={(e) => onChangeRule(e, index, "startRange")}
                         // disabled={updateMecanica}
                         value={rangeDivisions[index].startRange}
                         InputProps={
@@ -448,7 +519,7 @@ export const FormularioMecanica = () => {
                         InputLabelProps={{ shrink: true, required: false }}
                         placeholder={acumula === "S" ? "0.00" : "0"}
                         // disabled={updateMecanica}
-                        onChange={(e) => onChangeRule(e, index, 'endRange')}
+                        onChange={(e) => onChangeRule(e, index, "endRange")}
                         value={rangeDivisions[index].endRange}
                         InputProps={
                           acumula === "S"
@@ -469,10 +540,20 @@ export const FormularioMecanica = () => {
                   <TextField
                     type="number"
                     label={promotion === "D" ? "% Descuento" : "Producto"}
-                    onChange={(e) => onChangeRule(e, index, promotion === "D" ? "percentageDiscount" : "productId")}
+                    onChange={(e) =>
+                      onChangeRule(
+                        e,
+                        index,
+                        promotion === "D" ? "percentageDiscount" : "productId"
+                      )
+                    }
                     InputLabelProps={{ shrink: true }}
                     fullWidth
-                    value={promotion === "D" ? rangeDivisions[index].percentageDiscount : rangeDivisions[index].productId }
+                    value={
+                      promotion === "D"
+                        ? rangeDivisions[index].percentageDiscount
+                        : rangeDivisions[index].productId
+                    }
                     placeholder={"0"}
                     // disabled={updateMecanica}
                   />
@@ -484,7 +565,9 @@ export const FormularioMecanica = () => {
                         type="number"
                         label={"Cantidad a Bonificar"}
                         InputLabelProps={{ shrink: true }}
-                        onChange={(e) => onChangeRule(e, index, 'bonusQuantity')}
+                        onChange={(e) =>
+                          onChangeRule(e, index, "bonusQuantity")
+                        }
                         fullWidth
                         value={rangeDivisions[index].bonusQuantity}
                         placeholder={"0"}
@@ -496,7 +579,7 @@ export const FormularioMecanica = () => {
                         type="number"
                         label={"Maximo a Bonificar"}
                         InputLabelProps={{ shrink: true }}
-                        onChange={(e) => onChangeRule(e, index, 'bonusMax')}
+                        onChange={(e) => onChangeRule(e, index, "bonusMax")}
                         value={rangeDivisions[index].bonusMax}
                         fullWidth
                         placeholder={"0"}
@@ -510,16 +593,22 @@ export const FormularioMecanica = () => {
                     type="number"
                     label="Prioridad"
                     InputLabelProps={{ shrink: true }}
-                    onChange={(e) => onChangeRule(e, index, 'priority')}
+                    onChange={(e) => onChangeRule(e, index, "priority")}
                     value={rangeDivisions[index].priority}
                     placeholder={acumula === "S" ? "0.00" : "0"}
                     // disabled={updateMecanica}
                   />
                 </Grid>
 
-                { index > 0 && (
+                {index > 0 && (
                   <Grid item xs={12} md={1}>
-                    <Button color="error" variant="contained" onClick={() =>deleteCurrentRule(index)}>X</Button>
+                    <Button
+                      color="error"
+                      variant="contained"
+                      onClick={() => deleteCurrentRule(index)}
+                    >
+                      X
+                    </Button>
                   </Grid>
                 )}
               </>

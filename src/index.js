@@ -18,45 +18,50 @@ import { ProvidersPage } from "./pages/ProvidersPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MechsPage } from "./pages/MechsPage";
-import { CssBaseline } from "@mui/material";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { MecanicaProvider } from "./context/mecanicas";
 import { ProveedorProvider } from "./context/proveedores";
+import { esES } from "@mui/x-data-grid";
+
+const theme = createTheme({}, esES);
 
 ReactDOM.render(
   <React.StrictMode>
-    <CssBaseline />
-    <ToastContainer position="top-center" />
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<DashboardPage />} />
-        <Route path="/security" element={<SecurityPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/categories" element={<CategoriesPage />} />
-        <Route path="/marks" element={<MarksPage />} />
-        <Route path="/units" element={<ListUnityPage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/providers" element={<ProvidersPage />} />
-        <Route
-          path="/mechs"
-          element={
-            <MecanicaProvider>
-              <ProveedorProvider>
-                <MechsPage />
-              </ProveedorProvider>
-            </MecanicaProvider>
-          }
-        />
-        <Route path="/security/new" element={<FormularioUsuarios />} />
-        <Route path="/security/edit/:id" element={<FormularioUsuarios />} />
-        <Route path="/motor/:id" exact={true} element={<Motor />} />
-        <Route
-          path="/motor/form-motor"
-          exact={true}
-          element={<FormularioMotores />}
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ToastContainer position="top-center" />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/security" element={<SecurityPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/marks" element={<MarksPage />} />
+          <Route path="/units" element={<ListUnityPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/providers" element={<ProvidersPage />} />
+          <Route
+            path="/mechs"
+            element={
+              <MecanicaProvider>
+                <ProveedorProvider>
+                  <MechsPage />
+                </ProveedorProvider>
+              </MecanicaProvider>
+            }
+          />
+          <Route path="/security/new" element={<FormularioUsuarios />} />
+          <Route path="/security/edit/:id" element={<FormularioUsuarios />} />
+          <Route path="/motor/:id" exact={true} element={<Motor />} />
+          <Route
+            path="/motor/form-motor"
+            exact={true}
+            element={<FormularioMotores />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -69,12 +69,13 @@ const operators = [
   { key: 1, value: "igual" },
   { key: 2, value: "diferente" },
   { key: 3, value: "contiene" },
-  { key: 4, value: "es parte de" },
+  { key: 4, value: "no contiene" },
+  { key: 5, value: "es parte de" },
 ];
 
 const initialQuery = {
-  field_id: "",
-  operator_id: "",
+  fieldId: "",
+  operatorId: "",
   value: "",
 };
 
@@ -82,8 +83,8 @@ const initialGroup = {
   groupOperator: "AND",
   conditions: [
     {
-      field_id: "",
-      operator_id: "",
+      fieldId: "",
+      operatorId: "",
       value: "",
     },
   ],
@@ -113,8 +114,8 @@ export const TabsMechanic = () => {
       groupOperator: "AND",
       conditions: [
         {
-          field_id: "",
-          operator_id: "",
+          fieldId: "",
+          operatorId: "",
           value: "",
         },
       ],
@@ -151,7 +152,7 @@ export const TabsMechanic = () => {
       },
     };
 
-    const { data } = await apiUrl.post(`/product/conditions`, queryBody);
+    const { data } = await apiUrl.post(`/product/search`, queryBody);
 
 
     const formatData = data.map((item) => {
@@ -258,7 +259,7 @@ export const TabsMechanic = () => {
   
 
   const columnsGrid = [
-    { field: "id", headerName: "Codigo" },
+    { field: "codigo", headerName: "Codigo" },
     { field: "descripcion", headerName: "Producto", flex: 1 },
     { field: "unitMasterEquivalent", headerName: "Stock" },
     {
@@ -375,7 +376,7 @@ export const TabsMechanic = () => {
                             <TextField
                               select
                               label="Campo"
-                              name="field_id"
+                              name="fieldId"
                               fullWidth
                               onChange={(e) =>
                                 handleChangeQuery(e, index, queryIndex)
@@ -393,7 +394,7 @@ export const TabsMechanic = () => {
                             <TextField
                               select
                               label="Operador"
-                              name="operator_id"
+                              name="operatorId"
                               fullWidth
                               onChange={(e) =>
                                 handleChangeQuery(e, index, queryIndex)

@@ -27,6 +27,7 @@ import { useState } from "react";
 
 import moment from "moment";
 import { ProveedorContext } from "../../context/proveedores";
+import { ClientMechanic } from "../Mecanica/ClientMechanic";
 
 const defaultRangeAndFactorItem = {
   factor: 0,
@@ -297,7 +298,7 @@ export const FormularioMecanica = () => {
           <FormLabel component="legend" className="fw-bold  mb-4">
             Caracteristicas
           </FormLabel>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 align-items-center">
             <TextField
               select
               fullWidth
@@ -358,6 +359,8 @@ export const FormularioMecanica = () => {
                 </MenuItem>
               ))}
             </TextField>
+
+            <ClientMechanic/>
           </div>
         </FormControl>
 

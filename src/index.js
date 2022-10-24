@@ -22,6 +22,9 @@ import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { MecanicaProvider } from "./context/mecanicas";
 import { ProveedorProvider } from "./context/proveedores";
 import { esES } from "@mui/x-data-grid";
+import { AuthProvider } from "./context/auth";
+import PrivateRoute from "./routes/PublicRoute";
+import PublicRoute from "./routes/PrivateRoute";
 
 const theme = createTheme({}, esES);
 
@@ -30,37 +33,123 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ToastContainer position="top-center" />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<DashboardPage />} />
-          <Route path="/security" element={<SecurityPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/categories" element={<CategoriesPage />} />
-          <Route path="/marks" element={<MarksPage />} />
-          <Route path="/units" element={<ListUnityPage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/providers" element={<ProvidersPage />} />
-          <Route
-            path="/mechs"
-            element={
-              <MecanicaProvider>
-                <ProveedorProvider>
-                  <MechsPage />
-                </ProveedorProvider>
-              </MecanicaProvider>
-            }
-          />
-          <Route path="/security/new" element={<FormularioUsuarios />} />
-          <Route path="/security/edit/:id" element={<FormularioUsuarios />} />
-          <Route path="/motor/:id" exact={true} element={<Motor />} />
-          <Route
-            path="/motor/form-motor"
-            exact={true}
-            element={<FormularioMotores />}
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <MecanicaProvider>
+          <ProveedorProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <PrivateRoute>
+                      <DashboardPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/security"
+                  element={
+                    <PrivateRoute>
+                      <SecurityPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/login"
+                  element={
+                    <PublicRoute>
+                      <Login />
+                    </PublicRoute>
+                  }
+                />
+                <Route
+                  path="/categories"
+                  element={
+                    <PrivateRoute>
+                      <CategoriesPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/marks"
+                  element={
+                    <PrivateRoute>
+                      <MarksPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/units"
+                  element={
+                    <PrivateRoute>
+                      <ListUnityPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/products"
+                  element={
+                    <PrivateRoute>
+                      <ProductsPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/providers"
+                  element={
+                    <PrivateRoute>
+                      <ProvidersPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/mechs"
+                  element={
+                    <PrivateRoute>
+                      <MechsPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/security/new"
+                  element={
+                    <PrivateRoute>
+                      <FormularioUsuarios />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/security/edit/:id"
+                  element={
+                    <PrivateRoute>
+                      <FormularioUsuarios />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/motor/:id"
+                  exact={true}
+                  element={
+                    <PrivateRoute>
+                      <Motor />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/motor/form-motor"
+                  exact={true}
+                  element={
+                    <PrivateRoute>
+                      <FormularioMotores />
+                    </PrivateRoute>
+                  }
+                />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </ProveedorProvider>
+        </MecanicaProvider>
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

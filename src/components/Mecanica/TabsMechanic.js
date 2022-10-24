@@ -30,6 +30,7 @@ import { useContext } from "react";
 import { MecanicaContext } from "../../context/mecanicas";
 import { DataGrid } from "@mui/x-data-grid";
 import { FaTrash as DeleteIcon } from "react-icons/fa";
+import { v4 as uuidv4 } from 'uuid';
 
 const searchParameter = [
   {
@@ -109,11 +110,15 @@ export const TabsMechanic = () => {
 
   const [globalLogicOperator, setGlobalLogicOperator] = useState("AND");
 
+  const { setProductsUniverse } = useContext(MecanicaContext)
+
   const [groupQueries, setGroupQueries] = useState([
     {
+      id:uuidv4(),
       groupOperator: "AND",
       conditions: [
         {
+          id:uuidv4(),
           fieldId: "",
           operatorId: "",
           value: "",
@@ -207,6 +212,7 @@ export const TabsMechanic = () => {
         };
       });
     setDetailsMechanic(filterData);
+    setProductsUniverse(groupQueries, globalLogicOperator)
     setSearchText("");
     setSearchResults([]);
     setOpen(false);
@@ -215,7 +221,7 @@ export const TabsMechanic = () => {
   const handleClickAddQuery = (groupIndex) => {
     const newQuery = [...groupQueries];
 
-    newQuery[groupIndex].conditions.push(initialQuery);
+    newQuery[groupIndex].conditions.push({...initialQuery, id: uuidv4()});
     // newQuery[groupIndex][queryIndex]
 
     setGroupQueries(newQuery);
@@ -223,7 +229,9 @@ export const TabsMechanic = () => {
 
   const handleClickAddGroup = () => {
     const newGroup = [...groupQueries];
-    newGroup.push(initialGroup);
+
+    const initialValues = {...initialGroup, id: uuidv4(), conditions: [{...initialQuery, id: uuidv4()}]}
+    newGroup.push(initialValues);
     setGroupQueries(newGroup);
     // setGroupQueries([...groupQueries, initialGroup]);
   };
@@ -285,8 +293,6 @@ export const TabsMechanic = () => {
           aria-label="basic tabs example"
         >
           <Tab label="Detalle" value="detalle" />
-          <Tab label="Productos a Bonificar" value="bonificar" />
-          <Tab label="Listas de Precios" value="precios" />
         </Tabs>
 
         <CardContent>
@@ -312,8 +318,6 @@ export const TabsMechanic = () => {
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <DialogTitle>
           Agregar {activeTab === "detalle" && "detalle"}
-          {activeTab === "bonificar" && "producto"}
-          {activeTab === "precios" && "rubro"}
         </DialogTitle>
         <DialogContent>
           <form>
@@ -341,7 +345,7 @@ export const TabsMechanic = () => {
             <Box display="flex" flexDirection="column" sx={{ gap: "10px" }}>
               {groupQueries.map((group, index) => (
                 <Box
-                  key={`group-${index}`}
+                  key={group.id}
                   sx={{
                     display: "flex",
                     flexDirection: "column",
@@ -364,7 +368,7 @@ export const TabsMechanic = () => {
                   )}
 
                   {group.conditions.map((q, queryIndex) => (
-                    <Fragment key={`query-${queryIndex}`}>
+                    <Fragment key={q.id}>
                       <Grid
                         container
                         // sx={{ marginTop: 1 }}
@@ -378,6 +382,7 @@ export const TabsMechanic = () => {
                               label="Campo"
                               name="fieldId"
                               fullWidth
+                              value={q.fieldId}
                               onChange={(e) =>
                                 handleChangeQuery(e, index, queryIndex)
                               }
@@ -396,6 +401,7 @@ export const TabsMechanic = () => {
                               label="Operador"
                               name="operatorId"
                               fullWidth
+                              value={q.operatorId}
                               onChange={(e) =>
                                 handleChangeQuery(e, index, queryIndex)
                               }
@@ -413,6 +419,7 @@ export const TabsMechanic = () => {
                               label="Valor"
                               name="value"
                               fullWidth
+                              value={q.value}
                               onChange={(e) =>
                                 handleChangeQuery(e, index, queryIndex)
                               }

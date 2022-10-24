@@ -9,11 +9,13 @@ import {
   MenuItem,
   TextField,
 } from "@mui/material";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import { apiUrl } from "../../api/apiUrl";
 
 import { FaTrash as DeleteIcon } from "react-icons/fa";
 import { DataGrid } from "@mui/x-data-grid";
+import { MecanicaContext } from "../../context/mecanicas";
+import { v4 as uuidv4 } from 'uuid';
 
 const fields = [
   {
@@ -69,9 +71,11 @@ const initialQuery = {
 };
 
 const initialGroup = {
+  id:uuidv4(),
   groupOperator: "AND",
   conditions: [
     {
+      id: uuidv4(),
       fieldId: "",
       operatorId: "",
       value: "",
@@ -83,6 +87,7 @@ export const ClientMechanic = () => {
   const [open, setOpen] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [globalLogicOperator, setGlobalLogicOperator] = useState("AND");
+  const { setClientsUniverse } = useContext(MecanicaContext)
 
   const columnsGrid = [
     { field: "codigo", headerName: "Codigo" },
@@ -103,16 +108,7 @@ export const ClientMechanic = () => {
   ];
 
   const [groupQueries, setGroupQueries] = useState([
-    {
-      groupOperator: "AND",
-      conditions: [
-        {
-          field_id: "",
-          operator_id: "",
-          value: "",
-        },
-      ],
-    },
+    initialGroup
   ]);
 
   const handleCheckChange = (id) => {
@@ -174,7 +170,7 @@ export const ClientMechanic = () => {
   const handleClickAddQuery = (groupIndex) => {
     const newQuery = [...groupQueries];
 
-    newQuery[groupIndex].conditions.push(initialQuery);
+    newQuery[groupIndex].conditions.push({...initialQuery, id: uuidv4()});
     // newQuery[groupIndex][queryIndex]
 
     setGroupQueries(newQuery);
@@ -182,7 +178,10 @@ export const ClientMechanic = () => {
 
   const handleClickAddGroup = () => {
     const newGroup = [...groupQueries];
-    newGroup.push(initialGroup);
+    const initialValues = {...initialGroup, id: uuidv4(), conditions: [{...initialQuery, id: uuidv4()}]}
+    newGroup.push(initialValues);
+
+    // console.log(newGroup)
     setGroupQueries(newGroup);
     // setGroupQueries([...groupQueries, initialGroup]);
   };
@@ -192,6 +191,7 @@ export const ClientMechanic = () => {
 
     newGroups[groupIndex].conditions[queryIndex][e.target.name] =
       e.target.value;
+
 
     setGroupQueries(newGroups);
   };
@@ -206,7 +206,7 @@ export const ClientMechanic = () => {
   const handleClickRemoveQuery = (groupIndex, queryIndex) => {
     const newGroup = [...groupQueries];
     newGroup[groupIndex].conditions.splice(queryIndex, 1);
-    console.log(newGroup);
+
     setGroupQueries(newGroup);
   };
 
@@ -215,6 +215,14 @@ export const ClientMechanic = () => {
     newGroup.splice(groupIndex, 1);
     setGroupQueries(newGroup);
   };
+
+
+  const handleSetContext = () => {
+    setClientsUniverse(groupQueries, globalLogicOperator)
+    handleClose()
+  }
+  
+ 
 
   return (
     <Box>
@@ -241,7 +249,7 @@ export const ClientMechanic = () => {
               <MenuItem value="AND">AND</MenuItem>
               <MenuItem value="OR">OR</MenuItem>
             </TextField>
-            <Button variant="contained" onClick={handleClickAddGroup} sm>
+            <Button variant="contained" onClick={handleClickAddGroup} sx={{ padding: 0}}>
               +
             </Button>
           </Box>
@@ -249,7 +257,7 @@ export const ClientMechanic = () => {
           <Box display="flex" flexDirection="column" sx={{ gap: "10px" }}>
             {groupQueries.map((group, index) => (
               <Box
-                key={`group-${index}`}
+                key={group.id}
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -272,13 +280,15 @@ export const ClientMechanic = () => {
                 )}
 
                 {group.conditions.map((q, queryIndex) => (
-                  <Fragment key={`query-${queryIndex}`}>
+               
                     <Grid
+                    key={q.id}
                       container
                       // sx={{ marginTop: 1 }}
                       spacing={2}
                       alignItems={"center"}
                     >
+
                       <Fragment>
                         <Grid item md={3}>
                           <TextField
@@ -289,6 +299,7 @@ export const ClientMechanic = () => {
                             onChange={(e) =>
                               handleChangeQuery(e, index, queryIndex)
                             }
+                            value={ q.fieldId }
                           >
                             {fields.map((item) => (
                               <MenuItem key={item.key} value={item.key}>
@@ -304,6 +315,7 @@ export const ClientMechanic = () => {
                             label="Operador"
                             name="operatorId"
                             fullWidth
+                            value={q.operatorId}
                             onChange={(e) =>
                               handleChangeQuery(e, index, queryIndex)
                             }
@@ -321,6 +333,7 @@ export const ClientMechanic = () => {
                             label="Valor"
                             name="value"
                             fullWidth
+                            value={q.value}
                             onChange={(e) =>
                               handleChangeQuery(e, index, queryIndex)
                             }
@@ -351,7 +364,7 @@ export const ClientMechanic = () => {
                         )}
                       </Fragment>
                     </Grid>
-                  </Fragment>
+            
                 ))}
                 <TextField
                   select
@@ -395,12 +408,17 @@ export const ClientMechanic = () => {
               rows={searchResults}
             />
           </Box>
-          <Box display="flex" gap={3} sx={{ marginTop: 3 }}>
-            <Button variant="outlined" onClick={() => handleToggleAll(true)}>
-              Seleccionar Todos
-            </Button>
-            <Button variant="outlined" onClick={() => handleToggleAll(false)}>
-              Quitar Todos
+          <Box display="flex" justifyContent="space-between" sx={{ marginTop: 3 }}>
+            <Box display="flex" gap={3} >
+              <Button variant="outlined" onClick={() => handleToggleAll(true)}>
+                Seleccionar Todos
+              </Button>
+              <Button variant="outlined" onClick={() => handleToggleAll(false)}>
+                Quitar Todos
+              </Button>
+            </Box>
+            <Button variant="outlined" onClick={handleSetContext}>
+                Aceptar
             </Button>
           </Box>
         </DialogContent>

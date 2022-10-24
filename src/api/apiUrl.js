@@ -6,7 +6,7 @@ export const apiUrl = axios.create({
   headers: {
     "Content-Type": "application/json",
     Accept: "*/*",
-    authorization: "Bearer b2654baf-d066-4d60-8d43-d7a797035e37",
+    authorization: "Bearer cf6a5082-ad14-47ad-b498-a419e9b4c55b",
     
   },
 });

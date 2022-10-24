@@ -8,5 +8,7 @@ export const typesMecanica = {
   cleanMecanicaToUpdate: "[Mecanica] Clean Mecanica to Update",
   setMecanicaDetails: "[Mecanica] Set Mecanica Details",
   removeDetailMechanic: "[Mecanica] Remove Mecanica Details",
-  updateMechanic: '[Mecanica] Update Mecanica'
+  updateMechanic: '[Mecanica] Update Mecanica',
+  setClientUniverse: '[Mecanica] Set Client Universe',
+  setProductUniverse: '[Mecanica] Set Product Universe',
 }

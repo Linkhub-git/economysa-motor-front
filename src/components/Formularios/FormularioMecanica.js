@@ -109,7 +109,12 @@ export const FormularioMecanica = () => {
       type: params.type,
       conditional: params.conditional,
       emitter: params.emitter,
-      emitterId: params.emitterId
+      emitterId: params.emitterId,
+      funder: "P",
+      funderId: 421,
+      level: 1,
+      chatbot: 1
+
     };
 
     if(updateMecanica){

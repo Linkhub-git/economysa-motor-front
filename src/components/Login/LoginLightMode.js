@@ -1,41 +1,56 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './Login.css';
 import { Form } from 'react-bootstrap';
 import Logo from '../../images/logo.png'
 import LoginDarkMode from './LoginDarkMode';
+import { AuthContext } from '../../context/auth';
 function LoginLightMode() {
   const [darkMode, setDarkMode] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { authenticateUser } = useContext(AuthContext)
+
   /* Configuración de API */
-  const encodeData = btoa(process.env.REACT_APP_USER_TOKEN + ":" + process.env.REACT_APP_PASS_TOKEN);
-  let urlencoded = new URLSearchParams();
-  urlencoded.append("username", email);
-  urlencoded.append("password", password);
-  urlencoded.append("grant_type", "password");
-  let myHeaders = new Headers();
-  myHeaders.append("Authorization", "Basic " + encodeData);
-  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-  let configAPI = {
-    method: 'POST',
-      headers: myHeaders,
-      body: urlencoded,
-      redirect: 'follow'
-  }
+  // const encodeData = btoa(process.env.REACT_APP_USER_TOKEN + ":" + process.env.REACT_APP_PASS_TOKEN);
+  // let urlencoded = new URLSearchParams();
+  // urlencoded.append("username", email);
+  // urlencoded.append("password", password);
+  // urlencoded.append("grant_type", "password");
+  // let myHeaders = new Headers();
+  // myHeaders.append("Authorization", "Basic " + encodeData);
+  // myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+  // let configAPI = {
+  //   method: 'POST',
+  //     headers: myHeaders,
+  //     body: urlencoded,
+  //     redirect: 'follow'
+  // }
   /* Llamado a la API */
-  async function login (e){ 
-    console.log(email, password);
-    let result = await fetch(process.env.REACT_APP_URL_TOKEN,configAPI);
-    result = await result.json();
-    let token = await result.access_token
-    localStorage.setItem("user-info", JSON.stringify(result));
-    localStorage.setItem("tokenKey", JSON.stringify(token));
-    console.log(result);
-  }
-  const formulario = e => {
-    e.preventDefault()
-  }
+  // async function login (e){ 
+  //   console.log(email, password);
+  //   let result = await fetch(process.env.REACT_APP_URL_TOKEN,configAPI);
+  //   result = await result.json();
+  //   let token = await result.access_token
+  //   localStorage.setItem("user-info", JSON.stringify(result));
+  //   localStorage.setItem("tokenKey", JSON.stringify(token));
+  //   console.log(result);
+  // }
+  const formulario = (e) => {
+    e.preventDefault();
+
+    let urlencoded = new URLSearchParams();
+    urlencoded.append("username", email);
+    urlencoded.append("password", password);
+    urlencoded.append("grant_type", "password");
+
+    // const data = {
+    //   username: email,
+    //   password,
+    //   grant_type: 'password'
+    // }
+    authenticateUser(urlencoded)
+  };
   return (
     <section>
     {darkMode === false ?  
@@ -62,7 +77,7 @@ function LoginLightMode() {
                                   <Form.Control type="password" onChange={(e) =>setPassword(e.target.value)} placeholder="Ingresa tu contraseña..." />
                                   <i className="fas fa-lock logoPasswordLogin"></i>
                             </Form.Group>
-                            <button onClick={login} className='btn-datosFormRegister' type="submit">
+                            <button  className='btn-datosFormRegister' type="submit">
                               Ingresar
                             </button>
                         </Form>

@@ -7,14 +7,18 @@ export const mecanicaReducer = (state = Mecanica_INITIAL_STATE, action) => {
     case typesMecanica.toggleForm :
       return {
         ...state,
-        showForm: !state.showForm
+        showForm: !state.showForm,
+        mechanic_products: {},
+        mechanic_clients: {}
       }
     
     case typesMecanica.addMecanica: 
       return {
         ...state,
         showForm: false,
-        mecanicas: [action.payload, ...state.mecanicas]
+        mecanicas: [action.payload, ...state.mecanicas],
+        mechanic_products: {},
+        mechanic_clients: {}
       }
   
     case typesMecanica.getAllMecanica:
@@ -46,7 +50,7 @@ export const mecanicaReducer = (state = Mecanica_INITIAL_STATE, action) => {
         updateMecanica: false,
         mechanic_detail: [],
         mechanic_bonus: [],
-        mechanic_rules: [],
+        mechanic_rules: []
       }
 
     case typesMecanica.setMecanicaDetails:
@@ -71,6 +75,18 @@ export const mecanicaReducer = (state = Mecanica_INITIAL_STATE, action) => {
       return {
         ...state,
         mechanic_detail: state.mechanic_detail.filter(detail => detail.id !== action.payload)
+      }
+
+    case typesMecanica.setClientUniverse:
+      return {
+        ...state,
+        mechanic_clients: action.payload
+      }
+
+    case typesMecanica.setProductUniverse:
+      return {
+        ...state,
+        mechanic_products: action.payload
       }
     default:
       return state;

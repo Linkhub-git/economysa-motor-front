@@ -60,14 +60,9 @@ export const MechsPage = () => {
   
 
   useEffect(() => {
-    if(filter === 'all') {
-      setFilteredData(mecanicas);
-    }else {
-      const filterData = mecanicas.filter(item => item.emitter === filter)
-      setFilteredData(filterData)
-    }
+    filterMechs(filter)
     
-  },[mecanicas,filter])
+  },[mecanicas])
 
   const columns = [
     {
@@ -120,14 +115,17 @@ export const MechsPage = () => {
 
   const handleChangeFilter = (e) => {
     setFilter(e.target.value);
-    if(e.target.value !== 'all'){
-      const filterData = mecanicas.filter(item => item.emitter === e.target.value)
-      setFilteredData(filterData)
-      return;
-    }
-    
-    setFilteredData(mecanicas)
+    filterMechs(e.target.value)
   };
+
+  const filterMechs = (value) => {
+    if(value === 'all') return setFilteredData(mecanicas)
+
+    const filterData = mecanicas.filter(item => item.emitter === value)
+    setFilteredData(filterData)
+  
+  }
+  
 
   const confirmDeleteMecanica = () => {
     deleteMecanica(selectedMecanicaToDelete.id)
